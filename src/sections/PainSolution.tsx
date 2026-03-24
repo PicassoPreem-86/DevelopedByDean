@@ -17,7 +17,7 @@ const services = [
 
 export function PainSolution() {
   return (
-    <section id="services" className="py-24 px-6 bg-white">
+    <section id="services" className="py-20 lg:py-28 px-6 bg-white border-t border-border-light">
       <div className="mx-auto max-w-container">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
           {/* Left — Pain + Solution */}
@@ -50,7 +50,7 @@ export function PainSolution() {
                   transition={{ delay: i * 0.1, duration: 0.4 }}
                 >
                   <CheckCircle2 size={20} className="text-green-500 shrink-0 mt-0.5" />
-                  <p className="text-sm text-content-primary">
+                  <p className="text-[15px] text-content-primary leading-relaxed">
                     <span className="font-semibold">{item.text}</span>
                     {" → "}
                     {item.solution}
@@ -67,8 +67,11 @@ export function PainSolution() {
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <p className="text-sm font-semibold text-accent">💡 The result?</p>
-              <p className="mt-1 text-sm text-content-body">
+              <p className="text-sm font-semibold text-amber-600 flex items-center gap-1.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
+                The result?
+              </p>
+              <p className="mt-1 text-sm text-content-body font-medium">
                 More booked calls, more sales, and more free time — without hiring more staff.
               </p>
             </motion.div>

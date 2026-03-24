@@ -3,10 +3,10 @@ import { CheckCircle2, Calendar } from "lucide-react";
 
 export function FinalCTA() {
   return (
-    <section id="contact" className="py-24 px-6 bg-white">
+    <section id="contact" className="py-20 lg:py-28 px-6 bg-surface-light">
       <div className="mx-auto max-w-container">
         <motion.div
-          className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-10"
+          className="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 border border-blue-200/80 rounded-2xl p-10 lg:p-14 shadow-card"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -38,8 +38,10 @@ export function FinalCTA() {
             {/* Right — CTA */}
             <div className="flex flex-col items-center lg:items-end gap-3">
               <a
-                href="mailto:hello@developedbydean.com"
-                className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 text-base font-semibold text-white hover:bg-accent-hover transition-all hover:shadow-glow"
+                href="https://calendly.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-accent px-10 py-4.5 text-lg font-semibold text-white hover:bg-accent-hover transition-all hover:shadow-glow"
               >
                 <Calendar size={18} /> Book Your Free Call Now
               </a>

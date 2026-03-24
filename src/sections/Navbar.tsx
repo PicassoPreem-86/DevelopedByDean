@@ -3,12 +3,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Calendar } from "lucide-react";
 
 const navLinks = [
-  { label: "About", href: "#about" },
   { label: "What I Build", href: "#services" },
   { label: "Results", href: "#results" },
   { label: "Process", href: "#process" },
-  { label: "Work", href: "#work" },
-  { label: "FAQs", href: "#faqs" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -34,9 +32,7 @@ export function Navbar() {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <div className="flex items-center justify-between px-6 py-3.5">
-          <a href="#" className="text-base font-bold text-white">
-            <span className="text-lg font-bold italic text-white">Dean</span>
-          </a>
+          <a href="#" className="text-lg font-bold italic text-white">Dean</a>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
             {navLinks.map((link) => (

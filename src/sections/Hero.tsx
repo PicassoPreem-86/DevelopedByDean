@@ -3,7 +3,11 @@ import { Star, Sparkles, ArrowRight, CheckCircle2, Calendar, PlayCircle } from "
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen bg-hero overflow-hidden pt-28 pb-20 px-6">
+    <section className="relative bg-hero overflow-hidden pt-28 pb-16 px-6">
+      {/* Dot grid pattern */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" aria-hidden="true"
+        style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px)", backgroundSize: "24px 24px" }}
+      />
       {/* Ambient glow */}
       <div
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] rounded-full bg-accent/5 blur-[120px]"
@@ -15,7 +19,7 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto max-w-container">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center min-h-[calc(100vh-12rem)]">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
           {/* Left — Copy */}
           <div>
             <motion.div
@@ -44,12 +48,12 @@ export function Hero() {
             </motion.h1>
 
             <motion.p
-              className="mt-6 max-w-lg text-lg leading-relaxed text-white/60"
+              className="mt-6 max-w-lg text-lg leading-relaxed text-white/70"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
             >
-              I'm Dean — a solo AI developer &amp; systems builder. I design and build custom AI-powered websites, voice agents, and automations that capture leads, close more sales, and save hours every day.
+              I'm Dean — a solo AI developer & systems builder. I design and build custom AI-powered websites, voice agents, and automations that capture leads, close more sales, and save hours every day.
             </motion.p>
 
             <motion.div
@@ -108,21 +112,24 @@ export function Hero() {
               {/* Main card */}
               <div className="relative w-72 sm:w-80 overflow-hidden rounded-2xl border border-white/10 bg-surface-dark">
                 {/* Portrait placeholder */}
-                <div className="aspect-[3/4] bg-gradient-to-b from-surface-dark to-hero flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="mx-auto mb-3 h-20 w-20 rounded-full bg-accent/20 flex items-center justify-center">
-                      <span className="text-3xl font-bold text-accent">D</span>
+                <div className="aspect-[3/4] bg-gradient-to-br from-accent/20 via-surface-dark to-hero flex items-end justify-center relative overflow-hidden">
+                  {/* Abstract gradient mesh background */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-blue-400/10" />
+                  <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-accent/15 blur-2xl" />
+                  <div className="absolute bottom-1/3 right-1/4 w-24 h-24 rounded-full bg-blue-400/10 blur-2xl" />
+                  {/* Profile silhouette area */}
+                  <div className="relative z-10 text-center pb-8">
+                    <div className="mx-auto mb-4 h-28 w-28 rounded-full bg-gradient-to-b from-accent/30 to-accent/10 border-2 border-accent/20 flex items-center justify-center">
+                      <span className="text-5xl font-bold text-white/90">D</span>
                     </div>
-                    <p className="text-sm font-semibold text-white">Dean</p>
-                    <p className="text-xs text-white/40">
-                      AI Developer &amp; Systems Builder
-                    </p>
+                    <p className="text-base font-semibold text-white">Dean</p>
+                    <p className="text-xs text-white/50 mt-1">AI Developer & Systems Builder</p>
                   </div>
                 </div>
               </div>
 
               {/* Floating badge — reviews */}
-              <div className="absolute -left-6 top-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 px-4 py-3 shadow-lg">
+              <div className="absolute -left-6 top-12 hidden lg:block rounded-xl bg-white/10 backdrop-blur-md border border-white/10 px-4 py-3 shadow-lg">
                 <div className="flex items-center gap-1 mb-1">
                   {[...Array(5)].map((_, i) => (
                     <Star
@@ -138,7 +145,7 @@ export function Hero() {
               </div>
 
               {/* Floating badge — worldwide clients */}
-              <div className="absolute -right-4 bottom-16 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 px-4 py-3 shadow-lg">
+              <div className="absolute -right-4 bottom-16 hidden lg:block rounded-xl bg-white/10 backdrop-blur-md border border-white/10 px-4 py-3 shadow-lg">
                 <p className="text-xs font-semibold text-white mb-2">Serving Clients Worldwide</p>
                 <div className="flex items-center gap-2">
                   <div className="flex -space-x-2">

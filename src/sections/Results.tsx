@@ -10,7 +10,7 @@ const results = [
 
 export function Results() {
   return (
-    <section id="results" className="py-24 px-6 bg-surface-light">
+    <section id="results" className="py-20 lg:py-28 px-6 bg-surface-light">
       <div className="mx-auto max-w-container">
         <motion.div
           className="mb-16 text-center"
@@ -32,13 +32,13 @@ export function Results() {
           {results.map((item, i) => (
             <motion.div
               key={item.label}
-              className="group rounded-2xl border border-blue-100/50 bg-blue-50/50 p-6 transition-all hover:shadow-card-hover hover:-translate-y-1"
+              className="group rounded-2xl border border-blue-100/50 bg-blue-50/50 p-6 text-center transition-all hover:shadow-card-hover hover:-translate-y-1"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
-              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
+              <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
                 <item.icon size={20} className="text-accent" />
               </div>
               <p className="text-3xl font-extrabold text-accent">{item.metric}</p>

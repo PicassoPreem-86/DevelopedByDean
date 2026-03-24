@@ -10,7 +10,7 @@ const steps = [
 
 export function Process() {
   return (
-    <section id="process" className="py-24 px-6 bg-surface-light">
+    <section id="process" className="py-20 lg:py-28 px-6 bg-white">
       <div className="mx-auto max-w-container">
         <motion.div
           className="mb-16 text-center"
@@ -40,11 +40,7 @@ export function Process() {
             >
               {/* Dotted connector between steps */}
               {i < steps.length - 1 && (
-                <div
-                  className="absolute -right-3 top-1/2 hidden w-6 lg:block"
-                  aria-hidden="true"
-                  style={{ borderTop: "2px dashed #CBD5E1", transform: "translateY(-50%)" }}
-                />
+                <div className="absolute -right-3 top-1/2 -translate-y-1/2 hidden w-6 border-t-2 border-dashed border-slate-300 lg:block" aria-hidden="true" />
               )}
 
               {/* Icon circle with number badge */}
@@ -52,7 +48,7 @@ export function Process() {
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent">
                   <step.icon size={24} className="text-white" />
                 </div>
-                <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white border-2 border-accent text-[10px] font-bold text-accent">
+                <span className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-white border-2 border-accent text-xs font-bold text-accent">
                   {step.num}
                 </span>
               </div>

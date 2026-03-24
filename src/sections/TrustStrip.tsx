@@ -26,8 +26,8 @@ export function TrustStrip() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.05, duration: 0.4 }}
             >
-              <type.icon size={18} strokeWidth={1.5} />
-              <span className="text-sm font-medium">{type.label}</span>
+              <type.icon size={20} strokeWidth={1.5} />
+              <span className="text-sm font-semibold uppercase tracking-wide">{type.label}</span>
             </motion.div>
           ))}
         </div>
