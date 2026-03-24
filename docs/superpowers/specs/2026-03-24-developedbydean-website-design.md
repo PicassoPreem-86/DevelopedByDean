@@ -29,10 +29,13 @@
 - **Glow effects:** Accent color used for hover states and emphasis
 
 ### Typography
-- **Font:** Inter (variable, free, excellent readability)
+- **Display font:** Syne (Google Fonts) — geometric, experimental, bold character for headlines
+- **Body font:** DM Sans (Google Fonts) — clean, warm, readable for body text
 - Oversized bold headlines for impact
 - Clean body text with generous line-height for readability
 - "DevelopedByDean" wordmark: "Dean" subtly differentiated via weight or accent color
+
+*Note: Originally spec'd as Inter. Upgraded to Syne + DM Sans during implementation planning per frontend-design skill guidelines — Inter is too generic for a premium brand site.*
 
 ### Animation & Motion
 - **GSAP ScrollTrigger:** Scroll-driven animations for section reveals, staggered card entries, timeline progression
