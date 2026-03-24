@@ -4,6 +4,9 @@ import { Navbar } from "./sections/Navbar";
 import { Hero } from "./sections/Hero";
 import { Capabilities } from "./sections/Capabilities";
 import { Portfolio } from "./sections/Portfolio";
+import { Process } from "./sections/Process";
+import { InteractiveDemo } from "./sections/InteractiveDemo";
+import { About } from "./sections/About";
 
 export default function App() {
   return (
@@ -15,7 +18,9 @@ export default function App() {
         <Hero />
         <Capabilities />
         <Portfolio />
-        {/* Spacer for scroll testing */}
+        <Process />
+        <InteractiveDemo />
+        <About />
         <div className="h-screen bg-bg-primary" />
       </main>
     </>
