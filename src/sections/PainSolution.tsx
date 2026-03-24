@@ -1,18 +1,18 @@
 import { motion } from "framer-motion";
-import { PhoneOff, Globe, Clock, MailX, Mic, Layout, Zap, AppWindow, ChevronRight } from "lucide-react";
+import { Mic, Layout, Zap, AppWindow, ChevronRight, CheckCircle2 } from "lucide-react";
 
 const painPoints = [
-  { pain: "Missing calls & leads", solution: "AI voice agents that answer, qualify, and book automatically", icon: PhoneOff, solutionIcon: Mic },
-  { pain: "Weak website conversion", solution: "AI-powered sites and landing pages that convert more visitors", icon: Globe, solutionIcon: Layout },
-  { pain: "Repetitive admin work", solution: "Automated workflows so your business runs faster", icon: Clock, solutionIcon: Zap },
-  { pain: "No follow-up system", solution: "Smart lead workflows that nurture and close opportunities", icon: MailX, solutionIcon: AppWindow },
+  { text: "Missing calls & leads", solution: "I build AI voice agents that never miss an opportunity" },
+  { text: "Low website conversions", solution: "I create AI-powered websites that sell for you 24/7" },
+  { text: "Repetitive manual work", solution: "I automate it and give you hours back every week" },
+  { text: "No follow-up systems", solution: "I build smart AI systems that nurture & close leads" },
 ];
 
 const services = [
-  { title: "AI Voice Agents", description: "Answer calls, qualify leads, book appointments — automatically", icon: Mic },
-  { title: "AI Websites & Landing Pages", description: "High-converting sites built to capture and convert", icon: Layout },
-  { title: "Workflow Automation", description: "Eliminate manual tasks and connect your tools", icon: Zap },
-  { title: "Custom Apps & Internal Tools", description: "Dashboards, portals, and systems built for your business", icon: AppWindow },
+  { title: "AI Voice Agents", description: "Answer calls, book appointments, qualify leads", icon: Mic },
+  { title: "AI Websites & Landing Pages", description: "Convert visitors into customers on autopilot", icon: Layout },
+  { title: "Workflow Automation", description: "Replace manual tasks & save 20+ hours/week", icon: Zap },
+  { title: "Custom AI Apps & Tools", description: "Dashboards, CRMs, internal tools, & more", icon: AppWindow },
 ];
 
 export function PainSolution() {
@@ -28,33 +28,33 @@ export function PainSolution() {
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5 }}
             >
-              <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">The Problem & Solution</span>
+              <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">WHY WORK WITH ME?</span>
               <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight text-content-primary">
-                Most Businesses Are Leaving Money on the Table.{" "}
-                <span className="text-accent">I Fix That With AI.</span>
+                Most Businesses Are Leaving Money on the Table.
+                <br />
+                I Fix That With AI.
               </h2>
               <p className="mt-4 text-lg leading-relaxed text-content-body">
-                If you're losing leads, wasting hours on manual work, or struggling to scale efficiently — I build systems that solve that.
+                If you're losing leads, wasting time on manual work, or struggling to scale — AI can change that fast.
               </p>
             </motion.div>
 
-            <div className="mt-10 space-y-5">
+            <div className="mt-10 space-y-4">
               {painPoints.map((item, i) => (
                 <motion.div
-                  key={item.pain}
-                  className="flex items-start gap-4 rounded-xl border border-border-light p-4 transition-all hover:shadow-card"
+                  key={item.text}
+                  className="flex items-start gap-3"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.4 }}
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-red-50">
-                    <item.icon size={18} className="text-red-400" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-semibold text-content-primary">{item.pain}</p>
-                    <p className="text-sm text-content-muted">→ {item.solution}</p>
-                  </div>
+                  <CheckCircle2 size={20} className="text-green-500 shrink-0 mt-0.5" />
+                  <p className="text-sm text-content-primary">
+                    <span className="font-semibold">{item.text}</span>
+                    {" → "}
+                    {item.solution}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -67,14 +67,14 @@ export function PainSolution() {
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <p className="text-sm font-semibold text-accent">The Outcome?</p>
+              <p className="text-sm font-semibold text-accent">💡 The result?</p>
               <p className="mt-1 text-sm text-content-body">
-                More booked calls, better follow-up, higher conversions, and more time back — without hiring extra staff.
+                More booked calls, more sales, and more free time — without hiring more staff.
               </p>
             </motion.div>
           </div>
 
-          {/* Right — What I Build card */}
+          {/* Right — What I Can Do For You card */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +82,7 @@ export function PainSolution() {
             transition={{ duration: 0.6, delay: 0.15 }}
           >
             <div className="rounded-2xl border border-border-light bg-surface-light p-6 shadow-card">
-              <h3 className="mb-6 text-lg font-bold text-content-primary">What I Build</h3>
+              <h3 className="mb-6 text-lg font-bold text-content-primary">What I Can Do For You</h3>
               <div className="space-y-1">
                 {services.map((service, i) => (
                   <motion.div

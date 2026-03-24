@@ -1,42 +1,51 @@
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Calendar } from "lucide-react";
 
 export function FinalCTA() {
   return (
-    <section id="contact" className="py-24 px-6 bg-hero">
+    <section id="contact" className="py-24 px-6 bg-white">
       <div className="mx-auto max-w-container">
         <motion.div
-          className="mx-auto max-w-2xl text-center"
+          className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-[clamp(2rem,4vw,3rem)] font-extrabold leading-tight text-white">
-            Ready to Get Ahead of<br />Your Competitors?
-          </h2>
-          <p className="mt-4 text-lg text-white/60 max-w-lg mx-auto">
-            Let's build a custom AI system that helps you bring in more leads, save time, and grow faster.
-          </p>
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+            {/* Left — Copy */}
+            <div>
+              <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight text-content-primary">
+                Ready to Get Ahead of Your Competitors?
+              </h2>
+              <p className="mt-4 text-lg text-content-body">
+                Let's build your custom AI system and start driving more leads, sales, and free time — starting now.
+              </p>
+              <div className="mt-6 space-y-2">
+                {[
+                  "Free 30-min strategy call",
+                  "No commitment needed",
+                  "Personalized plan for your business",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <CheckCircle2 size={16} className="text-accent shrink-0" />
+                    <span className="text-sm text-content-body">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            {["Free 30-min strategy call", "No commitment needed", "Personalized recommendations"].map((item) => (
-              <span key={item} className="flex items-center gap-1.5 text-sm text-white/50">
-                <CheckCircle2 size={14} className="text-accent" /> {item}
-              </span>
-            ))}
+            {/* Right — CTA */}
+            <div className="flex flex-col items-center lg:items-end gap-3">
+              <a
+                href="mailto:hello@developedbydean.com"
+                className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 text-base font-semibold text-white hover:bg-accent-hover transition-all hover:shadow-glow"
+              >
+                <Calendar size={18} /> Book Your Free Call Now
+              </a>
+              <p className="text-sm text-content-muted">🔥 Spots filling up — let's talk ASAP!</p>
+            </div>
           </div>
-
-          <div className="mt-8">
-            <a
-              href="mailto:hello@developedbydean.com"
-              className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-4 text-base font-semibold text-white hover:bg-accent-hover transition-all hover:shadow-glow"
-            >
-              Book Your Free Call Now <ArrowRight size={16} />
-            </a>
-          </div>
-
-          <p className="mt-4 text-sm text-white/30">Limited project slots available.</p>
         </motion.div>
       </div>
     </section>

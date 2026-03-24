@@ -14,7 +14,7 @@ export function TrustStrip() {
     <section className="border-y border-border-light bg-surface-light py-8 px-6">
       <div className="mx-auto max-w-container">
         <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-content-muted">
-          Built for businesses like yours
+          Trusted by service businesses, agencies, and founders
         </p>
         <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
           {clientTypes.map((type, i) => (

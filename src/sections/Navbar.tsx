@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Calendar } from "lucide-react";
 
 const navLinks = [
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
+  { label: "What I Build", href: "#services" },
   { label: "Results", href: "#results" },
   { label: "Process", href: "#process" },
   { label: "Work", href: "#work" },
@@ -35,7 +35,7 @@ export function Navbar() {
       >
         <div className="flex items-center justify-between px-6 py-3.5">
           <a href="#" className="text-base font-bold text-white">
-            Dean<span className="text-accent">.</span>
+            <span className="text-lg font-bold italic text-white">Dean</span>
           </a>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
@@ -53,9 +53,9 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <a
               href="#contact"
-              className="hidden rounded-lg bg-accent px-5 py-2.5 text-[13px] font-semibold text-white hover:bg-accent-hover transition-colors lg:block"
+              className="hidden items-center gap-1.5 rounded-lg bg-accent px-5 py-2.5 text-[13px] font-semibold text-white hover:bg-accent-hover transition-colors lg:inline-flex"
             >
-              Book a Free Call
+              <Calendar size={14} /> Book a Free Call →
             </a>
             <button
               className="rounded-lg p-2 text-white/60 hover:text-white transition-colors lg:hidden"
@@ -79,9 +79,7 @@ export function Navbar() {
             transition={{ duration: 0.3 }}
           >
             <div className="flex items-center justify-between px-6 py-5">
-              <span className="text-base font-bold text-white">
-                Dean<span className="text-accent">.</span>
-              </span>
+              <span className="text-lg font-bold italic text-white">Dean</span>
               <button
                 onClick={() => setIsMobileOpen(false)}
                 className="p-2 text-white/60 hover:text-white"
@@ -107,9 +105,9 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setIsMobileOpen(false)}
-                className="mt-4 rounded-lg bg-accent px-8 py-3 text-base font-semibold text-white hover:bg-accent-hover transition-colors"
+                className="mt-4 inline-flex items-center gap-2 rounded-lg bg-accent px-8 py-3 text-base font-semibold text-white hover:bg-accent-hover transition-colors"
               >
-                Book a Free Call
+                <Calendar size={14} /> Book a Free Call →
               </a>
             </div>
           </motion.div>

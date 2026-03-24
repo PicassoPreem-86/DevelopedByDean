@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Sparkles, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Star, Sparkles, ArrowRight, CheckCircle2, Calendar, PlayCircle } from "lucide-react";
 
 export function Hero() {
   return (
@@ -49,9 +49,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
             >
-              I design and build AI-powered websites, voice agents, workflow
-              automations, and custom business systems — so you can capture more
-              leads, save time, and grow faster.
+              I'm Dean — a solo AI developer &amp; systems builder. I design and build custom AI-powered websites, voice agents, and automations that capture leads, close more sales, and save hours every day.
             </motion.p>
 
             <motion.div
@@ -64,13 +62,13 @@ export function Hero() {
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-7 py-3.5 text-[15px] font-semibold text-white hover:bg-accent-hover transition-all hover:shadow-glow"
               >
-                Book a Free Strategy Call <ArrowRight size={16} />
+                <Calendar size={16} /> Book a Free Strategy Call <ArrowRight size={16} />
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 px-7 py-3.5 text-[15px] font-semibold text-white/80 hover:bg-white/5 transition-colors"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-[15px] font-semibold text-content-primary hover:bg-white/90 transition-colors"
               >
-                See How I Can Help
+                <PlayCircle size={16} /> See How I Can Help
               </a>
             </motion.div>
 
@@ -80,7 +78,7 @@ export function Hero() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
             >
-              {["Free 30-min call", "No pressure", "Personalized plan"].map(
+              {["Free 30-min call", "No pressure", "Personalized loom video"].map(
                 (item) => (
                   <span
                     key={item}
@@ -139,12 +137,21 @@ export function Hero() {
                 </p>
               </div>
 
-              {/* Floating badge — metric */}
-              <div className="absolute -right-4 bottom-20 rounded-xl bg-accent/20 backdrop-blur-md border border-accent/20 px-4 py-2.5 shadow-lg">
-                <p className="text-xs font-bold text-accent-light">
-                  +187% More Leads
-                </p>
-                <p className="text-[10px] text-white/40">Avg. client result</p>
+              {/* Floating badge — worldwide clients */}
+              <div className="absolute -right-4 bottom-16 rounded-xl bg-white/10 backdrop-blur-md border border-white/10 px-4 py-3 shadow-lg">
+                <p className="text-xs font-semibold text-white mb-2">Serving Clients Worldwide</p>
+                <div className="flex items-center gap-2">
+                  <div className="flex -space-x-2">
+                    {["#3B82F6","#10B981","#F59E0B","#8B5CF6"].map((c, i) => (
+                      <div key={i} className="h-6 w-6 rounded-full border-2 border-surface-dark" style={{ backgroundColor: c }} />
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <span className="text-xs font-semibold text-white">5.0</span>
+                    <div className="flex">{[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-yellow-400 text-yellow-400" />)}</div>
+                    <span className="text-[10px] text-white/50">(28+ reviews)</span>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

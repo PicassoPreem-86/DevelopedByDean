@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Phone, FileText, Rocket, BarChart3 } from "lucide-react";
 
 const steps = [
-  { num: "01", icon: Phone, title: "Free Strategy Call", description: "We talk about your business, your challenges, and where AI can make the biggest impact." },
-  { num: "02", icon: FileText, title: "Custom Plan", description: "I create a tailored proposal with clear scope, timeline, and expected outcomes." },
-  { num: "03", icon: Rocket, title: "Build & Launch", description: "I design, build, and deploy your system — keeping you in the loop the entire time." },
-  { num: "04", icon: BarChart3, title: "Optimize & Scale", description: "We monitor performance, refine the system, and scale what's working." },
+  { num: "1", icon: Phone, title: "Free Strategy Call", description: "We'll hop on a 30-min call to talk about your business & goals." },
+  { num: "2", icon: FileText, title: "Custom Plan", description: "I'll show you exactly what AI system will make you the most money." },
+  { num: "3", icon: Rocket, title: "Build & Launch", description: "I build everything for you — fast & done-for-you." },
+  { num: "4", icon: BarChart3, title: "Optimize & Scale", description: "We track results & scale what's working." },
 ];
 
 export function Process() {
@@ -19,12 +19,12 @@ export function Process() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">How It Works</span>
+          <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">HOW IT WORKS</span>
           <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-content-primary">
             Simple, Fast, Personal.
           </h2>
           <p className="mt-3 text-lg text-content-muted max-w-xl mx-auto">
-            I keep the process straightforward so you can move quickly and get results.
+            I've made the process easy — so you get results without the stress.
           </p>
         </motion.div>
 
@@ -38,14 +38,25 @@ export function Process() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.4 }}
             >
+              {/* Dotted connector between steps */}
               {i < steps.length - 1 && (
-                <div className="absolute -right-3 top-1/2 hidden h-px w-6 bg-border-light lg:block" aria-hidden="true" />
+                <div
+                  className="absolute -right-3 top-1/2 hidden w-6 lg:block"
+                  aria-hidden="true"
+                  style={{ borderTop: "2px dashed #CBD5E1", transform: "translateY(-50%)" }}
+                />
               )}
 
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10">
-                <step.icon size={24} className="text-accent" />
+              {/* Icon circle with number badge */}
+              <div className="relative mx-auto mb-4 h-14 w-14">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-accent">
+                  <step.icon size={24} className="text-white" />
+                </div>
+                <span className="absolute -bottom-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-white border-2 border-accent text-[10px] font-bold text-accent">
+                  {step.num}
+                </span>
               </div>
-              <span className="mb-2 block text-xs font-bold text-accent">{step.num}</span>
+
               <h3 className="mb-2 text-base font-bold text-content-primary">{step.title}</h3>
               <p className="text-sm leading-relaxed text-content-muted">{step.description}</p>
             </motion.div>
