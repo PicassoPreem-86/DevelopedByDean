@@ -2,6 +2,7 @@ import { GrainOverlay } from "./components/GrainOverlay";
 import { Navbar } from "./sections/Navbar";
 import { Hero } from "./sections/Hero";
 import { Services } from "./sections/Services";
+import { Portfolio } from "./sections/Portfolio";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
       <main>
         <Hero />
         <Services />
+        <Portfolio />
       </main>
     </>
   );
