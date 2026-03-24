@@ -7,6 +7,8 @@ import { Portfolio } from "./sections/Portfolio";
 import { Process } from "./sections/Process";
 import { InteractiveDemo } from "./sections/InteractiveDemo";
 import { About } from "./sections/About";
+import { Contact } from "./sections/Contact";
+import { Footer } from "./sections/Footer";
 
 export default function App() {
   return (
@@ -21,8 +23,9 @@ export default function App() {
         <Process />
         <InteractiveDemo />
         <About />
-        <div className="h-screen bg-bg-primary" />
+        <Contact />
       </main>
+      <Footer />
     </>
   );
 }
