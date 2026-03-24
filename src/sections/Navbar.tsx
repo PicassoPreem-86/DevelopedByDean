@@ -1,15 +1,22 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
-import { navLinks } from "../data/nav";
-import { MobileMenu } from "../components/MobileMenu";
-import { MagneticButton } from "../components/MagneticButton";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const navLinks = [
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Results", href: "#results" },
+  { label: "Process", href: "#process" },
+  { label: "Work", href: "#work" },
+  { label: "FAQs", href: "#faqs" },
+];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 100);
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -17,39 +24,97 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${isScrolled ? "bg-bg-primary/90 backdrop-blur-md border-b border-divider" : ""}`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.5 }}
+        className={`fixed top-4 left-4 right-4 z-50 mx-auto max-w-container rounded-2xl transition-all duration-500 ${
+          isScrolled
+            ? "bg-hero/80 backdrop-blur-xl border border-border-dark shadow-lg"
+            : "bg-hero/40 backdrop-blur-md border border-transparent"
+        }`}
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <div className="mx-auto flex max-w-container items-center justify-between px-6 py-5">
-          <a href="#" className="font-display text-sm font-medium tracking-[0.15em] uppercase text-text-primary">
-            DevelopedByDean
+        <div className="flex items-center justify-between px-6 py-3.5">
+          <a href="#" className="text-base font-bold text-white">
+            Dean<span className="text-accent">.</span>
           </a>
 
-          <nav className="hidden items-center gap-10 lg:flex" aria-label="Main navigation">
+          <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="font-display text-xs font-medium tracking-[0.1em] uppercase text-text-secondary hover:text-text-primary transition-colors duration-300">
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-[13px] font-medium text-white/60 hover:text-white transition-colors"
+              >
                 {link.label}
               </a>
             ))}
           </nav>
 
-          <div className="flex items-center gap-6">
-            <MagneticButton href="#contact" variant="outline" className="hidden lg:inline-flex text-xs py-3 px-6">
-              Start a Project
-            </MagneticButton>
+          <div className="flex items-center gap-3">
+            <a
+              href="#contact"
+              className="hidden rounded-lg bg-accent px-5 py-2.5 text-[13px] font-semibold text-white hover:bg-accent-hover transition-colors lg:block"
+            >
+              Book a Free Call
+            </a>
             <button
-              className="font-display text-xs font-medium tracking-[0.1em] uppercase text-text-secondary hover:text-text-primary transition-colors lg:hidden"
+              className="rounded-lg p-2 text-white/60 hover:text-white transition-colors lg:hidden"
               onClick={() => setIsMobileOpen(true)}
               aria-label="Open menu"
             >
-              Menu
+              <Menu size={20} />
             </button>
           </div>
         </div>
       </motion.header>
-      <MobileMenu isOpen={isMobileOpen} onClose={() => setIsMobileOpen(false)} />
+
+      {/* Mobile menu */}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <motion.div
+            className="fixed inset-0 z-[60] bg-hero/95 backdrop-blur-xl flex flex-col"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="flex items-center justify-between px-6 py-5">
+              <span className="text-base font-bold text-white">
+                Dean<span className="text-accent">.</span>
+              </span>
+              <button
+                onClick={() => setIsMobileOpen(false)}
+                className="p-2 text-white/60 hover:text-white"
+                aria-label="Close"
+              >
+                <X size={20} />
+              </button>
+            </div>
+            <div className="flex flex-1 flex-col items-center justify-center gap-6">
+              {navLinks.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileOpen(false)}
+                  className="text-2xl font-semibold text-white/80 hover:text-white"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 * i }}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
+              <a
+                href="#contact"
+                onClick={() => setIsMobileOpen(false)}
+                className="mt-4 rounded-lg bg-accent px-8 py-3 text-base font-semibold text-white hover:bg-accent-hover transition-colors"
+              >
+                Book a Free Call
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

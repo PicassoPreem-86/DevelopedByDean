@@ -5,28 +5,39 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Outfit", "sans-serif"],
-        body: ["DM Sans", "sans-serif"],
+        sans: ["Plus Jakarta Sans", "sans-serif"],
       },
       colors: {
-        bg: {
-          primary: "#0A0A0A",
-          surface: "#111111",
-          elevated: "#151515",
+        hero: "#0B0F19",
+        surface: {
+          dark: "#111827",
+          light: "#F8FAFC",
+          white: "#FFFFFF",
         },
-        text: {
-          primary: "#F5F5F5",
-          secondary: "#9E9E9E",
+        content: {
+          primary: "#0F172A",
+          body: "#334155",
+          muted: "#64748B",
+          inverse: "#F8FAFC",
         },
         accent: {
-          DEFAULT: "#C7A97B",
-          hover: "#D4BA8F",
+          DEFAULT: "#3B82F6",
+          hover: "#2563EB",
+          light: "#60A5FA",
+          glow: "rgba(59, 130, 246, 0.15)",
         },
-        line: "rgba(255,255,255,0.08)",
-        divider: "rgba(255,255,255,0.10)",
+        border: {
+          light: "#E2E8F0",
+          dark: "rgba(255,255,255,0.08)",
+        },
       },
       maxWidth: {
-        container: "1400px",
+        container: "1200px",
+      },
+      boxShadow: {
+        card: "0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.06)",
+        "card-hover": "0 4px 12px rgba(0,0,0,0.08), 0 12px 40px rgba(0,0,0,0.1)",
+        glow: "0 0 60px rgba(59, 130, 246, 0.15)",
       },
     },
   },
