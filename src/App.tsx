@@ -6,6 +6,7 @@ import { Portfolio } from "./sections/Portfolio";
 import { About } from "./sections/About";
 import { Process } from "./sections/Process";
 import { Contact } from "./sections/Contact";
+import { Footer } from "./sections/Footer";
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Process />
         <Contact />
       </main>
+      <Footer />
     </>
   );
 }
