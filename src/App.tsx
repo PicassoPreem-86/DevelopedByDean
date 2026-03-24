@@ -4,6 +4,7 @@ import { Hero } from "./sections/Hero";
 import { Services } from "./sections/Services";
 import { Portfolio } from "./sections/Portfolio";
 import { About } from "./sections/About";
+import { Process } from "./sections/Process";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Services />
         <Portfolio />
         <About />
+        <Process />
       </main>
     </>
   );
