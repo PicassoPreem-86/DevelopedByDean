@@ -5,34 +5,28 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ["Syne", "sans-serif"],
+        display: ["Outfit", "sans-serif"],
         body: ["DM Sans", "sans-serif"],
       },
       colors: {
         bg: {
-          primary: "#050508",
-          secondary: "#0c0c14",
-          card: "#12121e",
-          "card-hover": "#1a1a2e",
-        },
-        border: {
-          DEFAULT: "#1e1e30",
-          hover: "#2e2e48",
+          primary: "#0A0A0A",
+          surface: "#111111",
+          elevated: "#151515",
         },
         text: {
-          primary: "#ededf0",
-          secondary: "#6b6b80",
+          primary: "#F5F5F5",
+          secondary: "#9E9E9E",
         },
         accent: {
-          violet: "#7c3aed",
-          cyan: "#06b6d4",
-          rose: "#f43f5e",
+          DEFAULT: "#C7A97B",
+          hover: "#D4BA8F",
         },
+        line: "rgba(255,255,255,0.08)",
+        divider: "rgba(255,255,255,0.10)",
       },
-      backgroundImage: {
-        "gradient-accent": "linear-gradient(135deg, #7c3aed, #6366f1, #06b6d4)",
-        "gradient-accent-hover": "linear-gradient(135deg, #8b5cf6, #7c3aed, #0891b2)",
-        "gradient-radial": "radial-gradient(ellipse at center, var(--tw-gradient-stops))",
+      maxWidth: {
+        container: "1400px",
       },
     },
   },

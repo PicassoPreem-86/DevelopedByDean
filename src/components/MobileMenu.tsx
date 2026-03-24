@@ -1,65 +1,52 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
-import { Button } from "./Button";
 import { navLinks } from "../data/nav";
+import { MagneticButton } from "./MagneticButton";
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
-  activeSection: string;
 }
 
-export function MobileMenu({ isOpen, onClose, activeSection }: MobileMenuProps) {
+export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
-          <motion.div
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            aria-hidden="true"
-          />
-          <motion.nav
-            className="fixed right-0 top-0 z-50 flex h-full w-80 max-w-[85vw] flex-col bg-bg-secondary/95 backdrop-blur-xl border-l border-border p-8"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            aria-label="Mobile navigation"
-          >
-            <button
-              onClick={onClose}
-              className="mb-12 self-end p-2 text-text-secondary hover:text-text-primary transition-colors"
-              aria-label="Close menu"
-            >
-              <X size={24} />
+        <motion.nav
+          className="fixed inset-0 z-50 flex flex-col bg-bg-primary"
+          initial={{ clipPath: "inset(0 0 100% 0)" }}
+          animate={{ clipPath: "inset(0 0 0% 0)" }}
+          exit={{ clipPath: "inset(0 0 100% 0)" }}
+          transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
+          aria-label="Mobile navigation"
+        >
+          <div className="flex items-center justify-between px-6 py-6">
+            <span className="font-display text-sm font-medium tracking-[0.1em] uppercase text-text-primary">Menu</span>
+            <button onClick={onClose} className="font-display text-sm font-medium tracking-[0.1em] uppercase text-text-secondary hover:text-text-primary transition-colors" aria-label="Close menu">
+              Close
             </button>
-            <div className="flex flex-col gap-6">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={onClose}
-                  className={`font-display text-2xl font-semibold transition-colors ${
-                    activeSection === link.href.slice(1)
-                      ? "gradient-text"
-                      : "text-text-secondary hover:text-text-primary"
-                  }`}
-                >
-                  {link.label}
-                </a>
-              ))}
-            </div>
-            <div className="mt-auto">
-              <Button href="#contact" size="lg" className="w-full" onClick={onClose}>
-                Get In Touch
-              </Button>
-            </div>
-          </motion.nav>
-        </>
+          </div>
+          <div className="line-h" />
+          <div className="flex flex-1 flex-col justify-center px-6">
+            {navLinks.map((link, i) => (
+              <motion.a
+                key={link.href}
+                href={link.href}
+                onClick={onClose}
+                className="block border-b border-divider py-8 font-display text-4xl font-light text-text-primary hover:text-accent transition-colors"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + i * 0.05, duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+              >
+                {link.label}
+              </motion.a>
+            ))}
+          </div>
+          <div className="px-6 pb-8">
+            <MagneticButton href="#contact" variant="primary" className="w-full justify-center">
+              Start a Project
+            </MagneticButton>
+          </div>
+        </motion.nav>
       )}
     </AnimatePresence>
   );

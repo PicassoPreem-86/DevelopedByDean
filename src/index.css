@@ -12,8 +12,8 @@
   html {
     scroll-behavior: auto;
     font-family: "DM Sans", sans-serif;
-    background-color: #050508;
-    color: #ededf0;
+    background-color: #0A0A0A;
+    color: #F5F5F5;
   }
 
   body {
@@ -24,73 +24,37 @@
   }
 
   ::selection {
-    background-color: rgba(124, 58, 237, 0.3);
-    color: #ededf0;
+    background-color: rgba(199, 169, 123, 0.3);
+    color: #F5F5F5;
   }
 }
 
 @layer components {
-  .gradient-text {
-    background: linear-gradient(135deg, #7c3aed, #6366f1, #06b6d4);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .text-reveal {
+    clip-path: inset(0 100% 0 0);
   }
 
-  .glass {
-    background: rgba(12, 12, 20, 0.7);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(30, 30, 48, 0.5);
+  .text-reveal.revealed {
+    clip-path: inset(0 0% 0 0);
   }
 
-  .glow-border {
-    position: relative;
+  .line-h {
+    height: 1px;
+    background: rgba(255,255,255,0.10);
   }
 
-  .glow-border::after {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, #7c3aed, #06b6d4);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: -1;
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-    -webkit-mask-composite: xor;
-    padding: 1px;
+  .line-v {
+    width: 1px;
+    background: rgba(255,255,255,0.10);
   }
-
-  .glow-border:hover::after {
-    opacity: 1;
-  }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.hero-gradient {
-  background: linear-gradient(-45deg, #050508, #1a0533, #0c1a3a, #051a2a, #050508);
-  background-size: 400% 400%;
-  animation: gradient-shift 15s ease infinite;
 }
 
 :focus-visible {
-  outline: 2px solid #7c3aed;
+  outline: 1px solid #C7A97B;
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-gradient {
-    animation: none;
-    background: #050508;
-  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
