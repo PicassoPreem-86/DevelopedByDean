@@ -4,6 +4,7 @@ import { Menu, X, Calendar } from "lucide-react";
 
 const navLinks = [
   { label: "What I Build", href: "#services" },
+  { label: "Use Cases", href: "#use-cases" },
   { label: "Results", href: "#results" },
   { label: "Process", href: "#process" },
   { label: "FAQs", href: "#faqs" },

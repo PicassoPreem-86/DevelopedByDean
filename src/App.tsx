@@ -4,6 +4,7 @@ import { TrustStrip } from "./sections/TrustStrip";
 import { StatsBar } from "./sections/StatsBar";
 import { PainSolution } from "./sections/PainSolution";
 import { Results } from "./sections/Results";
+import { UseCases } from "./sections/UseCases";
 import { Process } from "./sections/Process";
 import { TechStack } from "./sections/TechStack";
 import { FAQ } from "./sections/FAQ";
@@ -21,6 +22,7 @@ export default function App() {
         <StatsBar />
         <PainSolution />
         <Results />
+        <UseCases />
         <Process />
         <TechStack />
         <FAQ />
