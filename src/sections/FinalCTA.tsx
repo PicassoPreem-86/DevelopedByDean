@@ -10,7 +10,6 @@ export function FinalCTA() {
     name: "",
     email: "",
     phone: "",
-    projectType: "",
     message: "",
   });
 
@@ -145,27 +144,6 @@ export function FinalCTA() {
                         placeholder="(555) 123-4567"
                         className={inputClass}
                       />
-                    </div>
-
-                    <div>
-                      <label htmlFor="projectType" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                        What do you need?
-                      </label>
-                      <select
-                        id="projectType"
-                        name="projectType"
-                        required
-                        value={formData.projectType}
-                        onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                        className={`${inputClass} appearance-none`}
-                      >
-                        <option value="" disabled>Select a project type</option>
-                        <option value="AI Voice Agent">AI Voice Agent</option>
-                        <option value="Website / Landing Page">Website / Landing Page</option>
-                        <option value="Workflow Automation">Workflow Automation</option>
-                        <option value="Custom App / Tool">Custom App / Tool</option>
-                        <option value="Not Sure Yet">Not Sure Yet</option>
-                      </select>
                     </div>
 
                     <div>
