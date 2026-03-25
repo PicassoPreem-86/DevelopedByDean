@@ -53,7 +53,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.45 }}
             >
-              I'm Dean — a solo AI developer & systems builder. I design and build custom AI-powered websites, voice agents, and automations that capture leads, close more sales, and save hours every day.
+              I'm Dean — a solo AI developer & systems engineer. I design and build custom AI-powered websites, voice agents, and automations that capture leads, close more sales, and save hours every day.
             </motion.p>
 
             <motion.div
@@ -114,7 +114,7 @@ export function Hero() {
                 <div className="overflow-hidden">
                   <img
                     src="/images/dean-headshot.jpg"
-                    alt="Dean — AI Developer & Systems Builder"
+                    alt="Dean — AI Developer & Systems Engineer"
                     className="w-full h-auto"
                   />
                 </div>
