@@ -20,7 +20,7 @@ export function ScarcityBanner() {
           </span>
         </div>
         <a
-          href="#contact"
+          href="/#contact"
           className="text-sm font-semibold text-accent hover:text-accent-light transition-colors"
         >
           Claim your spot →

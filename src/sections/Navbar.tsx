@@ -1,25 +1,76 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Calendar } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { label: "What I Build", href: "#services" },
-  { label: "Use Cases", href: "#use-cases" },
-  { label: "Results", href: "#results" },
-  { label: "Process", href: "#process" },
-  { label: "FAQs", href: "#faqs" },
-  { label: "Contact", href: "#contact" },
+  { label: "What I Build", href: "/#services" },
+  { label: "Use Cases", href: "/use-cases" },
+  { label: "Results", href: "/results" },
+  { label: "Process", href: "/process" },
+  { label: "FAQs", href: "/faq" },
+  { label: "Contact", href: "/#contact" },
 ];
+
+function NavLink({ href, children, className, onClick }: {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+}) {
+  const location = useLocation();
+
+  // Hash links on the homepage (e.g. /#services, /#contact)
+  if (href.startsWith("/#")) {
+    const hash = href.slice(1); // e.g. #services
+    const handleClick = (e: React.MouseEvent) => {
+      onClick?.();
+      if (location.pathname === "/") {
+        e.preventDefault();
+        const el = document.querySelector(hash);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+    return (
+      <Link to={`/${hash}`} className={className} onClick={handleClick}>
+        {children}
+      </Link>
+    );
+  }
+
+  // Regular page links
+  return (
+    <Link to={href} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
+}
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsMobileOpen(false);
+  }, [location.pathname]);
+
+  // Handle hash scroll after navigation
+  useEffect(() => {
+    if (location.hash) {
+      setTimeout(() => {
+        const el = document.querySelector(location.hash);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location]);
 
   return (
     <>
@@ -34,27 +85,27 @@ export function Navbar() {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5">
-          <a href="#" className="text-xl font-extrabold tracking-tight text-white">Dean Holland</a>
+          <Link to="/" className="text-xl font-extrabold tracking-tight text-white">Dean Holland</Link>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
             {navLinks.map((link) => (
-              <a
+              <NavLink
                 key={link.href}
                 href={link.href}
                 className="text-[13px] font-medium text-white/60 hover:text-white transition-colors"
               >
                 {link.label}
-              </a>
+              </NavLink>
             ))}
           </nav>
 
           <div className="flex items-center gap-3">
-            <a
-              href="#contact"
+            <NavLink
+              href="/#contact"
               className="hidden items-center gap-1.5 rounded-lg bg-accent px-5 py-2.5 text-[13px] font-semibold text-white hover:bg-accent-hover transition-colors lg:inline-flex"
             >
               <Calendar size={14} /> Book a Free Call →
-            </a>
+            </NavLink>
             <button
               className="rounded-lg p-3 text-white/60 hover:text-white transition-colors lg:hidden"
               onClick={() => setIsMobileOpen(true)}
@@ -88,25 +139,28 @@ export function Navbar() {
             </div>
             <div className="flex flex-1 flex-col items-center justify-center gap-6">
               {navLinks.map((link, i) => (
-                <motion.a
+                <motion.div
                   key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileOpen(false)}
-                  className="text-xl sm:text-2xl font-semibold text-white/80 hover:text-white"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 * i }}
                 >
-                  {link.label}
-                </motion.a>
+                  <NavLink
+                    href={link.href}
+                    className="text-xl sm:text-2xl font-semibold text-white/80 hover:text-white"
+                    onClick={() => setIsMobileOpen(false)}
+                  >
+                    {link.label}
+                  </NavLink>
+                </motion.div>
               ))}
-              <a
-                href="#contact"
-                onClick={() => setIsMobileOpen(false)}
+              <NavLink
+                href="/#contact"
                 className="mt-4 inline-flex items-center gap-2 rounded-lg bg-accent px-8 py-3 text-base font-semibold text-white hover:bg-accent-hover transition-colors"
+                onClick={() => setIsMobileOpen(false)}
               >
                 <Calendar size={14} /> Book a Free Call →
-              </a>
+              </NavLink>
             </div>
           </motion.div>
         )}

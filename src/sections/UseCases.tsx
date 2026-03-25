@@ -57,7 +57,7 @@ export function UseCases() {
   const hasMore = filtered.length > 9 && !showAll;
 
   return (
-    <section id="use-cases" className="py-20 lg:py-28 px-6 bg-white">
+    <section id="use-cases" className="pt-28 pb-20 lg:pt-36 lg:pb-28 px-6 bg-white">
       <div className="mx-auto max-w-container">
         <motion.div
           className="mb-10 text-center"
@@ -152,7 +152,7 @@ export function UseCases() {
             Need something custom? I build solutions tailored to your exact workflow.
           </p>
           <a
-            href="#contact"
+            href="/#contact"
             className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-hover transition-colors"
           >
             Let's talk about what you need <ArrowRight size={14} />

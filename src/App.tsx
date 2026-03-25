@@ -1,37 +1,46 @@
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { Navbar } from "./sections/Navbar";
-import { Hero } from "./sections/Hero";
-import { TrustStrip } from "./sections/TrustStrip";
-import { StatsBar } from "./sections/StatsBar";
-import { PainSolution } from "./sections/PainSolution";
-import { Results } from "./sections/Results";
-import { UseCases } from "./sections/UseCases";
-import { Process } from "./sections/Process";
-import { TechStack } from "./sections/TechStack";
-import { FAQ } from "./sections/FAQ";
-import { ScarcityBanner } from "./sections/ScarcityBanner";
-import { FinalCTA } from "./sections/FinalCTA";
 import { Footer } from "./sections/Footer";
 import { ChatWidget } from "./components/ChatWidget";
+import { HomePage } from "./pages/HomePage";
+import { UseCasesPage } from "./pages/UseCasesPage";
+import { ResultsPage } from "./pages/ResultsPage";
+import { ProcessPage } from "./pages/ProcessPage";
+import { FAQPage } from "./pages/FAQPage";
 
-export default function App() {
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+function Layout() {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <main>
-        <Hero />
-        <TrustStrip />
-        <StatsBar />
-        <PainSolution />
-        <Results />
-        <UseCases />
-        <Process />
-        <TechStack />
-        <FAQ />
-        <ScarcityBanner />
-        <FinalCTA />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/use-cases" element={<UseCasesPage />} />
+          <Route path="/results" element={<ResultsPage />} />
+          <Route path="/process" element={<ProcessPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+        </Routes>
       </main>
       <Footer />
       <ChatWidget />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
   );
 }

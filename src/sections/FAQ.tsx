@@ -33,7 +33,7 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faqs" className="py-20 lg:py-28 px-6 bg-hero">
+    <section id="faqs" className="pt-28 pb-20 lg:pt-36 lg:pb-28 px-6 bg-hero">
       <div className="mx-auto max-w-3xl">
         <motion.div
           className="mb-14 text-center"
@@ -117,7 +117,7 @@ export function FAQ() {
         >
           <p className="text-sm text-white/30">
             Still have questions?{" "}
-            <a href="#contact" className="text-accent hover:text-accent-light transition-colors font-medium">
+            <a href="/#contact" className="text-accent hover:text-accent-light transition-colors font-medium">
               Let's talk →
             </a>
           </p>
