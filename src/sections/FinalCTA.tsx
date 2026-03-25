@@ -220,7 +220,7 @@ export function FinalCTA() {
 
                     <div>
                       <label htmlFor="message" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                        Tell me about your project
+                        Message
                       </label>
                       <textarea
                         id="message"
