@@ -25,7 +25,7 @@ export function FinalCTA() {
       });
       if (res.ok) {
         setStatus("success");
-        setFormData({ name: "", email: "", phone: "", projectType: "", message: "" });
+        setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
         setStatus("error");
       }
