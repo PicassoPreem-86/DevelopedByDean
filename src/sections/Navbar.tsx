@@ -33,7 +33,7 @@ export function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <div className="flex items-center justify-between px-6 py-3.5">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5">
           <a href="#" className="text-xl font-extrabold tracking-tight text-white">Dean Holland</a>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
@@ -56,7 +56,7 @@ export function Navbar() {
               <Calendar size={14} /> Book a Free Call →
             </a>
             <button
-              className="rounded-lg p-2 text-white/60 hover:text-white transition-colors lg:hidden"
+              className="rounded-lg p-3 text-white/60 hover:text-white transition-colors lg:hidden"
               onClick={() => setIsMobileOpen(true)}
               aria-label="Open menu"
             >
@@ -70,17 +70,17 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
-            className="fixed inset-0 z-[60] bg-hero/95 backdrop-blur-xl flex flex-col"
+            className="fixed inset-0 z-[75] bg-hero/95 backdrop-blur-xl flex flex-col"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="flex items-center justify-between px-6 py-5">
-              <span className="text-xl font-extrabold tracking-tight text-white">Dean Holland</span>
+            <div className="flex items-center justify-between px-4 sm:px-6 py-5">
+              <span className="text-lg sm:text-xl font-extrabold tracking-tight text-white">Dean Holland</span>
               <button
                 onClick={() => setIsMobileOpen(false)}
-                className="p-2 text-white/60 hover:text-white"
+                className="p-3 text-white/60 hover:text-white"
                 aria-label="Close"
               >
                 <X size={20} />
@@ -92,7 +92,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsMobileOpen(false)}
-                  className="text-2xl font-semibold text-white/80 hover:text-white"
+                  className="text-xl sm:text-2xl font-semibold text-white/80 hover:text-white"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.05 * i }}

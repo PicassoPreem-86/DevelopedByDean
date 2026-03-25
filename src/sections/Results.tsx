@@ -41,7 +41,7 @@ export function Results() {
               <div className="mx-auto mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
                 <item.icon size={20} className="text-accent" />
               </div>
-              <p className="text-3xl font-extrabold text-accent">{item.metric}</p>
+              <p className="text-2xl sm:text-3xl font-extrabold text-accent">{item.metric}</p>
               <p className="mt-1 text-sm font-semibold text-content-primary">{item.label}</p>
               <p className="mt-2 text-xs leading-relaxed text-content-muted">{item.description}</p>
             </motion.div>

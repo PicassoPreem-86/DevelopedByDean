@@ -69,7 +69,7 @@ export function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between p-6 text-left"
+                className="flex w-full items-center justify-between p-4 sm:p-6 text-left"
                 aria-expanded={openIndex === i}
               >
                 <span className="flex items-center gap-4">
@@ -98,7 +98,7 @@ export function FAQ() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     style={{ overflow: "hidden" }}
                   >
-                    <div className="px-6 pb-6 pl-[4.5rem]">
+                    <div className="px-4 pb-4 pl-4 sm:px-6 sm:pb-6 sm:pl-[4.5rem]">
                       <p className="text-sm leading-relaxed text-white/50">{faq.a}</p>
                     </div>
                   </motion.div>

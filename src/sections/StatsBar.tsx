@@ -68,7 +68,7 @@ export function StatsBar() {
   return (
     <section className="bg-hero py-16 px-6">
       <div className="mx-auto max-w-container">
-        <div className="grid grid-cols-2 gap-8 lg:grid-cols-4 lg:gap-12">
+        <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:grid-cols-4 lg:gap-12">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -78,7 +78,7 @@ export function StatsBar() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
             >
-              <p className="text-3xl font-extrabold text-white lg:text-4xl">
+              <p className="text-2xl sm:text-3xl font-extrabold text-white lg:text-4xl">
                 <CountUp
                   end={stat.end}
                   prefix={stat.prefix}
@@ -86,7 +86,7 @@ export function StatsBar() {
                   decimal={stat.decimal}
                 />
               </p>
-              <p className="mt-2 text-sm text-white/50">{stat.label}</p>
+              <p className="mt-2 text-xs sm:text-sm text-white/50">{stat.label}</p>
             </motion.div>
           ))}
         </div>

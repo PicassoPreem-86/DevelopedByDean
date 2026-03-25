@@ -32,7 +32,7 @@ export function Process() {
           {steps.map((step, i) => (
             <motion.div
               key={step.num}
-              className="relative rounded-2xl border border-border-light bg-white p-6 text-center"
+              className="relative rounded-2xl border border-border-light bg-white p-4 sm:p-6 text-center"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

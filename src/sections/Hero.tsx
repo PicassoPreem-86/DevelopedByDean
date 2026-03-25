@@ -77,7 +77,7 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              className="mt-6 flex flex-wrap gap-5"
+              className="mt-6 flex flex-wrap gap-3 sm:gap-5"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
@@ -110,7 +110,7 @@ export function Hero() {
               />
 
               {/* Main card */}
-              <div className="relative w-72 sm:w-80 overflow-hidden rounded-2xl border border-white/10 bg-surface-dark">
+              <div className="relative w-64 sm:w-72 lg:w-80 overflow-hidden rounded-2xl border border-white/10 bg-surface-dark">
                 <div className="overflow-hidden">
                   <img
                     src="/images/dean-headshot.jpg"

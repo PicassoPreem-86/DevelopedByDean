@@ -46,7 +46,7 @@ export function TechStack() {
         <p className="mb-8 text-center text-xs font-semibold uppercase tracking-widest text-content-muted">
           Built with industry-leading tools & platforms
         </p>
-        <div className="flex items-center justify-center gap-8 lg:gap-10 overflow-x-auto">
+        <div className="flex items-center justify-center gap-5 sm:gap-8 lg:gap-10 overflow-x-auto">
           {tools.map((tool, i) => (
             <motion.div
               key={tool.name}

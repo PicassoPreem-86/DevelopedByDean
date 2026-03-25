@@ -83,7 +83,7 @@ export function UseCases() {
             <button
               key={cat}
               onClick={() => { setActiveCategory(cat); setShowAll(false); }}
-              className={`rounded-full px-5 py-2 text-sm font-semibold transition-all duration-300 ${
+              className={`rounded-full px-3 sm:px-5 py-2 text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 activeCategory === cat
                   ? "bg-accent text-white shadow-md"
                   : "bg-surface-light border border-border-light text-content-muted hover:text-content-primary hover:border-accent/30"
@@ -117,7 +117,7 @@ export function UseCases() {
                     <uc.icon size={18} className="text-accent" />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-[15px] font-bold text-content-primary mb-1.5">{uc.title}</h3>
+                    <h3 className="text-[13px] sm:text-[15px] font-bold text-content-primary mb-1.5">{uc.title}</h3>
                     <p className="text-sm leading-relaxed text-content-muted">{uc.description}</p>
                     <span className="mt-3 inline-block rounded-full bg-accent/[0.06] px-3 py-0.5 text-[11px] font-semibold text-accent">
                       {uc.category}

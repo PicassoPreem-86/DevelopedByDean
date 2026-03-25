@@ -16,7 +16,7 @@ export function TrustStrip() {
         <p className="mb-6 text-center text-xs font-semibold uppercase tracking-widest text-content-muted">
           Trusted by service businesses, agencies, and founders
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-12">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 lg:gap-12">
           {clientTypes.map((type, i) => (
             <motion.div
               key={type.label}
@@ -27,7 +27,7 @@ export function TrustStrip() {
               transition={{ delay: i * 0.05, duration: 0.4 }}
             >
               <type.icon size={20} strokeWidth={1.5} />
-              <span className="text-sm font-semibold uppercase tracking-wide">{type.label}</span>
+              <span className="text-xs sm:text-sm font-semibold uppercase tracking-wide">{type.label}</span>
             </motion.div>
           ))}
         </div>

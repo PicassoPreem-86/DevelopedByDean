@@ -41,7 +41,7 @@ export function FinalCTA() {
     <section id="contact" className="py-20 lg:py-28 px-6 bg-surface-light">
       <div className="mx-auto max-w-container">
         <motion.div
-          className="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 border border-blue-200/80 rounded-2xl p-8 lg:p-14 shadow-card"
+          className="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 border border-blue-200/80 rounded-2xl p-5 sm:p-8 lg:p-14 shadow-card"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
