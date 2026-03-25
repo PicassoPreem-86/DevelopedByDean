@@ -13,12 +13,14 @@ function buildMailtoUrl(formData: {
   business: string;
   email: string;
   phone: string;
+  location: string;
   message: string;
 }) {
   const subject = `New project inquiry from ${formData.name}`;
   const body = [
     `Name: ${formData.name}`,
     `Business: ${formData.business || "Not provided"}`,
+    `Location: ${formData.location || "Not provided"}`,
     `Email: ${formData.email}`,
     `Phone: ${formData.phone || "Not provided"}`,
     "",
@@ -37,6 +39,7 @@ export function FinalCTA() {
     business: "",
     email: "",
     phone: "",
+    location: "",
     message: "",
   });
 
@@ -64,7 +67,7 @@ export function FinalCTA() {
       }
 
       setStatus("success");
-      setFormData({ name: "", business: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", business: "", email: "", phone: "", location: "", message: "" });
     } catch {
       setStatus("error");
     }
@@ -198,6 +201,21 @@ export function FinalCTA() {
                           className={inputClass}
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="location" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
+                        City / State
+                      </label>
+                      <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        value={formData.location}
+                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
+                        placeholder="e.g. Austin, TX"
+                        className={inputClass}
+                      />
                     </div>
 
                     <div>
