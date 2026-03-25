@@ -1,31 +1,31 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { ChevronDown, MessageCircle } from "lucide-react";
 
 const faqs = [
   {
-    q: "How much does this cost?",
-    a: "Every project is custom, so pricing depends on scope and complexity. Most projects range from $3K–$15K. I'll give you a clear, transparent quote after our free strategy call — no hidden fees, no surprises.",
+    q: "How does pricing work?",
+    a: "Every project is scoped individually based on your goals and what we're building together. After our free strategy call, I'll send you a clear, transparent proposal — no vague estimates, no surprise invoices.",
   },
   {
     q: "How long does a typical project take?",
-    a: "Most projects launch within 2–6 weeks depending on complexity. I'll give you an honest timeline upfront and keep you updated with regular progress check-ins throughout.",
+    a: "Most projects launch within 2–6 weeks depending on complexity. I'll give you an honest timeline upfront and keep you updated with regular check-ins so you always know where things stand.",
   },
   {
     q: "Do I need to be technical to work with you?",
-    a: "Not at all. I handle all the technical work end-to-end. You just need to know your business and your goals — I'll translate that into a working system you can actually use.",
+    a: "Not at all. I handle everything from strategy to deployment. You bring the business knowledge and goals — I'll translate that into a working system you can actually use and understand.",
   },
   {
     q: "What if I'm not sure what I need yet?",
-    a: "That's exactly what the free strategy call is for. I'll help you identify where AI and automation can have the biggest impact on your business, and we'll go from there.",
+    a: "That's exactly what the free strategy call is for. Most clients come in with a rough idea. I'll help you identify where AI and automation can make the biggest impact and map out the smartest path forward.",
   },
   {
     q: "Do you offer ongoing support after launch?",
-    a: "Yes. After launch, I offer maintenance and optimization packages to make sure your systems keep performing. I don't just build and disappear — I'm invested in your results.",
+    a: "Absolutely. I offer ongoing maintenance and optimization to make sure your systems keep performing. I'm invested in your long-term results — I don't just build and disappear.",
   },
   {
-    q: "What makes you different from an agency?",
-    a: "You work directly with me — the person designing and building your system. No account managers, no layers of overhead, no miscommunication. It's faster, more personal, and you get senior-level work at a fraction of agency cost.",
+    q: "What makes you different from hiring an agency?",
+    a: "You work directly with me — the person designing and building your system. No account managers, no handoffs, no miscommunication. It's faster, more personal, and you get senior-level execution without the agency markup.",
   },
 ];
 
@@ -33,23 +33,23 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faqs" className="py-20 lg:py-28 px-6 bg-white">
-      <div className="mx-auto max-w-2xl">
+    <section id="faqs" className="py-20 lg:py-28 px-6 bg-hero">
+      <div className="mx-auto max-w-3xl">
         <motion.div
-          className="mb-12 text-center"
+          className="mb-14 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">
-            FAQ
+          <span className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent">
+            <MessageCircle size={14} /> Questions & Answers
           </span>
-          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-content-primary">
-            Common Questions
+          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-white">
+            Everything You Need to Know
           </h2>
-          <p className="mt-3 text-lg text-content-muted">
-            Answers to the things people usually ask before getting started.
+          <p className="mt-3 text-lg text-white/50 max-w-lg mx-auto">
+            Straightforward answers — no jargon, no runaround.
           </p>
         </motion.div>
 
@@ -57,7 +57,11 @@ export function FAQ() {
           {faqs.map((faq, i) => (
             <motion.div
               key={i}
-              className="rounded-xl border border-border-light bg-surface-light overflow-hidden transition-all hover:shadow-card"
+              className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
+                openIndex === i
+                  ? "border-accent/30 bg-white/[0.07] shadow-[0_0_30px_rgba(59,130,246,0.08)]"
+                  : "border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.05]"
+              }`}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -65,19 +69,24 @@ export function FAQ() {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                className="flex w-full items-center justify-between p-5 text-left"
+                className="flex w-full items-center justify-between p-6 text-left"
                 aria-expanded={openIndex === i}
               >
-                <span className="text-[15px] font-semibold text-content-primary pr-4">{faq.q}</span>
-                <div
-                  className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-colors ${
-                    openIndex === i
-                      ? "bg-accent text-white"
-                      : "bg-border-light text-content-muted"
-                  }`}
+                <span className="flex items-center gap-4">
+                  <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold transition-colors duration-300 ${
+                    openIndex === i ? "bg-accent text-white" : "bg-white/[0.06] text-white/30"
+                  }`}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[15px] font-semibold text-white">{faq.q}</span>
+                </span>
+                <motion.div
+                  animate={{ rotate: openIndex === i ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="shrink-0 ml-4"
                 >
-                  {openIndex === i ? <Minus size={14} /> : <Plus size={14} />}
-                </div>
+                  <ChevronDown size={18} className={`transition-colors duration-300 ${openIndex === i ? "text-accent" : "text-white/20"}`} />
+                </motion.div>
               </button>
               <AnimatePresence initial={false}>
                 {openIndex === i && (
@@ -89,13 +98,30 @@ export function FAQ() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     style={{ overflow: "hidden" }}
                   >
-                    <p className="px-5 pb-5 text-sm leading-relaxed text-content-muted">{faq.a}</p>
+                    <div className="px-6 pb-6 pl-[4.5rem]">
+                      <p className="text-sm leading-relaxed text-white/50">{faq.a}</p>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          className="mt-10 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
+          <p className="text-sm text-white/30">
+            Still have questions?{" "}
+            <a href="#contact" className="text-accent hover:text-accent-light transition-colors font-medium">
+              Let's talk →
+            </a>
+          </p>
+        </motion.div>
       </div>
     </section>
   );
