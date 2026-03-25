@@ -11,6 +11,7 @@ import { FAQ } from "./sections/FAQ";
 import { ScarcityBanner } from "./sections/ScarcityBanner";
 import { FinalCTA } from "./sections/FinalCTA";
 import { Footer } from "./sections/Footer";
+import { ChatWidget } from "./components/ChatWidget";
 
 export default function App() {
   return (
@@ -30,6 +31,7 @@ export default function App() {
         <FinalCTA />
       </main>
       <Footer />
+      <ChatWidget />
     </>
   );
 }
