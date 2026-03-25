@@ -21,6 +21,21 @@ pnpm build      # Production build
 pnpm preview    # Preview production build
 ```
 
+## Environment Variables
+
+Create a `.env.local` for local development and configure the same values in Vercel for production:
+
+```bash
+ANTHROPIC_API_KEY=...
+ALLOWED_ORIGINS=https://developedbydean.vercel.app,https://www.developedbydean.com
+VITE_CONTACT_FORM_ENDPOINT=https://formspree.io/f/your_real_form_id
+VITE_LINKEDIN_URL=https://linkedin.com/in/your-profile
+VITE_X_URL=https://x.com/your-handle
+VITE_GITHUB_URL=https://github.com/your-handle
+```
+
+If `VITE_CONTACT_FORM_ENDPOINT` is omitted, the contact form falls back to opening a pre-filled email to `hello@developedbydean.com`.
+
 ## Project Structure
 
 ```
@@ -36,4 +51,4 @@ public/
 
 ## Deployment
 
-Deployed automatically via Vercel. Push to `main` to deploy.
+Deployed automatically via Vercel. Push to `main` to deploy, and make sure the environment variables above are set in the project settings before promoting to production.

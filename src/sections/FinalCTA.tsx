@@ -3,11 +3,38 @@ import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Send } from "lucide-react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
+type SuccessMode = "endpoint" | "mailto";
+
+const CONTACT_EMAIL = "hello@developedbydean.com";
+const CONTACT_FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT?.trim();
+
+function buildMailtoUrl(formData: {
+  name: string;
+  business: string;
+  email: string;
+  phone: string;
+  message: string;
+}) {
+  const subject = `New project inquiry from ${formData.name}`;
+  const body = [
+    `Name: ${formData.name}`,
+    `Business: ${formData.business || "Not provided"}`,
+    `Email: ${formData.email}`,
+    `Phone: ${formData.phone || "Not provided"}`,
+    "",
+    "Project details:",
+    formData.message,
+  ].join("\n");
+
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
 
 export function FinalCTA() {
   const [status, setStatus] = useState<FormStatus>("idle");
+  const [successMode, setSuccessMode] = useState<SuccessMode>("endpoint");
   const [formData, setFormData] = useState({
     name: "",
+    business: "",
     email: "",
     phone: "",
     message: "",
@@ -18,17 +45,26 @@ export function FinalCTA() {
     setStatus("submitting");
 
     try {
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-        method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-      if (res.ok) {
-        setStatus("success");
-        setFormData({ name: "", email: "", phone: "", message: "" });
+      if (CONTACT_FORM_ENDPOINT) {
+        const res = await fetch(CONTACT_FORM_ENDPOINT, {
+          method: "POST",
+          headers: { Accept: "application/json", "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        if (!res.ok) {
+          setStatus("error");
+          return;
+        }
+
+        setSuccessMode("endpoint");
       } else {
-        setStatus("error");
+        window.location.href = buildMailtoUrl(formData);
+        setSuccessMode("mailto");
       }
+
+      setStatus("success");
+      setFormData({ name: "", business: "", email: "", phone: "", message: "" });
     } catch {
       setStatus("error");
     }
@@ -87,7 +123,9 @@ export function FinalCTA() {
                     </div>
                     <h3 className="text-xl font-bold text-content-primary">Message received!</h3>
                     <p className="mt-2 text-sm text-content-muted max-w-xs">
-                      I'll review your project details and get back to you within 24 hours.
+                      {successMode === "endpoint"
+                        ? "I'll review your project details and get back to you within 24 hours."
+                        : "Your email app should open with the message pre-filled. Send it through and I'll reply within 24 hours."}
                     </p>
                   </motion.div>
                 ) : (
@@ -115,6 +153,23 @@ export function FinalCTA() {
                         />
                       </div>
                       <div>
+                        <label htmlFor="business" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
+                          Business Name
+                        </label>
+                        <input
+                          type="text"
+                          id="business"
+                          name="business"
+                          value={formData.business}
+                          onChange={(e) => setFormData({ ...formData, business: e.target.value })}
+                          placeholder="Your company"
+                          className={inputClass}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div>
                         <label htmlFor="email" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
                           Email
                         </label>
@@ -129,21 +184,20 @@ export function FinalCTA() {
                           className={inputClass}
                         />
                       </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="phone" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                        Phone Number
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="(555) 123-4567"
-                        className={inputClass}
-                      />
+                      <div>
+                        <label htmlFor="phone" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          placeholder="(555) 123-4567"
+                          className={inputClass}
+                        />
+                      </div>
                     </div>
 
                     <div>

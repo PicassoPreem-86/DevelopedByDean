@@ -20,10 +20,10 @@ const footerLinks = [
 ];
 
 const socialLinks = [
-  { label: "LinkedIn", Icon: LinkedinIcon, href: "https://linkedin.com" },
-  { label: "Twitter", Icon: TwitterIcon, href: "https://x.com" },
-  { label: "GitHub", Icon: GithubIcon, href: "https://github.com" },
-];
+  { label: "LinkedIn", Icon: LinkedinIcon, href: import.meta.env.VITE_LINKEDIN_URL?.trim() },
+  { label: "Twitter", Icon: TwitterIcon, href: import.meta.env.VITE_X_URL?.trim() },
+  { label: "GitHub", Icon: GithubIcon, href: import.meta.env.VITE_GITHUB_URL?.trim() },
+].filter((link): link is { label: string; Icon: typeof LinkedinIcon; href: string } => Boolean(link.href));
 
 export function Footer() {
   return (
@@ -60,23 +60,25 @@ export function Footer() {
           </div>
 
           {/* Social */}
-          <div>
-            <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/30">Connect</h4>
-            <div className="flex gap-3">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all"
-                  aria-label={link.label}
-                >
-                  <link.Icon />
-                </a>
-              ))}
+          {socialLinks.length > 0 && (
+            <div>
+              <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/30">Connect</h4>
+              <div className="flex gap-3">
+                {socialLinks.map((link) => (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all"
+                    aria-label={link.label}
+                  >
+                    <link.Icon />
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Bottom bar */}
