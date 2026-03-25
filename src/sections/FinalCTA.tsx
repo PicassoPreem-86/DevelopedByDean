@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { CheckCircle2, Calendar, Send, ArrowRight } from "lucide-react";
+import { CheckCircle2, Send } from "lucide-react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -9,6 +9,7 @@ export function FinalCTA() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     projectType: "",
     message: "",
   });
@@ -69,21 +70,7 @@ export function FinalCTA() {
                 ))}
               </div>
 
-              {/* Calendly direct book option */}
-              <div className="mt-8 rounded-xl border border-border-light bg-white p-5">
-                <p className="text-sm font-semibold text-content-primary mb-2">Prefer to book directly?</p>
-                <p className="text-xs text-content-muted mb-4">Skip the form and pick a time that works for you.</p>
-                <a
-                  href="https://calendly.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-lg bg-accent px-6 py-3 text-sm font-semibold text-white hover:bg-accent-hover transition-all hover:shadow-glow"
-                >
-                  <Calendar size={16} /> Pick a Time <ArrowRight size={14} />
-                </a>
-              </div>
-
-              <p className="mt-4 text-xs text-content-muted">🔥 Spots filling up — let's talk ASAP!</p>
+              <p className="mt-8 text-xs text-content-muted">🔥 Spots filling up — let's talk ASAP!</p>
             </div>
 
             {/* Right — Contact form */}
@@ -143,6 +130,21 @@ export function FinalCTA() {
                           className={inputClass}
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="phone" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
+                        Phone Number
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder="(555) 123-4567"
+                        className={inputClass}
+                      />
                     </div>
 
                     <div>
