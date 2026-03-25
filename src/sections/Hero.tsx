@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Sparkles, ArrowRight, CheckCircle2, Calendar, PlayCircle } from "lucide-react";
+import { Sparkles, ArrowRight, CheckCircle2, Calendar, PlayCircle } from "lucide-react";
 
 export function Hero() {
   return (
@@ -111,47 +111,15 @@ export function Hero() {
 
               {/* Main card */}
               <div className="relative w-72 sm:w-80 overflow-hidden rounded-2xl border border-white/10 bg-surface-dark">
-                <div className="aspect-[3/4] overflow-hidden">
+                <div className="overflow-hidden">
                   <img
                     src="/images/dean-headshot.jpg"
                     alt="Dean — AI Developer & Systems Builder"
-                    className="h-full w-full object-cover object-top"
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
 
-              {/* Floating badge — reviews */}
-              <div className="absolute -left-6 top-12 hidden lg:block rounded-xl bg-white/10 backdrop-blur-md border border-white/10 px-4 py-3 shadow-lg">
-                <div className="flex items-center gap-1 mb-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      size={12}
-                      className="fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
-                </div>
-                <p className="text-xs font-semibold text-white">
-                  5.0 Client Rating
-                </p>
-              </div>
-
-              {/* Floating badge — worldwide clients */}
-              <div className="absolute -right-4 bottom-16 hidden lg:block rounded-xl bg-white/10 backdrop-blur-md border border-white/10 px-4 py-3 shadow-lg">
-                <p className="text-xs font-semibold text-white mb-2">Serving Clients Worldwide</p>
-                <div className="flex items-center gap-2">
-                  <div className="flex -space-x-2">
-                    {["#3B82F6","#10B981","#F59E0B","#8B5CF6"].map((c, i) => (
-                      <div key={i} className="h-6 w-6 rounded-full border-2 border-surface-dark" style={{ backgroundColor: c }} />
-                    ))}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <span className="text-xs font-semibold text-white">5.0</span>
-                    <div className="flex">{[...Array(5)].map((_, i) => <Star key={i} size={10} className="fill-yellow-400 text-yellow-400" />)}</div>
-                    <span className="text-[10px] text-white/50">(28+ reviews)</span>
-                  </div>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>

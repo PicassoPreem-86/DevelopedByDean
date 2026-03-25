@@ -32,7 +32,7 @@ export function Navbar() {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <div className="flex items-center justify-between px-6 py-3.5">
-          <a href="#" className="text-lg font-bold italic text-white">Dean</a>
+          <a href="#" className="text-xl font-extrabold tracking-tight text-white">Dean Holland</a>
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Main">
             {navLinks.map((link) => (
@@ -75,7 +75,7 @@ export function Navbar() {
             transition={{ duration: 0.3 }}
           >
             <div className="flex items-center justify-between px-6 py-5">
-              <span className="text-lg font-bold italic text-white">Dean</span>
+              <span className="text-xl font-extrabold tracking-tight text-white">Dean Holland</span>
               <button
                 onClick={() => setIsMobileOpen(false)}
                 className="p-2 text-white/60 hover:text-white"

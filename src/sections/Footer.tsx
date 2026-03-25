@@ -28,7 +28,7 @@ export function Footer() {
         <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <span className="text-lg font-bold italic text-white">Dean</span>
+            <span className="text-xl font-extrabold tracking-tight text-white">Dean Holland</span>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/40">
               I help businesses make more money with AI-powered systems, websites, and automations.
             </p>
