@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Navbar } from "./sections/Navbar";
 import { Footer } from "./sections/Footer";
 import { ChatWidget } from "./components/ChatWidget";
+import { StructuredData } from "./components/StructuredData";
 import { HomePage } from "./pages/HomePage";
 import { UseCasesPage } from "./pages/UseCasesPage";
 import { ResultsPage } from "./pages/ResultsPage";
@@ -21,6 +22,7 @@ function Layout() {
   return (
     <>
       <ScrollToTop />
+      <StructuredData />
       <Navbar />
       <main>
         <Routes>

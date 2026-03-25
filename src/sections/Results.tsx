@@ -20,9 +20,9 @@ export function Results() {
           transition={{ duration: 0.5 }}
         >
           <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">RESULTS I DELIVER</span>
-          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-content-primary">
+          <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-content-primary">
             Real Businesses. Real Results.
-          </h2>
+          </h1>
           <p className="mt-3 text-lg text-content-muted max-w-xl mx-auto">
             Here's what my clients typically see after I build their AI system:
           </p>

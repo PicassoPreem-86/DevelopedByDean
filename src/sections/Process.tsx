@@ -20,9 +20,9 @@ export function Process() {
           transition={{ duration: 0.5 }}
         >
           <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">HOW IT WORKS</span>
-          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-content-primary">
+          <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-content-primary">
             Simple, Fast, Personal.
-          </h2>
+          </h1>
           <p className="mt-3 text-lg text-content-muted max-w-xl mx-auto">
             I've made the process easy — so you get results without the stress.
           </p>

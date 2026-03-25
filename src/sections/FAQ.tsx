@@ -45,9 +45,9 @@ export function FAQ() {
           <span className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent">
             <MessageCircle size={14} /> Questions & Answers
           </span>
-          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-white">
+          <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-white">
             Everything You Need to Know
-          </h2>
+          </h1>
           <p className="mt-3 text-lg text-white/50 max-w-lg mx-auto">
             Straightforward answers — no jargon, no runaround.
           </p>

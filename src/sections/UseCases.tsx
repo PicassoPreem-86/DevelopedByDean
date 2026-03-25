@@ -69,9 +69,9 @@ export function UseCases() {
           <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">
             Use Cases
           </span>
-          <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-content-primary">
+          <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-content-primary">
             Everything I Can Build for You
-          </h2>
+          </h1>
           <p className="mt-3 text-lg text-content-muted max-w-2xl mx-auto">
             From voice agents to full websites — here's the complete list of AI systems, automations, and tools I deliver.
           </p>
