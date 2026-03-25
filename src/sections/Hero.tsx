@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, CheckCircle2, Calendar, PlayCircle } from "lucide-react";
+import { Sparkles, ArrowRight, CheckCircle2, Calendar, PlayCircle, Shield } from "lucide-react";
 
 export function Hero() {
   return (
@@ -93,6 +93,23 @@ export function Hero() {
                 )
               )}
             </motion.div>
+
+            <motion.a
+              href="https://verify.skilljar.com/c/u55arn2xvr72"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-4 py-2 backdrop-blur-sm hover:bg-white/[0.08] transition-all group"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+            >
+              <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent/20">
+                <Shield size={11} className="text-accent-light" />
+              </span>
+              <span className="text-[12px] font-semibold tracking-wide text-white/50 group-hover:text-white/70 transition-colors">
+                Anthropic Certified AI Developer
+              </span>
+            </motion.a>
           </div>
 
           {/* Right — Portrait card */}
