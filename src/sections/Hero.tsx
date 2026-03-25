@@ -111,20 +111,12 @@ export function Hero() {
 
               {/* Main card */}
               <div className="relative w-72 sm:w-80 overflow-hidden rounded-2xl border border-white/10 bg-surface-dark">
-                {/* Portrait placeholder */}
-                <div className="aspect-[3/4] bg-gradient-to-br from-accent/20 via-surface-dark to-hero flex items-end justify-center relative overflow-hidden">
-                  {/* Abstract gradient mesh background */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-blue-400/10" />
-                  <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-accent/15 blur-2xl" />
-                  <div className="absolute bottom-1/3 right-1/4 w-24 h-24 rounded-full bg-blue-400/10 blur-2xl" />
-                  {/* Profile silhouette area */}
-                  <div className="relative z-10 text-center pb-8">
-                    <div className="mx-auto mb-4 h-28 w-28 rounded-full bg-gradient-to-b from-accent/30 to-accent/10 border-2 border-accent/20 flex items-center justify-center">
-                      <span className="text-5xl font-bold text-white/90">D</span>
-                    </div>
-                    <p className="text-base font-semibold text-white">Dean</p>
-                    <p className="text-xs text-white/50 mt-1">AI Developer & Systems Builder</p>
-                  </div>
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="/images/dean-headshot.jpg"
+                    alt="Dean — AI Developer & Systems Builder"
+                    className="h-full w-full object-cover object-top"
+                  />
                 </div>
               </div>
 
