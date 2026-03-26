@@ -165,7 +165,7 @@ export function ChatWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-x-0 bottom-0 sm:bottom-24 sm:left-auto sm:right-6 sm:inset-x-auto z-[70] sm:w-[380px] flex flex-col sm:rounded-2xl rounded-t-2xl border border-white/[0.08] bg-hero shadow-2xl"
+            className="fixed inset-x-0 bottom-0 z-[80] flex flex-col rounded-t-2xl border border-white/[0.08] bg-[#0B0F19] shadow-2xl max-sm:!max-h-[70dvh] sm:bottom-24 sm:left-auto sm:right-6 sm:inset-x-auto sm:w-[380px] sm:rounded-2xl sm:z-[70]"
             style={{ maxHeight: "min(480px, calc(100dvh - 60px))" }}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -361,7 +361,7 @@ export function ChatWidget() {
           setNudgeStage(0);
           setHasOpened(true);
         }}
-        className="fixed bottom-6 right-6 z-[70] flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg hover:bg-accent-hover hover:shadow-glow transition-all"
+        className="fixed bottom-6 right-6 z-[90] flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg hover:bg-accent-hover hover:shadow-glow transition-all"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1, type: "spring", stiffness: 200, damping: 15 }}
