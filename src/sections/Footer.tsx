@@ -53,8 +53,8 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/30">Contact</h4>
-            <a href="mailto:hello@developedbydean.com" className="text-sm text-white/50 hover:text-white transition-colors">
-              hello@developedbydean.com
+            <a href="mailto:dean@developedbydean.ai" className="text-sm text-white/50 hover:text-white transition-colors">
+              dean@developedbydean.ai
             </a>
             <p className="mt-2 text-xs text-white/30">Available worldwide · Remote</p>
           </div>

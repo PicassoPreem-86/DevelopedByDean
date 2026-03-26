@@ -5,7 +5,7 @@ import { CheckCircle2, Send } from "lucide-react";
 type FormStatus = "idle" | "submitting" | "success" | "error";
 type SuccessMode = "endpoint" | "mailto";
 
-const CONTACT_EMAIL = "hello@developedbydean.com";
+const CONTACT_EMAIL = "dean@developedbydean.ai";
 const CONTACT_FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT?.trim();
 
 function buildMailtoUrl(formData: {
