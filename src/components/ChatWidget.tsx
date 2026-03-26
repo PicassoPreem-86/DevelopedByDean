@@ -24,25 +24,25 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showTooltip, setShowTooltip] = useState(false);
+  const [nudgeStage, setNudgeStage] = useState(0); // 0=hidden, 1=first nudge, 2=second nudge
+  const [hasOpened, setHasOpened] = useState(false);
   const [showQuickReplies, setShowQuickReplies] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Show tooltip after 5 seconds if chat hasn't been opened
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowTooltip(true);
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, []);
+  const NUDGE_MESSAGES = [
+    "Hey! Curious what AI could do for your business?",
+    "I'm a live AI demo — try asking me something!",
+  ];
 
-  // Auto-hide tooltip after 8 seconds
+  // Nudge sequence: first at 3s, second at 15s
   useEffect(() => {
-    if (!showTooltip) return;
-    const timer = setTimeout(() => setShowTooltip(false), 8000);
-    return () => clearTimeout(timer);
-  }, [showTooltip]);
+    if (hasOpened) return;
+    const t1 = setTimeout(() => setNudgeStage(1), 3000);
+    const t2 = setTimeout(() => setNudgeStage(2), 15000);
+    const tHide = setTimeout(() => setNudgeStage(0), 25000);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(tHide); };
+  }, [hasOpened]);
 
   // Scroll to bottom on new messages
   useEffect(() => {
@@ -53,7 +53,8 @@ export function ChatWidget() {
   useEffect(() => {
     if (isOpen) {
       setTimeout(() => inputRef.current?.focus(), 300);
-      setShowTooltip(false);
+      setNudgeStage(0);
+      setHasOpened(true);
     }
   }, [isOpen]);
 
@@ -267,25 +268,34 @@ export function ChatWidget() {
         )}
       </AnimatePresence>
 
-      {/* Tooltip nudge */}
-      <AnimatePresence>
-        {showTooltip && !isOpen && (
-          <motion.div
-            className="fixed bottom-[88px] right-6 z-[70] rounded-xl bg-hero border border-white/[0.1] px-4 py-2.5 shadow-xl"
-            initial={{ opacity: 0, y: 10, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            transition={{ duration: 0.3 }}
+      {/* Nudge bubble */}
+      <AnimatePresence mode="wait">
+        {nudgeStage > 0 && !isOpen && (
+          <motion.button
+            key={nudgeStage}
+            onClick={() => {
+              setIsOpen(true);
+              setNudgeStage(0);
+              setHasOpened(true);
+            }}
+            className="fixed bottom-[88px] right-6 z-[70] flex items-start gap-3 rounded-2xl bg-hero border border-white/[0.1] px-4 py-3 shadow-2xl cursor-pointer hover:border-accent/30 transition-colors max-w-[280px]"
+            initial={{ opacity: 0, x: 20, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 20, scale: 0.9 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            <div className="flex items-center gap-1.5">
-              <Sparkles size={13} className="text-accent" />
-              <p className="text-[13px] font-medium text-white/80">
-                Try Dean's AI — ask me anything
+            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/15 mt-0.5">
+              <Sparkles size={14} className="text-accent" />
+            </div>
+            <div className="text-left">
+              <p className="text-[11px] font-semibold text-accent mb-0.5">DeanAI</p>
+              <p className="text-[13px] leading-snug text-white/80">
+                {NUDGE_MESSAGES[nudgeStage - 1]}
               </p>
             </div>
             {/* Arrow pointing down to bubble */}
             <div className="absolute -bottom-1.5 right-7 h-3 w-3 rotate-45 bg-hero border-r border-b border-white/[0.1]" />
-          </motion.div>
+          </motion.button>
         )}
       </AnimatePresence>
 
@@ -293,7 +303,8 @@ export function ChatWidget() {
       <motion.button
         onClick={() => {
           setIsOpen(!isOpen);
-          setShowTooltip(false);
+          setNudgeStage(0);
+          setHasOpened(true);
         }}
         className="fixed bottom-6 right-6 z-[70] flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg hover:bg-accent-hover hover:shadow-glow transition-all"
         initial={{ scale: 0 }}
