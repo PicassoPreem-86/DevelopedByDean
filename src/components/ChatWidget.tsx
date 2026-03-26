@@ -302,7 +302,7 @@ export function ChatWidget() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Type your message..."
-                  className="flex-1 rounded-xl bg-white/[0.05] border border-white/[0.08] px-3 sm:px-4 py-2 sm:py-2.5 text-[12px] sm:text-[13px] text-white placeholder-white/25 outline-none focus:border-accent/40 focus:bg-white/[0.07] transition-all"
+                  className="flex-1 rounded-xl bg-white/[0.05] border border-white/[0.08] px-3 sm:px-4 py-2 sm:py-2.5 text-[16px] sm:text-[13px] text-white placeholder-white/25 outline-none focus:border-accent/40 focus:bg-white/[0.07] transition-all"
                   disabled={isLoading}
                 />
                 <button
