@@ -14,15 +14,19 @@ function buildMailtoUrl(formData: {
   email: string;
   phone: string;
   location: string;
+  preferred_date: string;
+  preferred_time: string;
   message: string;
 }) {
-  const subject = `New project inquiry from ${formData.name}`;
+  const subject = `New strategy call request from ${formData.name}`;
   const body = [
     `Name: ${formData.name}`,
     `Business: ${formData.business || "Not provided"}`,
     `Location: ${formData.location || "Not provided"}`,
     `Email: ${formData.email}`,
     `Phone: ${formData.phone || "Not provided"}`,
+    `Preferred Date: ${formData.preferred_date || "Not provided"}`,
+    `Preferred Time: ${formData.preferred_time || "Not provided"}`,
     "",
     "Project details:",
     formData.message,
@@ -40,6 +44,8 @@ export function FinalCTA() {
     email: "",
     phone: "",
     location: "",
+    preferred_date: "",
+    preferred_time: "",
     message: "",
   });
 
@@ -67,7 +73,7 @@ export function FinalCTA() {
       }
 
       setStatus("success");
-      setFormData({ name: "", business: "", email: "", phone: "", location: "", message: "" });
+      setFormData({ name: "", business: "", email: "", phone: "", location: "", preferred_date: "", preferred_time: "", message: "" });
     } catch {
       setStatus("error");
     }
@@ -97,7 +103,7 @@ export function FinalCTA() {
               </p>
               <div className="mt-6 space-y-2">
                 {[
-                  "Free 30-min strategy call",
+                  "Schedule a free strategy call",
                   "No commitment needed",
                   "Personalized plan for your business",
                 ].map((item) => (
@@ -124,11 +130,11 @@ export function FinalCTA() {
                     <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
                       <CheckCircle2 size={28} className="text-green-600" />
                     </div>
-                    <h3 className="text-xl font-bold text-content-primary">Message received!</h3>
+                    <h3 className="text-xl font-bold text-content-primary">Request received!</h3>
                     <p className="mt-2 text-sm text-content-muted max-w-xs">
                       {successMode === "endpoint"
-                        ? "I'll review your project details and get back to you within 24 hours."
-                        : "Your email app should open with the message pre-filled. Send it through and I'll reply within 24 hours."}
+                        ? "I'll review your details and confirm your call time within 24 hours."
+                        : "Your email app should open with the details pre-filled. Send it through and I'll confirm your call time within 24 hours."}
                     </p>
                   </motion.div>
                 ) : (
@@ -218,6 +224,46 @@ export function FinalCTA() {
                       />
                     </div>
 
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <label htmlFor="preferred_date" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
+                          Preferred Date
+                        </label>
+                        <input
+                          type="date"
+                          id="preferred_date"
+                          name="preferred_date"
+                          value={formData.preferred_date}
+                          onChange={(e) => setFormData({ ...formData, preferred_date: e.target.value })}
+                          min={new Date().toISOString().split("T")[0]}
+                          className={inputClass}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="preferred_time" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
+                          Preferred Time
+                        </label>
+                        <select
+                          id="preferred_time"
+                          name="preferred_time"
+                          value={formData.preferred_time}
+                          onChange={(e) => setFormData({ ...formData, preferred_time: e.target.value })}
+                          className={inputClass}
+                        >
+                          <option value="">Select a time</option>
+                          <option value="9:00 AM">9:00 AM</option>
+                          <option value="10:00 AM">10:00 AM</option>
+                          <option value="11:00 AM">11:00 AM</option>
+                          <option value="12:00 PM">12:00 PM</option>
+                          <option value="1:00 PM">1:00 PM</option>
+                          <option value="2:00 PM">2:00 PM</option>
+                          <option value="3:00 PM">3:00 PM</option>
+                          <option value="4:00 PM">4:00 PM</option>
+                          <option value="5:00 PM">5:00 PM</option>
+                        </select>
+                      </div>
+                    </div>
+
                     <div>
                       <label htmlFor="message" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
                         Message
@@ -250,7 +296,7 @@ export function FinalCTA() {
                         </>
                       ) : (
                         <>
-                          <Send size={16} /> Send Message
+                          <Send size={16} /> Schedule My Call
                         </>
                       )}
                     </button>

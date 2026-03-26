@@ -31,7 +31,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(503).json({ error: "Contact form is not configured" });
   }
 
-  const { name, business, email, phone, location, message } = req.body ?? {};
+  const { name, business, email, phone, location, preferred_date, preferred_time, message } = req.body ?? {};
 
   // Validate required fields
   for (const field of REQUIRED_FIELDS) {
@@ -47,13 +47,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         access_key: accessKey,
-        subject: `New project inquiry from ${name}`,
+        subject: `New strategy call request from ${name}`,
         from_name: "DevelopedByDean Website",
         name,
         business: business || "Not provided",
         email,
         phone: phone || "Not provided",
         location: location || "Not provided",
+        preferred_date: preferred_date || "Not provided",
+        preferred_time: preferred_time || "Not provided",
         message,
       }),
     });
