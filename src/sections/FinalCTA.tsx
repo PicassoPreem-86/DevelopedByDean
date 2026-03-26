@@ -6,7 +6,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 type SuccessMode = "endpoint" | "mailto";
 
 const CONTACT_EMAIL = "dean@developedbydean.ai";
-const CONTACT_FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT?.trim();
+const CONTACT_FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT?.trim() || "/api/contact";
 
 function buildMailtoUrl(formData: {
   name: string;
