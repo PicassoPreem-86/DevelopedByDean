@@ -13,6 +13,7 @@
     scroll-behavior: smooth;
     font-family: "Plus Jakarta Sans", sans-serif;
     color: #0F172A;
+    overflow-x: hidden;
   }
 
   body {
@@ -21,6 +22,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #FFFFFF;
+    width: 100%;
+    max-width: 100vw;
   }
 
   ::selection {

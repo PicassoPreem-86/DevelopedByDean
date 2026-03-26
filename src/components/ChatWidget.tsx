@@ -334,9 +334,9 @@ export function ChatWidget() {
               setHasOpened(true);
             }}
             className="fixed bottom-[88px] right-6 z-[70] flex items-start gap-3 rounded-2xl bg-hero border border-white/[0.1] px-4 py-3 shadow-2xl cursor-pointer hover:border-accent/30 transition-colors max-w-[280px]"
-            initial={{ opacity: 0, x: 20, scale: 0.9 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 20, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
           >
             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-accent/15 mt-0.5">
