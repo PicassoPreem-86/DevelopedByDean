@@ -165,8 +165,8 @@ export function ChatWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-20 right-2 left-2 sm:bottom-24 sm:left-auto sm:right-6 z-[70] sm:w-[380px] flex flex-col rounded-2xl border border-white/[0.08] bg-hero shadow-2xl"
-            style={{ maxHeight: "min(480px, calc(100dvh - 100px))" }}
+            className="fixed inset-x-0 bottom-0 sm:bottom-24 sm:left-auto sm:right-6 sm:inset-x-auto z-[70] sm:w-[380px] flex flex-col sm:rounded-2xl rounded-t-2xl border border-white/[0.08] bg-hero shadow-2xl"
+            style={{ maxHeight: "min(480px, calc(100dvh - 60px))" }}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -293,7 +293,7 @@ export function ChatWidget() {
             </div>
 
             {/* Input area */}
-            <div className="border-t border-white/[0.06] px-3 sm:px-4 py-2.5 sm:py-3 shrink-0">
+            <div className="border-t border-white/[0.06] px-3 sm:px-4 py-2.5 sm:py-3 pb-[max(0.625rem,env(safe-area-inset-bottom))] sm:pb-3 shrink-0">
               <div className="flex items-center gap-2">
                 <input
                   ref={inputRef}
