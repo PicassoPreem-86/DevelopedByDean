@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
@@ -10,8 +10,14 @@ interface Message {
 const INITIAL_MESSAGE: Message = {
   role: "assistant",
   content:
-    "Hey! I'm Dean's AI assistant. I can tell you about our AI development services, answer questions, or help you figure out if we're a good fit. What brings you here today?",
+    "Hey there! I'm DeanAI — Dean's AI assistant (and a live example of what he builds). Whether you're curious about AI voice agents, automations, or just want to see what's possible for your business — I'm here. What's on your mind?",
 };
+
+const QUICK_REPLIES = [
+  "What can Dean build for me?",
+  "How does pricing work?",
+  "Tell me about AI voice agents",
+];
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +25,7 @@ export function ChatWidget() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [showQuickReplies, setShowQuickReplies] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -50,13 +57,15 @@ export function ChatWidget() {
     }
   }, [isOpen]);
 
-  const sendMessage = async () => {
-    if (!input.trim() || isLoading) return;
+  const sendMessage = async (overrideText?: string) => {
+    const text = overrideText || input.trim();
+    if (!text || isLoading) return;
 
-    const userMessage: Message = { role: "user", content: input.trim() };
+    setShowQuickReplies(false);
+    const userMessage: Message = { role: "user", content: text };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
-    setInput("");
+    if (!overrideText) setInput("");
     setIsLoading(true);
 
     try {
@@ -171,6 +180,26 @@ export function ChatWidget() {
                 </motion.div>
               ))}
 
+              {/* Quick reply buttons */}
+              {showQuickReplies && messages.length === 1 && !isLoading && (
+                <motion.div
+                  className="flex flex-wrap gap-2 pl-9"
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: 0.2 }}
+                >
+                  {QUICK_REPLIES.map((reply) => (
+                    <button
+                      key={reply}
+                      onClick={() => sendMessage(reply)}
+                      className="rounded-full border border-accent/30 bg-accent/[0.08] px-3.5 py-1.5 text-[12px] font-medium text-accent hover:bg-accent/20 hover:border-accent/50 transition-all"
+                    >
+                      {reply}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+
               {/* Typing indicator */}
               {isLoading && (
                 <motion.div
@@ -217,7 +246,7 @@ export function ChatWidget() {
                   disabled={isLoading}
                 />
                 <button
-                  onClick={sendMessage}
+                  onClick={() => sendMessage()}
                   disabled={!input.trim() || isLoading}
                   className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-white hover:bg-accent-hover disabled:opacity-30 disabled:hover:bg-accent transition-all"
                   aria-label="Send message"
@@ -243,9 +272,12 @@ export function ChatWidget() {
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="text-[13px] font-medium text-white/80">
-              Got a question? Ask AI
-            </p>
+            <div className="flex items-center gap-1.5">
+              <Sparkles size={13} className="text-accent" />
+              <p className="text-[13px] font-medium text-white/80">
+                Try Dean's AI — ask me anything
+              </p>
+            </div>
             {/* Arrow pointing down to bubble */}
             <div className="absolute -bottom-1.5 right-7 h-3 w-3 rotate-45 bg-hero border-r border-b border-white/[0.1]" />
           </motion.div>
