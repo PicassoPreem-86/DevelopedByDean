@@ -2,7 +2,6 @@ import { SEO } from "../components/SEO";
 import { Hero } from "../sections/Hero";
 import { TrustStrip } from "../sections/TrustStrip";
 import { StatsBar } from "../sections/StatsBar";
-import { PainSolution } from "../sections/PainSolution";
 import { SeoClusters } from "../sections/SeoClusters";
 import { TechStack } from "../sections/TechStack";
 import { TrustEvidence } from "../sections/TrustEvidence";
@@ -19,8 +18,7 @@ export function HomePage() {
       <Hero />
       <TrustStrip />
       <StatsBar />
-      <PainSolution />
-      <SeoClusters />
+<SeoClusters />
       <TechStack />
       <TrustEvidence />
       <ScarcityBanner />
