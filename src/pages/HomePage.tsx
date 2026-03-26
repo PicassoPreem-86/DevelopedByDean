@@ -4,7 +4,6 @@ import { TrustStrip } from "../sections/TrustStrip";
 import { StatsBar } from "../sections/StatsBar";
 import { SeoClusters } from "../sections/SeoClusters";
 import { TechStack } from "../sections/TechStack";
-import { TrustEvidence } from "../sections/TrustEvidence";
 import { ScarcityBanner } from "../sections/ScarcityBanner";
 import { FinalCTA } from "../sections/FinalCTA";
 
@@ -20,8 +19,7 @@ export function HomePage() {
       <StatsBar />
 <SeoClusters />
       <TechStack />
-      <TrustEvidence />
-      <ScarcityBanner />
+<ScarcityBanner />
       <FinalCTA />
     </>
   );
