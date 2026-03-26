@@ -1,5 +1,52 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { sanitizeContactPayload } from "../shared/contactConfig";
+
+// --- Inlined from shared/contactConfig.ts (Vercel serverless cannot resolve cross-directory TS imports) ---
+
+type ContactPayload = {
+  name: string;
+  business: string;
+  email: string;
+  phone: string;
+  location: string;
+  preferred_date: string;
+  preferred_time: string;
+  message: string;
+};
+
+const MAX_FIELD_LENGTH = 500;
+const MAX_MESSAGE_LENGTH = 4000;
+const REQUIRED_FIELDS = ["name", "email", "message"] as const;
+
+function sanitizeField(value: unknown, maxLength = MAX_FIELD_LENGTH) {
+  if (typeof value !== "string") return "";
+  return value.trim().slice(0, maxLength);
+}
+
+function sanitizeContactPayload(input: unknown): ContactPayload | null {
+  if (!input || typeof input !== "object") return null;
+
+  const payload = input as Record<string, unknown>;
+  const sanitized: ContactPayload = {
+    name: sanitizeField(payload.name),
+    business: sanitizeField(payload.business),
+    email: sanitizeField(payload.email),
+    phone: sanitizeField(payload.phone),
+    location: sanitizeField(payload.location),
+    preferred_date: sanitizeField(payload.preferred_date, 50),
+    preferred_time: sanitizeField(payload.preferred_time, 50),
+    message: sanitizeField(payload.message, MAX_MESSAGE_LENGTH),
+  };
+
+  for (const field of REQUIRED_FIELDS) {
+    if (!sanitized[field]) return null;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(sanitized.email)) return null;
+
+  return sanitized;
+}
+
+// --- Rate limiting & CORS ---
 
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 8;
