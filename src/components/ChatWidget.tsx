@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Sparkles, CheckCircle2 } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
@@ -42,13 +42,13 @@ export function ChatWidget() {
   const [nudgeStage, setNudgeStage] = useState(0);
   const [hasOpened, setHasOpened] = useState(false);
   const [showQuickReplies, setShowQuickReplies] = useState(true);
-  const [leadCaptured, setLeadCaptured] = useState(false);
+  const leadCapturedRef = useRef(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const submitLead = useCallback(async (leadData: Record<string, string>) => {
-    if (leadCaptured) return;
-    setLeadCaptured(true);
+    if (leadCapturedRef.current) return;
+    leadCapturedRef.current = true;
     try {
       await fetch("/api/contact", {
         method: "POST",
@@ -67,7 +67,7 @@ export function ChatWidget() {
     } catch {
       // Silent fail — don't interrupt the conversation
     }
-  }, [leadCaptured]);
+  }, []);
 
   const NUDGE_MESSAGES = [
     "Hey! Curious what AI could do for your business?",
@@ -160,21 +160,22 @@ export function ChatWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-24 right-4 left-4 sm:left-auto sm:right-6 z-[70] sm:w-[380px] flex flex-col rounded-2xl border border-white/[0.08] bg-hero shadow-2xl"
-            style={{ maxHeight: "min(520px, calc(100vh - 120px))" }}
+            className="fixed bottom-20 right-2 left-2 sm:bottom-24 sm:left-auto sm:right-6 z-[70] sm:w-[380px] flex flex-col rounded-2xl border border-white/[0.08] bg-hero shadow-2xl"
+            style={{ maxHeight: "min(480px, calc(100dvh - 100px))" }}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
             {/* Header */}
-            <div className="relative flex items-center justify-between px-5 py-4 border-b border-white/[0.06] shrink-0">
+            <div className="relative flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 border-b border-white/[0.06] shrink-0">
               {/* Accent top line */}
               <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl bg-gradient-to-r from-accent via-accent-light to-accent" />
 
               <div className="flex items-center gap-3">
-                <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-accent/15">
-                  <Bot size={18} className="text-accent" />
+                <div className="relative flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-accent/15">
+                  <Bot size={16} className="text-accent sm:hidden" />
+                  <Bot size={18} className="text-accent hidden sm:block" />
                   <span className="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-hero bg-emerald-400" />
                 </div>
                 <div>
@@ -195,22 +196,23 @@ export function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-5 py-4 space-y-4 min-h-0">
+            <div className="flex-1 overflow-y-auto px-3 sm:px-5 py-3 sm:py-4 space-y-3 sm:space-y-4 min-h-0">
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
-                  className={`flex gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  className={`flex gap-2 sm:gap-2.5 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2 }}
                 >
                   {msg.role === "assistant" && (
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent/10 mt-0.5">
-                      <Bot size={14} className="text-accent" />
+                    <div className="flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center rounded-lg bg-accent/10 mt-0.5">
+                      <Bot size={12} className="text-accent sm:hidden" />
+                      <Bot size={14} className="text-accent hidden sm:block" />
                     </div>
                   )}
                   <div
-                    className={`max-w-[75%] rounded-2xl px-4 py-2.5 text-[13px] leading-relaxed ${
+                    className={`max-w-[80%] sm:max-w-[75%] rounded-2xl px-3 sm:px-4 py-2 sm:py-2.5 text-[12px] sm:text-[13px] leading-relaxed ${
                       msg.role === "user"
                         ? "bg-accent text-white rounded-br-md"
                         : "bg-white/[0.06] text-white/80 rounded-bl-md"
@@ -224,8 +226,9 @@ export function ChatWidget() {
                     ))}
                   </div>
                   {msg.role === "user" && (
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] mt-0.5">
-                      <User size={14} className="text-white/40" />
+                    <div className="flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] mt-0.5">
+                      <User size={12} className="text-white/40 sm:hidden" />
+                      <User size={14} className="text-white/40 hidden sm:block" />
                     </div>
                   )}
                 </motion.div>
@@ -234,7 +237,7 @@ export function ChatWidget() {
               {/* Quick reply buttons */}
               {showQuickReplies && messages.length === 1 && !isLoading && (
                 <motion.div
-                  className="flex flex-wrap gap-2 pl-9"
+                  className="flex flex-wrap gap-1.5 sm:gap-2 pl-8 sm:pl-9"
                   initial={{ opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: 0.2 }}
@@ -243,7 +246,7 @@ export function ChatWidget() {
                     <button
                       key={reply}
                       onClick={() => sendMessage(reply)}
-                      className="rounded-full border border-accent/30 bg-accent/[0.08] px-3.5 py-1.5 text-[12px] font-medium text-accent hover:bg-accent/20 hover:border-accent/50 transition-all"
+                      className="rounded-full border border-accent/30 bg-accent/[0.08] px-3 sm:px-3.5 py-1.5 text-[11px] sm:text-[12px] font-medium text-accent hover:bg-accent/20 hover:border-accent/50 transition-all"
                     >
                       {reply}
                     </button>
@@ -254,12 +257,13 @@ export function ChatWidget() {
               {/* Typing indicator */}
               {isLoading && (
                 <motion.div
-                  className="flex gap-2.5"
+                  className="flex gap-2 sm:gap-2.5"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                 >
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent/10 mt-0.5">
-                    <Bot size={14} className="text-accent" />
+                  <div className="flex h-6 w-6 sm:h-7 sm:w-7 shrink-0 items-center justify-center rounded-lg bg-accent/10 mt-0.5">
+                    <Bot size={12} className="text-accent sm:hidden" />
+                    <Bot size={14} className="text-accent hidden sm:block" />
                   </div>
                   <div className="bg-white/[0.06] rounded-2xl rounded-bl-md px-4 py-3">
                     <div className="flex gap-1.5">
@@ -280,23 +284,11 @@ export function ChatWidget() {
                 </motion.div>
               )}
 
-              {/* Lead captured confirmation */}
-              {leadCaptured && (
-                <motion.div
-                  className="flex items-center justify-center gap-1.5 py-1"
-                  initial={{ opacity: 0, y: 4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                >
-                  <CheckCircle2 size={12} className="text-emerald-400" />
-                  <p className="text-[11px] text-emerald-400/70">Info sent to Dean</p>
-                </motion.div>
-              )}
-
               <div ref={messagesEndRef} />
             </div>
 
             {/* Input area */}
-            <div className="border-t border-white/[0.06] px-4 py-3 shrink-0">
+            <div className="border-t border-white/[0.06] px-3 sm:px-4 py-2.5 sm:py-3 shrink-0">
               <div className="flex items-center gap-2">
                 <input
                   ref={inputRef}
@@ -305,19 +297,20 @@ export function ChatWidget() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Type your message..."
-                  className="flex-1 rounded-xl bg-white/[0.05] border border-white/[0.08] px-4 py-2.5 text-[13px] text-white placeholder-white/25 outline-none focus:border-accent/40 focus:bg-white/[0.07] transition-all"
+                  className="flex-1 rounded-xl bg-white/[0.05] border border-white/[0.08] px-3 sm:px-4 py-2 sm:py-2.5 text-[12px] sm:text-[13px] text-white placeholder-white/25 outline-none focus:border-accent/40 focus:bg-white/[0.07] transition-all"
                   disabled={isLoading}
                 />
                 <button
                   onClick={() => sendMessage()}
                   disabled={!input.trim() || isLoading}
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-white hover:bg-accent-hover disabled:opacity-30 disabled:hover:bg-accent transition-all"
+                  className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-white hover:bg-accent-hover disabled:opacity-30 disabled:hover:bg-accent transition-all"
                   aria-label="Send message"
                 >
-                  <Send size={15} />
+                  <Send size={14} className="sm:hidden" />
+                  <Send size={15} className="hidden sm:block" />
                 </button>
               </div>
-              <p className="mt-2 text-center text-[10px] text-white/20">
+              <p className="mt-1.5 sm:mt-2 text-center text-[9px] sm:text-[10px] text-white/20">
                 Powered by Claude AI &bull; Built by DevelopedByDean
               </p>
             </div>
