@@ -49,11 +49,16 @@ export function ChatWidget() {
   const submitLead = useCallback(async (leadData: Record<string, string>) => {
     if (leadCapturedRef.current) return;
     leadCapturedRef.current = true;
+    const key = import.meta.env.VITE_WEB3FORMS_KEY?.trim();
+    if (!key) return;
     try {
-      await fetch("/api/contact", {
+      await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
         body: JSON.stringify({
+          access_key: key,
+          subject: `[AI Chat Lead] ${leadData.name || "Unknown"}`,
+          from_name: "DevelopedByDean AI Chat",
           name: leadData.name || "",
           email: leadData.email || "",
           business: leadData.business || "",

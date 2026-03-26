@@ -5,7 +5,8 @@ import { CONTACT_EMAIL } from "../../shared/siteConfig";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
-const CONTACT_FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT?.trim() || "/api/contact";
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY?.trim() || "";
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 export function FinalCTA() {
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -25,10 +26,15 @@ export function FinalCTA() {
     setStatus("submitting");
 
     try {
-      const res = await fetch(CONTACT_FORM_ENDPOINT, {
+      const res = await fetch(WEB3FORMS_URL, {
         method: "POST",
         headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New strategy call request from ${formData.name}`,
+          from_name: "DevelopedByDean Website",
+          ...formData,
+        }),
       });
 
       if (!res.ok) {
