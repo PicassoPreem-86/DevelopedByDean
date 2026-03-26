@@ -1,10 +1,25 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, Sparkles, CheckCircle2 } from "lucide-react";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
+}
+
+const LEAD_TAG_REGEX = /<!--LEAD:(.*?)-->/s;
+
+function extractLeadData(content: string): { cleanContent: string; leadData: Record<string, string> | null } {
+  const match = content.match(LEAD_TAG_REGEX);
+  if (!match) return { cleanContent: content, leadData: null };
+
+  const cleanContent = content.replace(LEAD_TAG_REGEX, "").trim();
+  try {
+    const leadData = JSON.parse(match[1]);
+    return { cleanContent, leadData };
+  } catch {
+    return { cleanContent, leadData: null };
+  }
 }
 
 const INITIAL_MESSAGE: Message = {
@@ -24,11 +39,35 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([INITIAL_MESSAGE]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [nudgeStage, setNudgeStage] = useState(0); // 0=hidden, 1=first nudge, 2=second nudge
+  const [nudgeStage, setNudgeStage] = useState(0);
   const [hasOpened, setHasOpened] = useState(false);
   const [showQuickReplies, setShowQuickReplies] = useState(true);
+  const [leadCaptured, setLeadCaptured] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const submitLead = useCallback(async (leadData: Record<string, string>) => {
+    if (leadCaptured) return;
+    setLeadCaptured(true);
+    try {
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: leadData.name || "",
+          email: leadData.email || "",
+          business: leadData.business || "",
+          phone: leadData.phone || "",
+          location: leadData.location || "",
+          preferred_date: leadData.preferred_date || "",
+          preferred_time: leadData.preferred_time || "",
+          message: `[Via AI Chat] ${leadData.message || "No details provided"}`,
+        }),
+      });
+    } catch {
+      // Silent fail — don't interrupt the conversation
+    }
+  }, [leadCaptured]);
 
   const NUDGE_MESSAGES = [
     "Hey! Curious what AI could do for your business?",
@@ -84,10 +123,16 @@ export function ChatWidget() {
       if (!res.ok) throw new Error("Failed");
 
       const data = await res.json();
+      const { cleanContent, leadData } = extractLeadData(data.message);
+
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: data.message },
+        { role: "assistant", content: cleanContent },
       ]);
+
+      if (leadData && leadData.name && leadData.email) {
+        submitLead(leadData);
+      }
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -232,6 +277,18 @@ export function ChatWidget() {
                       ))}
                     </div>
                   </div>
+                </motion.div>
+              )}
+
+              {/* Lead captured confirmation */}
+              {leadCaptured && (
+                <motion.div
+                  className="flex items-center justify-center gap-1.5 py-1"
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <CheckCircle2 size={12} className="text-emerald-400" />
+                  <p className="text-[11px] text-emerald-400/70">Info sent to Dean</p>
                 </motion.div>
               )}
 
