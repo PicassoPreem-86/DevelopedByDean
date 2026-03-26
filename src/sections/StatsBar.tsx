@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const stats = [
-  { end: 50, prefix: "", suffix: "+", label: "Projects Delivered", decimal: false },
-  { end: 12, prefix: "", suffix: "K+", label: "Hours Saved for Clients", decimal: false },
-  { end: 2, prefix: "$", suffix: "M+", label: "Revenue Generated", decimal: false },
-  { end: 49, prefix: "", suffix: "", label: "Avg Client Rating", decimal: true },
+  { end: 15, prefix: "", suffix: "+", label: "Projects Delivered", decimal: false },
+  { end: 500, prefix: "", suffix: "+", label: "Hours Saved for Clients", decimal: false },
+  { end: 100, prefix: "", suffix: "%", label: "Client Satisfaction", decimal: false },
+  { end: 2, prefix: "<", suffix: " Weeks", label: "Avg Delivery Time", decimal: false },
 ];
 
 function CountUp({
