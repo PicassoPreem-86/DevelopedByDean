@@ -275,7 +275,7 @@ export function FinalCTA() {
                         rows={4}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder="What are you trying to build or improve?"
+                        placeholder="What challenges is your business facing right now?"
                         className={`${inputClass} resize-none`}
                       />
                     </div>
