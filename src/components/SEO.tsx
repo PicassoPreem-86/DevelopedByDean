@@ -1,16 +1,19 @@
 import { Helmet } from "react-helmet-async";
-
-const SITE_URL = "https://developedbydean.ai";
-const SITE_NAME = "DevelopedByDean";
-const DEFAULT_TITLE = "DevelopedByDean | AI Developer & Systems Engineer";
-const DEFAULT_DESCRIPTION =
-  "I build AI voice agents, smart websites, and workflow automations that help businesses capture more leads, close more sales, and save hours every week.";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_TITLE,
+  OG_IMAGE_URL,
+  SITE_NAME,
+  SITE_URL,
+} from "../../shared/siteConfig";
 
 interface SEOProps {
   title?: string;
   description?: string;
   path?: string;
   type?: string;
+  keywords?: string[];
+  image?: string;
 }
 
 export function SEO({
@@ -18,6 +21,8 @@ export function SEO({
   description = DEFAULT_DESCRIPTION,
   path = "/",
   type = "website",
+  keywords,
+  image = OG_IMAGE_URL,
 }: SEOProps) {
   const fullTitle = title ? `${title} | ${SITE_NAME}` : DEFAULT_TITLE;
   const canonicalUrl = `${SITE_URL}${path}`;
@@ -27,6 +32,21 @@ export function SEO({
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonicalUrl} />
+      {keywords && keywords.length > 0 && (
+        <meta name="keywords" content={keywords.join(", ")} />
+      )}
+      {import.meta.env.VITE_GOOGLE_SITE_VERIFICATION && (
+        <meta
+          name="google-site-verification"
+          content={import.meta.env.VITE_GOOGLE_SITE_VERIFICATION}
+        />
+      )}
+      {import.meta.env.VITE_BING_SITE_VERIFICATION && (
+        <meta
+          name="msvalidate.01"
+          content={import.meta.env.VITE_BING_SITE_VERIFICATION}
+        />
+      )}
 
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
@@ -34,11 +54,13 @@ export function SEO({
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content={SITE_NAME} />
+      <meta property="og:image" content={image} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
     </Helmet>
   );
 }

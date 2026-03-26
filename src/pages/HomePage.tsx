@@ -3,7 +3,9 @@ import { Hero } from "../sections/Hero";
 import { TrustStrip } from "../sections/TrustStrip";
 import { StatsBar } from "../sections/StatsBar";
 import { PainSolution } from "../sections/PainSolution";
+import { SeoClusters } from "../sections/SeoClusters";
 import { TechStack } from "../sections/TechStack";
+import { TrustEvidence } from "../sections/TrustEvidence";
 import { ScarcityBanner } from "../sections/ScarcityBanner";
 import { FinalCTA } from "../sections/FinalCTA";
 
@@ -18,7 +20,9 @@ export function HomePage() {
       <TrustStrip />
       <StatsBar />
       <PainSolution />
+      <SeoClusters />
       <TechStack />
+      <TrustEvidence />
       <ScarcityBanner />
       <FinalCTA />
     </>

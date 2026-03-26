@@ -1,14 +1,23 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Navbar } from "./sections/Navbar";
 import { Footer } from "./sections/Footer";
-import { ChatWidget } from "./components/ChatWidget";
 import { StructuredData } from "./components/StructuredData";
 import { HomePage } from "./pages/HomePage";
 import { UseCasesPage } from "./pages/UseCasesPage";
 import { ResultsPage } from "./pages/ResultsPage";
 import { ProcessPage } from "./pages/ProcessPage";
 import { FAQPage } from "./pages/FAQPage";
+import { ServicesHubPage } from "./pages/ServicesHubPage";
+import { IndustriesHubPage } from "./pages/IndustriesHubPage";
+import { SeoLandingPage } from "./pages/SeoLandingPage";
+import { industryPages, servicePages } from "./data/seoPages";
+
+const ChatWidget = lazy(() =>
+  import("./components/ChatWidget").then((module) => ({
+    default: module.ChatWidget,
+  }))
+);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -27,14 +36,32 @@ function Layout() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/services" element={<ServicesHubPage />} />
+          <Route path="/industries" element={<IndustriesHubPage />} />
           <Route path="/use-cases" element={<UseCasesPage />} />
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/faq" element={<FAQPage />} />
+          {servicePages.map((page) => (
+            <Route
+              key={page.path}
+              path={page.path}
+              element={<SeoLandingPage page={page} />}
+            />
+          ))}
+          {industryPages.map((page) => (
+            <Route
+              key={page.path}
+              path={page.path}
+              element={<SeoLandingPage page={page} />}
+            />
+          ))}
         </Routes>
       </main>
       <Footer />
-      <ChatWidget />
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Phone, MessageSquare, Mail, CalendarCheck, FileText, Users,
@@ -151,12 +152,26 @@ export function UseCases() {
           <p className="text-sm text-content-muted mb-3">
             Need something custom? I build solutions tailored to your exact workflow.
           </p>
-          <a
-            href="/#contact"
+          <Link
+            to="/#contact"
             className="inline-flex items-center gap-2 text-sm font-semibold text-accent hover:text-accent-hover transition-colors"
           >
             Let's talk about what you need <ArrowRight size={14} />
-          </a>
+          </Link>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Link
+              to="/services"
+              className="rounded-full border border-border-light bg-surface-light px-4 py-2 text-xs font-semibold text-content-primary hover:border-accent/30"
+            >
+              Browse AI services
+            </Link>
+            <Link
+              to="/industries"
+              className="rounded-full border border-border-light bg-surface-light px-4 py-2 text-xs font-semibold text-content-primary hover:border-accent/30"
+            >
+              Browse industry pages
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>

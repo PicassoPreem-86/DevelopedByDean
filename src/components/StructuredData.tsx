@@ -1,12 +1,18 @@
 import { Helmet } from "react-helmet-async";
+import { LOGO_URL, OG_IMAGE_URL, SITE_URL } from "../../shared/siteConfig";
 
-const SITE_URL = "https://developedbydean.ai";
+const sameAs = [
+  import.meta.env.VITE_LINKEDIN_URL?.trim(),
+  import.meta.env.VITE_X_URL?.trim(),
+  import.meta.env.VITE_GITHUB_URL?.trim(),
+].filter((value): value is string => Boolean(value));
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Dean Holland",
   url: SITE_URL,
+  image: OG_IMAGE_URL,
   jobTitle: "AI Developer & Systems Engineer",
   description:
     "Solo AI developer who builds voice agents, smart websites, and workflow automations for businesses.",
@@ -18,7 +24,7 @@ const personSchema = {
     "Lead Generation",
     "CRM Automation",
   ],
-  sameAs: [],
+  sameAs,
 };
 
 const localBusinessSchema = {
@@ -26,6 +32,8 @@ const localBusinessSchema = {
   "@type": "ProfessionalService",
   name: "DevelopedByDean",
   url: SITE_URL,
+  logo: LOGO_URL,
+  image: OG_IMAGE_URL,
   description:
     "AI development services including voice agents, smart websites, workflow automation, and custom AI tools for businesses.",
   founder: {
@@ -41,11 +49,29 @@ const localBusinessSchema = {
   ],
   areaServed: "Worldwide",
   priceRange: "$$",
+  sameAs,
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "DevelopedByDean",
+  url: SITE_URL,
+  description:
+    "AI developer and systems engineer building voice agents, websites, and automations for businesses.",
+  publisher: {
+    "@type": "ProfessionalService",
+    name: "DevelopedByDean",
+    url: SITE_URL,
+  },
 };
 
 export function StructuredData() {
   return (
     <Helmet>
+      <script type="application/ld+json">
+        {JSON.stringify(websiteSchema)}
+      </script>
       <script type="application/ld+json">
         {JSON.stringify(personSchema)}
       </script>

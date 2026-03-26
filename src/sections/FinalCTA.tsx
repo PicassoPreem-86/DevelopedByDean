@@ -1,43 +1,14 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Send } from "lucide-react";
+import { CONTACT_EMAIL } from "../../shared/siteConfig";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
-type SuccessMode = "endpoint" | "mailto";
 
-const CONTACT_EMAIL = "dean@developedbydean.ai";
 const CONTACT_FORM_ENDPOINT = import.meta.env.VITE_CONTACT_FORM_ENDPOINT?.trim() || "/api/contact";
-
-function buildMailtoUrl(formData: {
-  name: string;
-  business: string;
-  email: string;
-  phone: string;
-  location: string;
-  preferred_date: string;
-  preferred_time: string;
-  message: string;
-}) {
-  const subject = `New strategy call request from ${formData.name}`;
-  const body = [
-    `Name: ${formData.name}`,
-    `Business: ${formData.business || "Not provided"}`,
-    `Location: ${formData.location || "Not provided"}`,
-    `Email: ${formData.email}`,
-    `Phone: ${formData.phone || "Not provided"}`,
-    `Preferred Date: ${formData.preferred_date || "Not provided"}`,
-    `Preferred Time: ${formData.preferred_time || "Not provided"}`,
-    "",
-    "Project details:",
-    formData.message,
-  ].join("\n");
-
-  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
 
 export function FinalCTA() {
   const [status, setStatus] = useState<FormStatus>("idle");
-  const [successMode, setSuccessMode] = useState<SuccessMode>("endpoint");
   const [formData, setFormData] = useState({
     name: "",
     business: "",
@@ -54,22 +25,15 @@ export function FinalCTA() {
     setStatus("submitting");
 
     try {
-      if (CONTACT_FORM_ENDPOINT) {
-        const res = await fetch(CONTACT_FORM_ENDPOINT, {
-          method: "POST",
-          headers: { Accept: "application/json", "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
+      const res = await fetch(CONTACT_FORM_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-        if (!res.ok) {
-          setStatus("error");
-          return;
-        }
-
-        setSuccessMode("endpoint");
-      } else {
-        window.location.href = buildMailtoUrl(formData);
-        setSuccessMode("mailto");
+      if (!res.ok) {
+        setStatus("error");
+        return;
       }
 
       setStatus("success");
@@ -132,9 +96,7 @@ export function FinalCTA() {
                     </div>
                     <h3 className="text-xl font-bold text-content-primary">Request received!</h3>
                     <p className="mt-2 text-sm text-content-muted max-w-xs">
-                      {successMode === "endpoint"
-                        ? "I'll review your details and confirm your call time within 24 hours."
-                        : "Your email app should open with the details pre-filled. Send it through and I'll confirm your call time within 24 hours."}
+                      I'll review your details and confirm your call time within 24 hours.
                     </p>
                   </motion.div>
                 ) : (
@@ -281,7 +243,13 @@ export function FinalCTA() {
                     </div>
 
                     {status === "error" && (
-                      <p className="text-sm text-red-500">Something went wrong. Please try again or book a call directly.</p>
+                      <p className="text-sm text-red-500">
+                        Something went wrong. Please try again or email{" "}
+                        <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold underline">
+                          {CONTACT_EMAIL}
+                        </a>
+                        .
+                      </p>
                     )}
 
                     <button

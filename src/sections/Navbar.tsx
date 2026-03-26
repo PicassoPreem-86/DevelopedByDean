@@ -4,6 +4,8 @@ import { Menu, X, Calendar } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
+  { label: "Services", href: "/services" },
+  { label: "Industries", href: "/industries" },
   { label: "What I Build", href: "/#services" },
   { label: "Use Cases", href: "/use-cases" },
   { label: "Results", href: "/results" },

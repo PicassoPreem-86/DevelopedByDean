@@ -1,11 +1,29 @@
 import { motion } from "framer-motion";
-import { PhoneCall, TrendingUp, Clock, DollarSign } from "lucide-react";
+import { PhoneCall, TrendingUp, Clock, DollarSign, SearchCheck } from "lucide-react";
 
 const results = [
-  { icon: PhoneCall, metric: "+40–60%", label: "More Booked Calls", description: "From AI voice agents & lead capture systems" },
-  { icon: TrendingUp, metric: "2–5x", label: "Increase in Sales", description: "With AI-powered websites & follow-ups" },
-  { icon: Clock, metric: "20–40 hrs", label: "Saved Weekly", description: "Through automation & AI workflows" },
-  { icon: DollarSign, metric: "3–10x", label: "ROI in Month One", description: "Most clients break even fast" },
+  { icon: PhoneCall, metric: "Faster", label: "Lead Response", description: "Voice agents and smarter intake reduce missed opportunities" },
+  { icon: TrendingUp, metric: "Higher", label: "Conversion Lift", description: "Better routing, follow-up, and positioning improve the ceiling" },
+  { icon: Clock, metric: "Less", label: "Manual Work", description: "Automation removes repetitive admin and fragmented handoffs" },
+  { icon: DollarSign, metric: "Clearer", label: "Revenue Visibility", description: "Tracking and CRM flow make performance easier to manage" },
+];
+
+const evidenceCards = [
+  {
+    title: "Representative Build Patterns",
+    description:
+      "AI reception, lead qualification, booking support, internal dashboards, and automated follow-up are representative of the systems these projects are designed around.",
+  },
+  {
+    title: "Scenario-Based Planning",
+    description:
+      "When public case studies are limited, the smartest move is to map the exact bottleneck, workflow, and expected improvement path before the build starts.",
+  },
+  {
+    title: "Measurement From Day One",
+    description:
+      "Every serious system should launch with measurable checkpoints like response time, booked calls, lead routing quality, or workflow completion visibility.",
+  },
 ];
 
 export function Results() {
@@ -21,10 +39,11 @@ export function Results() {
         >
           <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">RESULTS I DELIVER</span>
           <h1 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold text-content-primary">
-            Real Businesses. Real Results.
+            What These Systems Are Built to Improve
           </h1>
           <p className="mt-3 text-lg text-content-muted max-w-xl mx-auto">
-            Here's what my clients typically see after I build their AI system:
+            This section focuses on the operational outcomes these builds are designed to move,
+            without pretending there are public results that do not exist yet.
           </p>
         </motion.div>
 
@@ -48,32 +67,45 @@ export function Results() {
           ))}
         </div>
 
-        {/* Testimonial */}
         <motion.div
-          className="mt-12 rounded-2xl border border-border-light bg-white p-6 shadow-card"
+          className="mt-12 rounded-2xl border border-amber-200 bg-amber-50/80 p-6 shadow-card"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            {/* Avatar */}
-            <div className="h-10 w-10 shrink-0 rounded-full bg-accent/10 flex items-center justify-center">
-              <span className="text-sm font-bold text-accent">JR</span>
+          <div className="flex items-start gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-100">
+              <SearchCheck size={18} className="text-amber-700" />
             </div>
-            {/* Quote */}
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium leading-relaxed text-content-primary italic">
-                "You built us an AI system that feels like having a full sales team on autopilot."
+            <div>
+              <p className="text-sm font-semibold text-content-primary">
+                Transparency note
               </p>
-              <p className="mt-1 text-xs text-content-muted">— Jake R., Home Services Business Owner</p>
-            </div>
-            {/* Badge */}
-            <div className="shrink-0 rounded-lg bg-blue-50 border border-blue-200 px-3 py-1.5 flex items-center gap-1">
-              <span className="text-xs font-semibold text-accent">↑ 187% more leads</span>
+              <p className="mt-2 text-sm leading-relaxed text-content-body">
+                This site does not use invented testimonials or fictional case studies. As public
+                proof becomes available, it should be added here with specifics, screenshots, and
+                measurable context.
+              </p>
             </div>
           </div>
         </motion.div>
+
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {evidenceCards.map((card, index) => (
+            <motion.article
+              key={card.title}
+              className="rounded-2xl border border-border-light bg-white p-6 shadow-card"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.12 + index * 0.08, duration: 0.4 }}
+            >
+              <h2 className="text-lg font-bold text-content-primary">{card.title}</h2>
+              <p className="mt-3 text-sm leading-relaxed text-content-body">{card.description}</p>
+            </motion.article>
+          ))}
+        </div>
       </div>
     </section>
   );

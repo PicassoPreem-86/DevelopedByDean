@@ -2,7 +2,7 @@
 
 Personal brand website for Dean Holland — solo AI developer & systems builder.
 
-**Live:** [developedbydean.vercel.app](https://developedbydean.vercel.app)
+**Canonical:** [developedbydean.ai](https://developedbydean.ai)
 
 ## Tech Stack
 
@@ -27,14 +27,18 @@ Create a `.env.local` for local development and configure the same values in Ver
 
 ```bash
 ANTHROPIC_API_KEY=...
-ALLOWED_ORIGINS=https://developedbydean.vercel.app,https://www.developedbydean.com
-VITE_CONTACT_FORM_ENDPOINT=https://formspree.io/f/your_real_form_id
+ALLOWED_ORIGINS=https://developedbydean.ai,https://www.developedbydean.ai,https://developedbydean.vercel.app
+WEB3FORMS_KEY=...
+VITE_CONTACT_FORM_ENDPOINT=/api/contact
 VITE_LINKEDIN_URL=https://linkedin.com/in/your-profile
 VITE_X_URL=https://x.com/your-handle
 VITE_GITHUB_URL=https://github.com/your-handle
+VITE_GOOGLE_SITE_VERIFICATION=...
+VITE_BING_SITE_VERIFICATION=...
 ```
 
-If `VITE_CONTACT_FORM_ENDPOINT` is omitted, the contact form falls back to opening a pre-filled email to `hello@developedbydean.com`.
+`VITE_CONTACT_FORM_ENDPOINT` should stay pointed at `/api/contact` unless you intentionally replace the built-in form handler.
+Set the verification values once you have Google Search Console and Bing Webmaster Tools connected.
 
 ## Project Structure
 
@@ -51,4 +55,8 @@ public/
 
 ## Deployment
 
-Deployed automatically via Vercel. Push to `main` to deploy, and make sure the environment variables above are set in the project settings before promoting to production.
+Deployed automatically via Vercel. Push to `main` to deploy, make sure the environment variables above are set in the project settings, and keep the canonical domain configured as `https://developedbydean.ai`.
+
+## CI
+
+GitHub Actions now runs `pnpm lint`, `pnpm test`, and `pnpm build` on every pull request plus pushes to `main` and `master`.

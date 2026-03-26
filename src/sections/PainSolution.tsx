@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mic, Layout, Zap, AppWindow, ChevronRight, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const painPoints = [
   { text: "Missing calls & leads", solution: "I build AI voice agents that never miss an opportunity" },
@@ -9,10 +10,10 @@ const painPoints = [
 ];
 
 const services = [
-  { title: "AI Voice Agents", description: "Answer calls, book appointments, qualify leads", icon: Mic },
-  { title: "AI Websites & Landing Pages", description: "Convert visitors into customers on autopilot", icon: Layout },
-  { title: "Workflow Automation", description: "Replace manual tasks & save 20+ hours/week", icon: Zap },
-  { title: "Custom AI Apps & Tools", description: "Dashboards, CRMs, internal tools, & more", icon: AppWindow },
+  { title: "AI Voice Agents", description: "Answer calls, book appointments, qualify leads", icon: Mic, href: "/services/ai-voice-agents" },
+  { title: "AI Websites & Landing Pages", description: "Convert visitors into customers on autopilot", icon: Layout, href: "/services/ai-websites" },
+  { title: "Workflow Automation", description: "Replace manual tasks & save 20+ hours/week", icon: Zap, href: "/services/workflow-automation" },
+  { title: "Custom AI Apps & Tools", description: "Dashboards, CRMs, internal tools, & more", icon: AppWindow, href: "/services/lead-generation-systems" },
 ];
 
 export function PainSolution() {
@@ -88,23 +89,28 @@ export function PainSolution() {
               <h3 className="mb-6 text-lg font-bold text-content-primary">What I Can Do For You</h3>
               <div className="space-y-1">
                 {services.map((service, i) => (
-                  <motion.div
+                  <Link
                     key={service.title}
-                    className="group flex items-center gap-4 rounded-xl p-4 transition-all hover:bg-white hover:shadow-card cursor-pointer"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.2 + i * 0.08 }}
+                    to={service.href}
+                    className="group block"
                   >
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
-                      <service.icon size={18} className="text-accent" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-semibold text-content-primary">{service.title}</p>
-                      <p className="text-xs text-content-muted">{service.description}</p>
-                    </div>
-                    <ChevronRight size={16} className="text-content-muted/40 group-hover:text-accent transition-colors shrink-0" />
-                  </motion.div>
+                    <motion.div
+                      className="flex items-center gap-4 rounded-xl p-4 transition-all hover:bg-white hover:shadow-card cursor-pointer"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 + i * 0.08 }}
+                    >
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                        <service.icon size={18} className="text-accent" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-semibold text-content-primary">{service.title}</p>
+                        <p className="text-xs text-content-muted">{service.description}</p>
+                      </div>
+                      <ChevronRight size={16} className="text-content-muted/40 group-hover:text-accent transition-colors shrink-0" />
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
             </div>
