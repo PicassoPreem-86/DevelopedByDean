@@ -29,9 +29,9 @@ const INITIAL_MESSAGE: Message = {
 };
 
 const QUICK_REPLIES = [
+  "Schedule a strategy call",
   "What can Dean build for me?",
   "How does pricing work?",
-  "Tell me about AI voice agents",
 ];
 
 export function ChatWidget() {
