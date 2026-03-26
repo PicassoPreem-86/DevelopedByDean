@@ -170,7 +170,12 @@ export function ChatWidget() {
                         : "bg-white/[0.06] text-white/80 rounded-bl-md"
                     }`}
                   >
-                    {msg.content}
+                    {msg.content.split("\n").map((line, j) => (
+                      <span key={j}>
+                        {j > 0 && <br />}
+                        {line}
+                      </span>
+                    ))}
                   </div>
                   {msg.role === "user" && (
                     <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/[0.06] mt-0.5">
