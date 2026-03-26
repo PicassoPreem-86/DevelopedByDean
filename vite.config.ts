@@ -152,6 +152,80 @@ export default defineConfig({
             res.end(JSON.stringify({ error: "Something went wrong" }));
           }
         });
+        server.middlewares.use("/api/founding-wall", async (req, res, next) => {
+          if (req.method === "OPTIONS") {
+            res.setHeader("Access-Control-Allow-Origin", "*");
+            res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+            res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+            res.statusCode = 200;
+            res.end();
+            return;
+          }
+
+          if (req.method !== "POST") {
+            next();
+            return;
+          }
+
+          let body = "";
+          for await (const chunk of req) {
+            body += chunk;
+          }
+
+          try {
+            const accessKey = process.env.WEB3FORMS_KEY;
+
+            if (!accessKey) {
+              res.statusCode = 503;
+              res.setHeader("Content-Type", "application/json");
+              res.end(JSON.stringify({ error: "Founding Wall is not configured" }));
+              return;
+            }
+
+            const payload = JSON.parse(body) as Record<string, unknown>;
+            const name = typeof payload.name === "string" ? payload.name.trim().slice(0, 40) : "";
+            const message = typeof payload.message === "string" ? payload.message.trim().slice(0, 220) : "";
+            const tag = typeof payload.tag === "string" ? payload.tag.trim().slice(0, 30) : "";
+            const city = typeof payload.city === "string" ? payload.city.trim().slice(0, 50) : "";
+
+            if (!name || !message || !tag) {
+              res.statusCode = 400;
+              res.setHeader("Content-Type", "application/json");
+              res.end(JSON.stringify({ error: "Invalid founding wall payload" }));
+              return;
+            }
+
+            const response = await fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                access_key: accessKey,
+                subject: `New Founding Wall note from ${name}`,
+                from_name: "DevelopedByDean Founding Wall",
+                name,
+                tag,
+                city: city || "Not provided",
+                message,
+              }),
+            });
+
+            if (!response.ok) {
+              console.error("Founding Wall error:", await response.text());
+              res.statusCode = 500;
+              res.setHeader("Content-Type", "application/json");
+              res.end(JSON.stringify({ error: "Failed to send note" }));
+              return;
+            }
+
+            res.setHeader("Content-Type", "application/json");
+            res.end(JSON.stringify({ success: true }));
+          } catch (error) {
+            console.error("Founding Wall API error:", error);
+            res.statusCode = 500;
+            res.setHeader("Content-Type", "application/json");
+            res.end(JSON.stringify({ error: "Something went wrong" }));
+          }
+        });
       },
     },
   ],

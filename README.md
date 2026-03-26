@@ -30,6 +30,7 @@ ANTHROPIC_API_KEY=...
 ALLOWED_ORIGINS=https://developedbydean.ai,https://www.developedbydean.ai,https://developedbydean.vercel.app
 WEB3FORMS_KEY=...
 VITE_CONTACT_FORM_ENDPOINT=/api/contact
+VITE_WEB3FORMS_KEY=...
 VITE_LINKEDIN_URL=https://linkedin.com/in/your-profile
 VITE_X_URL=https://x.com/your-handle
 VITE_GITHUB_URL=https://github.com/your-handle
@@ -38,7 +39,17 @@ VITE_BING_SITE_VERIFICATION=...
 ```
 
 `VITE_CONTACT_FORM_ENDPOINT` should stay pointed at `/api/contact` unless you intentionally replace the built-in form handler.
+`VITE_WEB3FORMS_KEY` is used by the client-side contact and chat lead capture flows.
 Set the verification values once you have Google Search Console and Bing Webmaster Tools connected.
+The Founding Wall submission flow also uses `WEB3FORMS_KEY` and sends notes to your moderation inbox.
+
+## Founding Wall
+
+The launch guestbook lives at `/founding-wall`.
+
+- Visitors can submit a short note for moderation.
+- Approved notes are displayed from [foundingWallNotes.ts](/Users/preem/Desktop/DevelopedByDean/src/data/foundingWallNotes.ts).
+- To publish a note, copy it from your moderation inbox into that file and redeploy.
 
 ## Project Structure
 

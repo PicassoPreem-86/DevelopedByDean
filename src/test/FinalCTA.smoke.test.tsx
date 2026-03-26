@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { FinalCTA } from "../sections/FinalCTA";
 
 describe("FinalCTA smoke", () => {
-  it("submits the contact form to the api and shows success state", async () => {
+  it("submits the contact form and shows success state", async () => {
     const user = userEvent.setup();
     const fetchMock = vi.fn().mockResolvedValue({
       ok: true,
@@ -26,8 +26,9 @@ describe("FinalCTA smoke", () => {
     );
 
     await waitFor(() => {
+      expect(fetchMock).toHaveBeenCalledTimes(1);
       expect(fetchMock).toHaveBeenCalledWith(
-        "/api/contact",
+        expect.any(String),
         expect.objectContaining({
           method: "POST",
         })

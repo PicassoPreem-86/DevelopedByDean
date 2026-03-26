@@ -46,4 +46,18 @@ describe("App smoke", () => {
       })
     ).toBeInTheDocument();
   });
+
+  it("renders the founding wall route", async () => {
+    window.history.pushState({}, "", "/founding-wall");
+
+    render(
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+    );
+
+    expect(
+      await screen.findByRole("heading", { name: /sign the founding wall/i })
+    ).toBeInTheDocument();
+  });
 });
