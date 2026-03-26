@@ -354,53 +354,29 @@ export function ChatWidget() {
         )}
       </AnimatePresence>
 
-      {/* Floating chat bubble */}
-      <motion.button
-        onClick={() => {
-          setIsOpen(!isOpen);
-          setNudgeStage(0);
-          setHasOpened(true);
-        }}
-        className="fixed bottom-6 right-6 z-[90] flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg hover:bg-accent-hover hover:shadow-glow transition-all"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ delay: 1, type: "spring", stiffness: 200, damping: 15 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        aria-label={isOpen ? "Close chat" : "Open chat"}
-      >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.15 }}
-            >
-              <X size={22} />
-            </motion.div>
-          ) : (
-            <motion.div
-              key="chat"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.15 }}
-            >
-              <MessageCircle size={22} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Pulse ring */}
-        {!isOpen && (
+      {/* Floating chat bubble — hidden when chat is open */}
+      {!isOpen && (
+        <motion.button
+          onClick={() => {
+            setIsOpen(true);
+            setNudgeStage(0);
+            setHasOpened(true);
+          }}
+          className="fixed bottom-6 right-6 z-[90] flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg hover:bg-accent-hover hover:shadow-glow transition-all"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 1, type: "spring", stiffness: 200, damping: 15 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Open chat"
+        >
+          <MessageCircle size={22} />
           <span
             className="absolute inset-0 rounded-full bg-accent/20 animate-ping pointer-events-none"
             style={{ animationDuration: "2s" }}
           />
-        )}
-      </motion.button>
+        </motion.button>
+      )}
     </>
   );
 }
