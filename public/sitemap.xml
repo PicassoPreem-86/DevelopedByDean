@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://developedbydean.vercel.app/</loc>
+    <loc>https://developedbydean.ai/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://developedbydean.vercel.app/use-cases</loc>
+    <loc>https://developedbydean.ai/use-cases</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://developedbydean.vercel.app/results</loc>
+    <loc>https://developedbydean.ai/results</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://developedbydean.vercel.app/process</loc>
+    <loc>https://developedbydean.ai/process</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://developedbydean.vercel.app/faq</loc>
+    <loc>https://developedbydean.ai/faq</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

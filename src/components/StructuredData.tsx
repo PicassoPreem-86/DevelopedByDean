@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://developedbydean.vercel.app";
+const SITE_URL = "https://developedbydean.ai";
 
 const personSchema = {
   "@context": "https://schema.org",

@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 
-const SITE_URL = "https://developedbydean.vercel.app";
+const SITE_URL = "https://developedbydean.ai";
 const SITE_NAME = "DevelopedByDean";
 const DEFAULT_TITLE = "DevelopedByDean | AI Developer & Systems Engineer";
 const DEFAULT_DESCRIPTION =

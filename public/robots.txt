@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://developedbydean.vercel.app/sitemap.xml
+Sitemap: https://developedbydean.ai/sitemap.xml
