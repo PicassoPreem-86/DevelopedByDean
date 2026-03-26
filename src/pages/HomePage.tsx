@@ -6,7 +6,7 @@ import { PainSolution } from "../sections/PainSolution";
 import { SeoClusters } from "../sections/SeoClusters";
 import { TechStack } from "../sections/TechStack";
 import { TrustEvidence } from "../sections/TrustEvidence";
-import { FoundingWallTeaser } from "../sections/FoundingWallTeaser";
+// import { FoundingWallTeaser } from "../sections/FoundingWallTeaser"; // Hidden until Supabase is ready
 import { ScarcityBanner } from "../sections/ScarcityBanner";
 import { FinalCTA } from "../sections/FinalCTA";
 
@@ -24,7 +24,7 @@ export function HomePage() {
       <SeoClusters />
       <TechStack />
       <TrustEvidence />
-      <FoundingWallTeaser />
+      {/* <FoundingWallTeaser /> Hidden until Supabase is ready */}
       <ScarcityBanner />
       <FinalCTA />
     </>

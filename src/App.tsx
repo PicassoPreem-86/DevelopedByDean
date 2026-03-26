@@ -11,7 +11,7 @@ import { FAQPage } from "./pages/FAQPage";
 import { ServicesHubPage } from "./pages/ServicesHubPage";
 import { IndustriesHubPage } from "./pages/IndustriesHubPage";
 import { SeoLandingPage } from "./pages/SeoLandingPage";
-import { FoundingWallPage } from "./pages/FoundingWallPage";
+// import { FoundingWallPage } from "./pages/FoundingWallPage"; // Hidden until Supabase is ready
 import { industryPages, servicePages } from "./data/seoPages";
 
 const ChatWidget = lazy(() =>
@@ -52,7 +52,7 @@ function Layout() {
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/faq" element={<FAQPage />} />
-          <Route path="/founding-wall" element={<FoundingWallPage />} />
+          {/* <Route path="/founding-wall" element={<FoundingWallPage />} /> Hidden until Supabase is ready */}
           {servicePages.map((page) => (
             <Route
               key={page.path}
