@@ -38,7 +38,8 @@ const NOTE_TINTS = [
   "bg-[#ffeeba]",
 ];
 
-const FOUNDING_WALL_ENDPOINT = "/api/founding-wall";
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY?.trim() || "";
 
 export function FoundingWallPage() {
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -57,13 +58,18 @@ export function FoundingWallPage() {
     setStatus("submitting");
 
     try {
-      const response = await fetch(FOUNDING_WALL_ENDPOINT, {
+      const response = await fetch(WEB3FORMS_URL, {
         method: "POST",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New Founding Wall note from ${formData.name}`,
+          from_name: "DevelopedByDean Founding Wall",
+          ...formData,
+        }),
       });
 
       if (!response.ok) {
