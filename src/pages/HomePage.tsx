@@ -6,7 +6,6 @@ import { StatsBar } from "../sections/StatsBar";
 import { PainSolution } from "../sections/PainSolution";
 import { Testimonials } from "../sections/Testimonials";
 import { ProcessSteps } from "../sections/ProcessSteps";
-import { TrustEvidence } from "../sections/TrustEvidence";
 import { ScarcityBanner } from "../sections/ScarcityBanner";
 import { FinalCTA } from "../sections/FinalCTA";
 
@@ -24,7 +23,6 @@ export function HomePage() {
       <PainSolution />
       <Testimonials />
       <ProcessSteps />
-      <TrustEvidence />
       <ScarcityBanner />
       <FinalCTA />
     </>
