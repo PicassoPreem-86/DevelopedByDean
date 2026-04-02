@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, CheckCircle2, Calendar, Play } from "lucide-react";
+import { Sparkles, ArrowRight, CheckCircle2, Calendar, ClipboardCheck } from "lucide-react";
 
 export function Hero() {
   return (
@@ -72,7 +72,7 @@ export function Hero() {
                 href="/assessment"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-[15px] font-semibold text-content-primary hover:bg-white/90 transition-colors"
               >
-                <Play size={16} className="fill-content-primary" /> Get Your Free AI Readiness Score
+                <ClipboardCheck size={16} /> Get Your Free AI Readiness Score
               </a>
             </motion.div>
 
