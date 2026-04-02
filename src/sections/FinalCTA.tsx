@@ -80,12 +80,6 @@ export function FinalCTA() {
                 ))}
               </div>
 
-              <div className="mt-8 rounded-xl border border-border-light bg-white/60 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-content-muted">Typical investment</p>
-                <p className="mt-1 text-sm text-content-body">
-                  Projects start at <span className="font-bold text-content-primary">$2,500</span> and are scoped to your exact needs. You'll get a clear proposal after our call — no surprises.
-                </p>
-              </div>
             </div>
 
             {/* Right — Contact form */}
