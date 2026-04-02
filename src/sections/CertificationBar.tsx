@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, ExternalLink } from "lucide-react";
+import { Shield } from "lucide-react";
 
 export function CertificationBar() {
   return (
@@ -23,14 +23,6 @@ export function CertificationBar() {
             </p>
           </div>
         </div>
-        <a
-          href="https://verify.skilljar.com/c/u55arn2xvr72"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 rounded-lg border border-accent/20 bg-accent/5 px-4 py-2 text-xs font-semibold text-accent transition-all hover:bg-accent/10 hover:border-accent/40"
-        >
-          Verify Credential <ExternalLink size={12} />
-        </a>
       </div>
     </motion.section>
   );
