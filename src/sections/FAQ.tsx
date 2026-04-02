@@ -59,13 +59,12 @@ export function FAQ() {
               key={i}
               className={`rounded-2xl border overflow-hidden transition-all duration-300 ${
                 openIndex === i
-                  ? "border-accent/30 bg-white/[0.07] shadow-[0_0_30px_rgba(59,130,246,0.08)]"
+                  ? "border-accent/30 bg-white/[0.07] shadow-[0_0_30px_rgba(67,97,238,0.08)]"
                   : "border-white/[0.06] bg-white/[0.03] hover:bg-white/[0.05]"
               }`}
               initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05, duration: 0.3 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.06, duration: 0.35 }}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
