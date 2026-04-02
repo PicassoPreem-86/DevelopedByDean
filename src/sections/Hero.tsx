@@ -139,9 +139,9 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* Floating stat cards */}
+              {/* Floating stat cards — positioned outside the photo */}
               <motion.div
-                className="absolute -left-6 top-8 rounded-xl border border-white/[0.08] bg-hero/90 px-3.5 py-2.5 shadow-xl backdrop-blur-sm sm:-left-12"
+                className="absolute -left-6 -top-6 rounded-xl border border-white/[0.08] bg-hero/90 px-3.5 py-2.5 shadow-xl backdrop-blur-sm sm:-left-14 sm:-top-4"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6, duration: 0.5, ease: "easeOut" }}
@@ -158,7 +158,7 @@ export function Hero() {
               </motion.div>
 
               <motion.div
-                className="absolute -right-4 top-1/3 rounded-xl border border-white/[0.08] bg-hero/90 px-3.5 py-2.5 shadow-xl backdrop-blur-sm sm:-right-10"
+                className="absolute -right-4 -top-6 rounded-xl border border-white/[0.08] bg-hero/90 px-3.5 py-2.5 shadow-xl backdrop-blur-sm sm:-right-14 sm:-top-4"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.75, duration: 0.5, ease: "easeOut" }}
@@ -175,7 +175,7 @@ export function Hero() {
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-3 left-1/2 -translate-x-1/2 rounded-xl border border-white/[0.08] bg-hero/90 px-3.5 py-2.5 shadow-xl backdrop-blur-sm"
+                className="absolute -bottom-6 -right-4 rounded-xl border border-white/[0.08] bg-hero/90 px-3.5 py-2.5 shadow-xl backdrop-blur-sm sm:-bottom-4 sm:-right-14"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.9, duration: 0.5, ease: "easeOut" }}
