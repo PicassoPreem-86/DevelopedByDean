@@ -70,23 +70,13 @@ export function Hero() {
               >
                 <Calendar size={16} /> Book a Free Strategy Call <ArrowRight size={16} />
               </a>
-              {DEMO_VIDEO_URL ? (
-                <a
-                  href={DEMO_VIDEO_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-[15px] font-semibold text-content-primary hover:bg-white/90 transition-colors"
-                >
-                  <Play size={16} className="fill-content-primary" /> Watch a 2-Min Demo
-                </a>
-              ) : (
-                <a
-                  href="#services"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-[15px] font-semibold text-content-primary hover:bg-white/90 transition-colors"
-                >
-                  <Play size={16} className="fill-content-primary" /> See What I Build
-                </a>
-              )}
+              <a
+                href={DEMO_VIDEO_URL || "#services"}
+                {...(DEMO_VIDEO_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-[15px] font-semibold text-content-primary hover:bg-white/90 transition-colors"
+              >
+                <Play size={16} className="fill-content-primary" /> Take Your Free AI Assessment
+              </a>
             </motion.div>
 
             <motion.div
