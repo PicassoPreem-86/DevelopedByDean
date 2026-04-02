@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Sparkles, ArrowRight, CheckCircle2, Calendar, Play, Bot, Zap, BarChart3 } from "lucide-react";
+import { Sparkles, ArrowRight, CheckCircle2, Calendar, Play } from "lucide-react";
 
 const DEMO_VIDEO_URL = import.meta.env.VITE_DEMO_VIDEO_URL?.trim() || "";
 
@@ -139,57 +139,6 @@ export function Hero() {
                 </div>
               </div>
 
-              {/* Floating stat cards — positioned outside the photo */}
-              <motion.div
-                className="absolute -left-6 -top-6 rounded-xl border border-white/[0.08] bg-hero/90 px-3.5 py-2.5 shadow-xl backdrop-blur-sm sm:-left-14 sm:-top-4"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6, duration: 0.5, ease: "easeOut" }}
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/15">
-                    <Bot size={15} className="text-accent-light" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-white">AI Voice Agents</p>
-                    <p className="text-[10px] text-white/40">24/7 call handling</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="absolute -right-4 -top-6 rounded-xl border border-white/[0.08] bg-hero/90 px-3.5 py-2.5 shadow-xl backdrop-blur-sm sm:-right-14 sm:-top-4"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.75, duration: 0.5, ease: "easeOut" }}
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/15">
-                    <Zap size={15} className="text-emerald-400" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-white">Automation</p>
-                    <p className="text-[10px] text-white/40">500+ hours saved</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                className="absolute -bottom-6 -right-4 rounded-xl border border-white/[0.08] bg-hero/90 px-3.5 py-2.5 shadow-xl backdrop-blur-sm sm:-bottom-4 sm:-right-14"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.5, ease: "easeOut" }}
-              >
-                <div className="flex items-center gap-2.5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-amber-500/15">
-                    <BarChart3 size={15} className="text-amber-400" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-white">100% Satisfaction</p>
-                    <p className="text-[10px] text-white/40">Every project delivered</p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
