@@ -72,7 +72,7 @@ export function Hero() {
                 href="/assessment"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-[15px] font-semibold text-content-primary hover:bg-white/90 transition-colors"
               >
-                <Play size={16} className="fill-content-primary" /> How AI-Ready Is Your Business?
+                <Play size={16} className="fill-content-primary" /> Get Your Free AI Readiness Score
               </a>
             </motion.div>
 
