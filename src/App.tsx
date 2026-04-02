@@ -11,6 +11,9 @@ import { FAQPage } from "./pages/FAQPage";
 import { ServicesHubPage } from "./pages/ServicesHubPage";
 import { IndustriesHubPage } from "./pages/IndustriesHubPage";
 import { SeoLandingPage } from "./pages/SeoLandingPage";
+import { AssessmentPage } from "./pages/AssessmentPage";
+import { EmailCapturePage } from "./pages/EmailCapturePage";
+import { AssessmentResultsPage } from "./pages/AssessmentResultsPage";
 // import { FoundingWallPage } from "./pages/FoundingWallPage"; // Hidden until Supabase is ready
 import { industryPages, servicePages } from "./data/seoPages";
 
@@ -52,6 +55,9 @@ function Layout() {
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/process" element={<ProcessPage />} />
           <Route path="/faq" element={<FAQPage />} />
+          <Route path="/assessment" element={<AssessmentPage />} />
+          <Route path="/assessment/capture" element={<EmailCapturePage />} />
+          <Route path="/assessment/results" element={<AssessmentResultsPage />} />
           {/* <Route path="/founding-wall" element={<FoundingWallPage />} /> Hidden until Supabase is ready */}
           {servicePages.map((page) => (
             <Route

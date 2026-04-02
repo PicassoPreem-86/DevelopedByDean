@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, CheckCircle2, Calendar, Play } from "lucide-react";
 
-const DEMO_VIDEO_URL = import.meta.env.VITE_DEMO_VIDEO_URL?.trim() || "";
-
 export function Hero() {
   return (
     <section className="relative bg-hero overflow-hidden pt-28 pb-20 px-6">
@@ -71,8 +69,7 @@ export function Hero() {
                 <Calendar size={16} /> Book a Free Strategy Call <ArrowRight size={16} />
               </a>
               <a
-                href={DEMO_VIDEO_URL || "#services"}
-                {...(DEMO_VIDEO_URL ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                href="/assessment"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-[15px] font-semibold text-content-primary hover:bg-white/90 transition-colors"
               >
                 <Play size={16} className="fill-content-primary" /> Take Your Free AI Assessment
