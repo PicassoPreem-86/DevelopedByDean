@@ -46,7 +46,7 @@ export function FinalCTA() {
   };
 
   const inputClass =
-    "w-full rounded-lg border border-border-light bg-white px-4 py-3 text-sm text-content-primary placeholder:text-content-muted/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors";
+    "w-full rounded-lg border border-border-light bg-white px-4 py-3 text-[16px] sm:text-sm text-content-primary placeholder:text-content-muted/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent transition-colors";
 
   return (
     <section id="contact" className="py-20 lg:py-28 px-6 bg-surface-light">

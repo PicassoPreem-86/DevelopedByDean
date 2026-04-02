@@ -45,9 +45,9 @@ export function Footer() {
           {/* Navigation */}
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/30">Navigation</h4>
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col gap-1">
               {footerLinks.map((link) => (
-                <Link key={link.href} to={link.href} className="text-sm text-white/50 hover:text-white transition-colors">
+                <Link key={link.href} to={link.href} className="text-sm text-white/50 hover:text-white transition-colors py-1.5">
                   {link.label}
                 </Link>
               ))}
@@ -79,7 +79,7 @@ export function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all"
+                    className="flex h-11 w-11 items-center justify-center rounded-lg bg-white/5 text-white/40 hover:bg-white/10 hover:text-white transition-all"
                     aria-label={link.label}
                   >
                     <link.Icon />

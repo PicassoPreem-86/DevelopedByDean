@@ -23,7 +23,7 @@ export function ScarcityBanner() {
         </div>
         <a
           href="/#contact"
-          className="text-sm font-semibold text-accent hover:text-accent-light transition-colors"
+          className="text-sm font-semibold text-accent hover:text-accent-light transition-colors py-2 px-1"
         >
           Claim your spot &rarr;
         </a>

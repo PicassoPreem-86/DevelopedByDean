@@ -84,7 +84,7 @@ export function UseCases() {
             <button
               key={cat}
               onClick={() => { setActiveCategory(cat); setShowAll(false); }}
-              className={`rounded-full px-3 sm:px-5 py-2 text-xs sm:text-sm font-semibold transition-all duration-300 ${
+              className={`rounded-full px-3 sm:px-5 py-2.5 text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 activeCategory === cat
                   ? "bg-accent text-white shadow-md"
                   : "bg-surface-light border border-border-light text-content-muted hover:text-content-primary hover:border-accent/30"

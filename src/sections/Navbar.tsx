@@ -65,6 +65,12 @@ export function Navbar() {
     setIsMobileOpen(false);
   }, [location.pathname]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [isMobileOpen]);
+
   // Handle hash scroll after navigation
   useEffect(() => {
     if (location.hash) {

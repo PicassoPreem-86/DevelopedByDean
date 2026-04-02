@@ -46,11 +46,11 @@ export function TechStack() {
         <p className="mb-8 text-center text-xs font-semibold uppercase tracking-widest text-content-muted">
           Built with industry-leading tools & platforms
         </p>
-        <div className="flex items-center justify-center gap-5 sm:gap-8 lg:gap-10 overflow-x-auto">
+        <div className="flex items-center justify-center gap-4 sm:gap-8 lg:gap-10 flex-wrap">
           {tools.map((tool, i) => (
             <motion.div
               key={tool.name}
-              className="flex shrink-0 items-center gap-2.5 text-content-muted/50 hover:text-content-muted transition-colors"
+              className="flex items-center gap-2.5 text-content-muted/50 hover:text-content-muted transition-colors"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}

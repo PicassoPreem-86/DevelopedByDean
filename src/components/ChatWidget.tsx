@@ -193,7 +193,7 @@ export function ChatWidget() {
 
               <button
                 onClick={() => setIsOpen(false)}
-                className="rounded-lg p-1.5 text-white/30 hover:text-white/60 hover:bg-white/[0.05] transition-all"
+                className="rounded-lg p-3 text-white/30 hover:text-white/60 hover:bg-white/[0.05] transition-all"
                 aria-label="Close chat"
               >
                 <X size={16} />
@@ -251,7 +251,7 @@ export function ChatWidget() {
                     <button
                       key={reply}
                       onClick={() => sendMessage(reply)}
-                      className="rounded-full border border-accent/30 bg-accent/[0.08] px-3 sm:px-3.5 py-1.5 text-[11px] sm:text-[12px] font-medium text-accent hover:bg-accent/20 hover:border-accent/50 transition-all"
+                      className="rounded-full border border-accent/30 bg-accent/[0.08] px-3 sm:px-3.5 py-2.5 text-[12px] font-medium text-accent hover:bg-accent/20 hover:border-accent/50 transition-all"
                     >
                       {reply}
                     </button>
@@ -308,7 +308,7 @@ export function ChatWidget() {
                 <button
                   onClick={() => sendMessage()}
                   disabled={!input.trim() || isLoading}
-                  className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-white hover:bg-accent-hover disabled:opacity-30 disabled:hover:bg-accent transition-all"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-white hover:bg-accent-hover disabled:opacity-30 disabled:hover:bg-accent transition-all"
                   aria-label="Send message"
                 >
                   <Send size={14} className="sm:hidden" />
@@ -333,7 +333,7 @@ export function ChatWidget() {
               setNudgeStage(0);
               setHasOpened(true);
             }}
-            className="fixed bottom-[88px] right-6 z-[70] flex items-start gap-3 rounded-2xl bg-hero border border-white/[0.1] px-4 py-3 shadow-2xl cursor-pointer hover:border-accent/30 transition-colors max-w-[280px]"
+            className="fixed bottom-[88px] right-4 left-4 sm:left-auto sm:right-6 z-[70] flex items-start gap-3 rounded-2xl bg-hero border border-white/[0.1] px-4 py-3 shadow-2xl cursor-pointer hover:border-accent/30 transition-colors sm:max-w-[280px]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
