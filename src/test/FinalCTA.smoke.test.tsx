@@ -17,7 +17,7 @@ describe("FinalCTA smoke", () => {
     await user.type(screen.getByLabelText(/^name$/i), "Dean");
     await user.type(screen.getByLabelText(/email/i), "dean@example.com");
     await user.type(
-      screen.getByLabelText(/message/i),
+      screen.getByLabelText(/what can i help with/i),
       "I want help automating lead follow-up."
     );
 

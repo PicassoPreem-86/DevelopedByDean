@@ -12,12 +12,8 @@ export function FinalCTA() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [formData, setFormData] = useState({
     name: "",
-    business: "",
     email: "",
     phone: "",
-    location: "",
-    preferred_date: "",
-    preferred_time: "",
     message: "",
   });
 
@@ -43,7 +39,7 @@ export function FinalCTA() {
       }
 
       setStatus("success");
-      setFormData({ name: "", business: "", email: "", phone: "", location: "", preferred_date: "", preferred_time: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", message: "" });
     } catch {
       setStatus("error");
     }
@@ -84,7 +80,12 @@ export function FinalCTA() {
                 ))}
               </div>
 
-              <p className="mt-8 text-xs text-content-muted">🔥 Spots filling up — let's talk ASAP!</p>
+              <div className="mt-8 rounded-xl border border-border-light bg-white/60 p-4">
+                <p className="text-xs font-semibold uppercase tracking-wide text-content-muted">Typical investment</p>
+                <p className="mt-1 text-sm text-content-body">
+                  Projects start at <span className="font-bold text-content-primary">$2,500</span> and are scoped to your exact needs. You'll get a clear proposal after our call — no surprises.
+                </p>
+              </div>
             </div>
 
             {/* Right — Contact form */}
@@ -113,36 +114,20 @@ export function FinalCTA() {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                   >
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="name" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          id="name"
-                          name="name"
-                          required
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="Your name"
-                          className={inputClass}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="business" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                          Business Name
-                        </label>
-                        <input
-                          type="text"
-                          id="business"
-                          name="business"
-                          value={formData.business}
-                          onChange={(e) => setFormData({ ...formData, business: e.target.value })}
-                          placeholder="Your company"
-                          className={inputClass}
-                        />
-                      </div>
+                    <div>
+                      <label htmlFor="name" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
+                        Name
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        placeholder="Your name"
+                        className={inputClass}
+                      />
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-2">
@@ -163,7 +148,7 @@ export function FinalCTA() {
                       </div>
                       <div>
                         <label htmlFor="phone" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                          Phone Number
+                          Phone
                         </label>
                         <input
                           type="tel"
@@ -178,63 +163,8 @@ export function FinalCTA() {
                     </div>
 
                     <div>
-                      <label htmlFor="location" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                        City / State
-                      </label>
-                      <input
-                        type="text"
-                        id="location"
-                        name="location"
-                        value={formData.location}
-                        onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                        placeholder="e.g. Austin, TX"
-                        className={inputClass}
-                      />
-                    </div>
-
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div>
-                        <label htmlFor="preferred_date" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                          Preferred Date
-                        </label>
-                        <input
-                          type="date"
-                          id="preferred_date"
-                          name="preferred_date"
-                          value={formData.preferred_date}
-                          onChange={(e) => setFormData({ ...formData, preferred_date: e.target.value })}
-                          min={new Date().toISOString().split("T")[0]}
-                          className={inputClass}
-                        />
-                      </div>
-                      <div>
-                        <label htmlFor="preferred_time" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                          Preferred Time
-                        </label>
-                        <select
-                          id="preferred_time"
-                          name="preferred_time"
-                          value={formData.preferred_time}
-                          onChange={(e) => setFormData({ ...formData, preferred_time: e.target.value })}
-                          className={inputClass}
-                        >
-                          <option value="">Select a time</option>
-                          <option value="9:00 AM">9:00 AM</option>
-                          <option value="10:00 AM">10:00 AM</option>
-                          <option value="11:00 AM">11:00 AM</option>
-                          <option value="12:00 PM">12:00 PM</option>
-                          <option value="1:00 PM">1:00 PM</option>
-                          <option value="2:00 PM">2:00 PM</option>
-                          <option value="3:00 PM">3:00 PM</option>
-                          <option value="4:00 PM">4:00 PM</option>
-                          <option value="5:00 PM">5:00 PM</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div>
                       <label htmlFor="message" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
-                        Message
+                        What can I help with?
                       </label>
                       <textarea
                         id="message"

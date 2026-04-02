@@ -21,10 +21,10 @@ export default {
           inverse: "#F8FAFC",
         },
         accent: {
-          DEFAULT: "#3B82F6",
-          hover: "#2563EB",
-          light: "#60A5FA",
-          glow: "rgba(59, 130, 246, 0.15)",
+          DEFAULT: "#4361EE",
+          hover: "#3A56D4",
+          light: "#7B93F5",
+          glow: "rgba(67, 97, 238, 0.15)",
         },
         border: {
           light: "#E2E8F0",

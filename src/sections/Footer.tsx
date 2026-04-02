@@ -57,9 +57,14 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/30">Contact</h4>
-            <a href={`mailto:${CONTACT_EMAIL}`} className="text-sm text-white/50 hover:text-white transition-colors">
+            <a href={`mailto:${CONTACT_EMAIL}`} className="block text-sm text-white/50 hover:text-white transition-colors">
               {CONTACT_EMAIL}
             </a>
+            {import.meta.env.VITE_PHONE?.trim() && (
+              <a href={`tel:${import.meta.env.VITE_PHONE.trim()}`} className="mt-1.5 block text-sm text-white/50 hover:text-white transition-colors">
+                {import.meta.env.VITE_PHONE.trim()}
+              </a>
+            )}
             <p className="mt-2 text-xs text-white/30">Available worldwide · Remote</p>
           </div>
 

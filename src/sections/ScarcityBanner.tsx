@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 
+const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+
 export function ScarcityBanner() {
   return (
     <motion.section
@@ -16,14 +18,14 @@ export function ScarcityBanner() {
             <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-500" />
           </span>
           <span className="text-xs sm:text-sm font-semibold text-white">
-            Currently accepting 2 new clients for April
+            Currently accepting 2 new clients for {currentMonth}
           </span>
         </div>
         <a
           href="/#contact"
           className="text-sm font-semibold text-accent hover:text-accent-light transition-colors"
         >
-          Claim your spot →
+          Claim your spot &rarr;
         </a>
       </div>
     </motion.section>

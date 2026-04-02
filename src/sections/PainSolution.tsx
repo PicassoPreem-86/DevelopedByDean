@@ -45,15 +45,15 @@ export function PainSolution() {
                 <motion.div
                   key={item.text}
                   className="flex items-start gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, x: -16, filter: "blur(2px)" }}
+                  whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.08, duration: 0.35 }}
+                  transition={{ delay: index * 0.08, duration: 0.4, ease: "easeOut" }}
                 >
                   <CheckCircle2 size={20} className="mt-0.5 shrink-0 text-green-500" />
                   <p className="text-[15px] leading-relaxed text-content-primary">
                     <span className="font-semibold">{item.text}</span>
-                    {" -> "}
+                    <span className="mx-2 inline-block text-accent">&rarr;</span>
                     {item.solution}
                   </p>
                 </motion.div>
@@ -78,6 +78,7 @@ export function PainSolution() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.18 + index * 0.07 }}
+                      whileHover={{ x: 4 }}
                     >
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
                         <service.icon size={18} className="text-accent" />

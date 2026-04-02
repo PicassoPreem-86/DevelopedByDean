@@ -28,6 +28,8 @@ const deliveryStandards = [
   "Real workflow mapping before implementation starts",
   "Production hardening around contact, chat, and deployment flows",
   "Direct post-launch iteration based on actual behavior and performance",
+  "Secure data handling with encrypted connections and environment-isolated keys",
+  "Ongoing support SLA with defined response times after launch",
 ];
 
 export function TrustEvidence() {
@@ -66,11 +68,11 @@ export function TrustEvidence() {
             {proofPillars.map((item, index) => (
               <motion.article
                 key={item.title}
-                className="rounded-3xl border border-border-light bg-white p-6 shadow-card"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="rounded-3xl border border-border-light bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover"
+                initial={{ opacity: 0, scale: 0.97 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.4 }}
+                transition={{ delay: index * 0.1, duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
                 <div className="flex items-start gap-4">
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-accent/10">
