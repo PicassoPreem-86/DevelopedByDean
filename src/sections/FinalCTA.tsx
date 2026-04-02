@@ -14,6 +14,7 @@ export function FinalCTA() {
     name: "",
     email: "",
     phone: "",
+    website: "",
     message: "",
   });
 
@@ -39,7 +40,7 @@ export function FinalCTA() {
       }
 
       setStatus("success");
-      setFormData({ name: "", email: "", phone: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", website: "", message: "" });
     } catch {
       setStatus("error");
     }
@@ -154,6 +155,21 @@ export function FinalCTA() {
                           className={inputClass}
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="website" className="mb-1.5 block text-xs font-semibold text-content-muted uppercase tracking-wide">
+                        Website
+                      </label>
+                      <input
+                        type="url"
+                        id="website"
+                        name="website"
+                        value={formData.website}
+                        onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                        placeholder="https://yourwebsite.com"
+                        className={inputClass}
+                      />
                     </div>
 
                     <div>
