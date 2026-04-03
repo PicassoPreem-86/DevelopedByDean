@@ -266,10 +266,12 @@ export function ServicesHubPage() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
           >
-            Most small businesses lose revenue every day to problems they know exist but haven't
-            solved yet. Calls go unanswered. Leads go cold. Teams waste hours on repetitive admin.
-            Your website collects visits but not customers. These aren't technology problems — they're
-            system problems. And they have system-level solutions.
+            Most small businesses lose revenue every day to problems they already know exist but
+            haven't fixed yet. Inbound calls go unanswered after hours. Leads go cold because
+            follow-up takes too long. Teams waste hours every week on repetitive admin that a system
+            should handle. Your website collects visits but doesn't convert them into customers.
+            These aren't technology problems — they're system problems. And they have system-level
+            fixes that work around the clock without adding headcount or complexity.
           </motion.p>
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {painPoints.map((point, i) => (
@@ -281,8 +283,8 @@ export function ServicesHubPage() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08, duration: 0.4, ease: "easeOut" }}
               >
-                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-red-50">
-                  <point.icon size={18} className="text-red-500" />
+                <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-accent/10">
+                  <point.icon size={18} className="text-accent" />
                 </div>
                 <p className="text-sm font-bold text-content-primary">{point.label}</p>
                 <p className="mt-1 text-sm leading-relaxed text-content-muted">
@@ -375,8 +377,8 @@ export function ServicesHubPage() {
                         </li>
                       ))}
                     </ul>
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-accent">
-                      Learn more <ArrowRight size={14} />
+                    <span className="mt-5 inline-block text-sm font-semibold text-accent">
+                      Learn more &rarr;
                     </span>
                   </Link>
                 </motion.div>
@@ -491,8 +493,8 @@ export function ServicesHubPage() {
                   </p>
                   <h3 className="mt-3 text-lg font-bold text-white">{page.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-white/50">{page.description}</p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-accent-light">
-                    See how <ArrowRight size={14} />
+                  <span className="mt-4 inline-block text-sm font-semibold text-accent-light">
+                    See how &rarr;
                   </span>
                 </Link>
               </motion.div>
