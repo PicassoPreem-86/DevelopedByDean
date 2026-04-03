@@ -70,8 +70,13 @@ const faqSchema = {
   })),
 };
 
-/* ─── Service card icons ─── */
-const serviceIcons = [Mic, Layout, Zap, AppWindow] as const;
+/* ─── Service card icons (keyed by slug to prevent misalignment) ─── */
+const serviceIconMap: Record<string, typeof Mic> = {
+  "ai-voice-agents": Mic,
+  "ai-websites": Layout,
+  "workflow-automation": Zap,
+  "lead-generation-systems": AppWindow,
+};
 
 /* ─── Pain points data ─── */
 const painPoints = [
@@ -338,7 +343,7 @@ export function ServicesHubPage() {
 
           <div className="grid gap-5 lg:grid-cols-2">
             {servicePages.map((page, i) => {
-              const Icon = serviceIcons[i];
+              const Icon = serviceIconMap[page.slug] ?? AppWindow;
               return (
                 <motion.div
                   key={page.path}
@@ -561,9 +566,11 @@ export function ServicesHubPage() {
                   transition={{ delay: i * 0.05, duration: 0.3 }}
                 >
                   <button
+                    id={`faq-question-${i}`}
                     onClick={() => setOpenFaq(isOpen ? null : i)}
                     className="flex w-full items-center justify-between px-6 py-5 text-left"
                     aria-expanded={isOpen}
+                    aria-controls={`faq-answer-${i}`}
                   >
                     <span className="pr-4 text-[15px] font-semibold text-content-primary">
                       {faq.question}
@@ -579,6 +586,9 @@ export function ServicesHubPage() {
                   <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
+                        id={`faq-answer-${i}`}
+                        role="region"
+                        aria-labelledby={`faq-question-${i}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
