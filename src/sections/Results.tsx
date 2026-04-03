@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { PhoneCall, TrendingUp, Clock, DollarSign, SearchCheck } from "lucide-react";
+import { PhoneCall, TrendingUp, Clock, DollarSign } from "lucide-react";
 
 const results = [
   { icon: PhoneCall, metric: "Faster", label: "Lead Response", description: "Voice agents and smarter intake reduce missed opportunities" },
@@ -67,31 +67,7 @@ export function Results() {
           ))}
         </div>
 
-        <motion.div
-          className="mt-12 rounded-2xl border border-amber-200 bg-amber-50/80 p-6 shadow-card"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          <div className="flex items-start gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-100">
-              <SearchCheck size={18} className="text-amber-700" />
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-content-primary">
-                Transparency note
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-content-body">
-                This site does not use invented testimonials or fictional case studies. As public
-                proof becomes available, it should be added here with specifics, screenshots, and
-                measurable context.
-              </p>
-            </div>
-          </div>
-        </motion.div>
-
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+        <div className="mt-12 grid gap-5 lg:grid-cols-3">
           {evidenceCards.map((card, index) => (
             <motion.article
               key={card.title}
