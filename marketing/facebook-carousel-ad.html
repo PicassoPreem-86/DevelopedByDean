@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevelopedByDean — Facebook Carousel Ad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-dark: #0B0F19;
+    --bg-card: #111827;
+    --accent: #3B82F6;
+    --accent-light: #60A5FA;
+    --accent-glow: rgba(59, 130, 246, 0.15);
+    --white: #FFFFFF;
+    --white-70: rgba(255,255,255,0.7);
+    --white-40: rgba(255,255,255,0.4);
+    --white-10: rgba(255,255,255,0.1);
+    --white-05: rgba(255,255,255,0.05);
+    --card-size: 1080px;
+    --danger: #EF4444;
+    --success: #10B981;
+    --amber: #F59E0B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #060810;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: var(--white);
+    padding: 40px;
+  }
+
+  h1.page-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white-70);
+    text-align: center;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+
+  p.page-sub {
+    font-size: 15px;
+    color: var(--white-40);
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .carousel-strip {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    padding: 20px 0 40px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .carousel-strip::-webkit-scrollbar {
+    height: 6px;
+  }
+  .carousel-strip::-webkit-scrollbar-track {
+    background: var(--white-05);
+    border-radius: 3px;
+  }
+  .carousel-strip::-webkit-scrollbar-thumb {
+    background: var(--white-10);
+    border-radius: 3px;
+  }
+
+  /* ========== CARD BASE ========== */
+  .card {
+    flex-shrink: 0;
+    width: var(--card-size);
+    height: var(--card-size);
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+    scroll-snap-align: start;
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+    text-align: center;
+  }
+
+  /* ========== CARD 1: HOOK ========== */
+  .card-1 {
+    background: var(--bg-dark);
+  }
+
+  .card-1::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+    pointer-events: none;
+  }
+
+  .card-1::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .card-1 .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--white-05) 1px, transparent 1px),
+      linear-gradient(90deg, var(--white-05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.4;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  .card-1 .hook-pre {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--accent-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-1 .hook-main {
+    font-family: 'Syne', sans-serif;
+    font-size: 72px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+
+  .card-1 .hook-main .accent {
+    color: var(--accent);
+  }
+
+  .card-1 .hook-bottom {
+    position: absolute;
+    bottom: 60px;
+    left: 80px;
+    right: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+  }
+
+  .card-1 .brand-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.3px;
+  }
+
+  .card-1 .swipe-hint {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white-40);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .card-1 .swipe-hint .arrow {
+    display: inline-block;
+    width: 32px;
+    height: 2px;
+    background: var(--white-40);
+    position: relative;
+  }
+  .card-1 .swipe-hint .arrow::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid var(--white-40);
+    border-right: 2px solid var(--white-40);
+    transform: rotate(45deg);
+  }
+
+  /* ========== CARD 2: PAIN POINTS ========== */
+  .card-2 {
+    background: var(--bg-dark);
+  }
+
+  .card-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--danger), var(--amber));
+  }
+
+  .card-2 .card-inner {
+    justify-content: flex-start;
+    padding-top: 100px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .card-2 .section-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--danger);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .pain-list {
+    list-style: none;
+    width: 100%;
+  }
+
+  .pain-list li {
+    font-size: 38px;
+    font-weight: 700;
+    color: var(--white);
+    padding: 28px 0;
+    border-bottom: 1px solid var(--white-10);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    letter-spacing: -0.5px;
+  }
+
+  .pain-list li:last-child {
+    border-bottom: none;
+  }
+
+  .pain-list .x-mark {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  /* ========== CARD 3: SOLUTION ========== */
+  .card-3 {
+    background: var(--bg-dark);
+  }
+
+  .card-3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent), var(--success));
+  }
+
+  .card-3 .card-inner {
+    justify-content: flex-start;
+    padding-top: 100px;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .card-3 .section-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--success);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  .solution-list {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .solution-item {
+    background: var(--white-05);
+    border: 1px solid var(--white-10);
+    border-radius: 20px;
+    padding: 32px 36px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .solution-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: rgba(59, 130, 246, 0.12);
+    color: var(--accent-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+  }
+
+  .solution-text h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+
+  .solution-text p {
+    font-size: 18px;
+    color: var(--white-40);
+    line-height: 1.4;
+  }
+
+  /* ========== CARD 4: STATS / PROOF ========== */
+  .card-4 {
+    background: var(--bg-dark);
+  }
+
+  .card-4::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+    pointer-events: none;
+  }
+
+  .card-4 .card-inner {
+    justify-content: center;
+    gap: 0;
+  }
+
+  .card-4 .section-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 56px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    width: 100%;
+    max-width: 780px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-block {
+    background: var(--white-05);
+    border: 1px solid var(--white-10);
+    border-radius: 24px;
+    padding: 44px 36px;
+    text-align: center;
+  }
+
+  .stat-block .number {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-block .number .accent {
+    color: var(--accent);
+  }
+
+  .stat-block .label {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--white-40);
+    letter-spacing: 0.3px;
+  }
+
+  /* ========== CARD 5: CTA ========== */
+  .card-5 {
+    background: var(--bg-dark);
+  }
+
+  .card-5::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(59, 130, 246, 0.12), transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(59, 130, 246, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .card-5 .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--white-05) 1px, transparent 1px),
+      linear-gradient(90deg, var(--white-05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 70%);
+  }
+
+  .card-5 .card-inner {
+    gap: 40px;
+  }
+
+  .card-5 .cta-pre {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-5 .cta-main {
+    font-family: 'Syne', sans-serif;
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -2px;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+    max-width: 750px;
+  }
+
+  .card-5 .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 22px;
+    font-weight: 700;
+    padding: 24px 56px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: -0.3px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 60px var(--accent-glow), 0 8px 32px rgba(59, 130, 246, 0.3);
+  }
+
+  .card-5 .cta-sub {
+    font-size: 16px;
+    color: var(--white-40);
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-5 .brand-footer {
+    position: absolute;
+    bottom: 60px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--white-40);
+    letter-spacing: -0.3px;
+    z-index: 1;
+  }
+
+  /* ========== CARD NUMBER ========== */
+  .card-number {
+    position: absolute;
+    top: 48px;
+    right: 56px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white-40);
+    z-index: 2;
+    letter-spacing: 1px;
+  }
+
+  /* ========== AD COPY SECTION ========== */
+  .ad-copy-section {
+    max-width: 800px;
+    margin: 60px auto 0;
+    background: var(--bg-card);
+    border: 1px solid var(--white-10);
+    border-radius: 16px;
+    padding: 48px;
+  }
+
+  .ad-copy-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .ad-copy-section .copy-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-light);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 28px;
+    margin-bottom: 10px;
+  }
+
+  .ad-copy-section .copy-label:first-of-type {
+    margin-top: 24px;
+  }
+
+  .ad-copy-section p {
+    font-size: 16px;
+    color: var(--white-70);
+    line-height: 1.6;
+  }
+
+  .ad-copy-section .divider {
+    border: none;
+    border-top: 1px solid var(--white-10);
+    margin: 28px 0;
+  }
+
+  .instructions {
+    max-width: 800px;
+    margin: 32px auto 0;
+    padding: 32px 48px;
+    background: rgba(16, 185, 129, 0.06);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-radius: 16px;
+  }
+
+  .instructions h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--success);
+    margin-bottom: 12px;
+  }
+
+  .instructions p {
+    font-size: 14px;
+    color: var(--white-40);
+    line-height: 1.6;
+  }
+
+  .instructions ol {
+    font-size: 14px;
+    color: var(--white-40);
+    line-height: 1.8;
+    padding-left: 20px;
+  }
+
+  /* ========== SCALE FOR BROWSER ========== */
+  @media (max-width: 1200px) {
+    .card {
+      width: 540px;
+      height: 540px;
+    }
+    .card-inner { padding: 40px; }
+    .card-1 .hook-pre { font-size: 14px; margin-bottom: 20px; }
+    .card-1 .hook-main { font-size: 42px; }
+    .card-1 .hook-bottom { bottom: 30px; left: 40px; right: 40px; }
+    .pain-list li { font-size: 22px; padding: 16px 0; gap: 16px; }
+    .pain-list .x-mark { width: 32px; height: 32px; font-size: 16px; border-radius: 8px; }
+    .card-2 .card-inner, .card-3 .card-inner { padding-top: 56px; }
+    .card-2 .section-label, .card-3 .section-label { font-size: 12px; margin-bottom: 28px; }
+    .solution-item { padding: 20px 24px; gap: 18px; border-radius: 14px; }
+    .solution-icon { width: 40px; height: 40px; font-size: 20px; border-radius: 10px; }
+    .solution-text h3 { font-size: 20px; margin-bottom: 2px; }
+    .solution-text p { font-size: 14px; }
+    .solution-list { gap: 14px; }
+    .stat-block { padding: 28px 20px; border-radius: 16px; }
+    .stat-block .number { font-size: 40px; }
+    .stat-block .label { font-size: 13px; }
+    .stats-grid { gap: 16px; }
+    .card-4 .section-label { font-size: 12px; margin-bottom: 32px; }
+    .card-5 .cta-pre { font-size: 13px; }
+    .card-5 .cta-main { font-size: 38px; }
+    .card-5 .cta-button { font-size: 17px; padding: 18px 40px; border-radius: 12px; }
+    .card-5 .cta-sub { font-size: 13px; }
+    .card-5 .brand-footer { bottom: 30px; font-size: 14px; }
+    .card-number { top: 28px; right: 32px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Facebook Carousel Ad — DevelopedByDean</h1>
+<p class="page-sub">5 cards at 1080×1080px &middot; Screenshot each card or export for Facebook Ads Manager</p>
+
+<div class="carousel-strip">
+
+  <!-- ===== CARD 1: HOOK ===== -->
+  <div class="card card-1">
+    <div class="grid-overlay"></div>
+    <span class="card-number">1 / 5</span>
+    <div class="card-inner">
+      <div class="hook-pre">Still Doing It All Manually?</div>
+      <div class="hook-main">
+        Your Business Is <span class="accent">Bleeding Time</span> Every Single Day
+      </div>
+    </div>
+    <div class="hook-bottom">
+      <div class="brand-name">DevelopedByDean</div>
+      <div class="swipe-hint">Swipe <span class="arrow"></span></div>
+    </div>
+  </div>
+
+  <!-- ===== CARD 2: PAIN POINTS ===== -->
+  <div class="card card-2">
+    <span class="card-number">2 / 5</span>
+    <div class="card-inner">
+      <div class="section-label">Sound Familiar?</div>
+      <ul class="pain-list">
+        <li><span class="x-mark">✕</span> Missed calls = missed revenue</li>
+        <li><span class="x-mark">✕</span> Hours wasted on repetitive tasks</li>
+        <li><span class="x-mark">✕</span> Leads slipping through the cracks</li>
+        <li><span class="x-mark">✕</span> No time to actually grow</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===== CARD 3: SOLUTION ===== -->
+  <div class="card card-3">
+    <span class="card-number">3 / 5</span>
+    <div class="card-inner">
+      <div class="section-label">What If AI Handled It?</div>
+      <div class="solution-list">
+        <div class="solution-item">
+          <div class="solution-icon">📞</div>
+          <div class="solution-text">
+            <h3>AI Voice Agents</h3>
+            <p>Answer every call, book every appointment — 24/7</p>
+          </div>
+        </div>
+        <div class="solution-item">
+          <div class="solution-icon">🤖</div>
+          <div class="solution-text">
+            <h3>Smart Lead Capture</h3>
+            <p>Chatbots &amp; landing pages that convert visitors into leads</p>
+          </div>
+        </div>
+        <div class="solution-item">
+          <div class="solution-icon">⚡</div>
+          <div class="solution-text">
+            <h3>Workflow Automation</h3>
+            <p>Eliminate data entry, invoicing &amp; follow-ups forever</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CARD 4: PROOF ===== -->
+  <div class="card card-4">
+    <span class="card-number">4 / 5</span>
+    <div class="card-inner">
+      <div class="section-label">Built &amp; Proven</div>
+      <div class="stats-grid">
+        <div class="stat-block">
+          <div class="number">15<span class="accent">+</span></div>
+          <div class="label">Projects Delivered</div>
+        </div>
+        <div class="stat-block">
+          <div class="number">500<span class="accent">+</span></div>
+          <div class="label">Hours Saved for Clients</div>
+        </div>
+        <div class="stat-block">
+          <div class="number">100<span class="accent">%</span></div>
+          <div class="label">Client Satisfaction</div>
+        </div>
+        <div class="stat-block">
+          <div class="number">&lt;2<span class="accent">wk</span></div>
+          <div class="label">Avg Delivery Time</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CARD 5: CTA ===== -->
+  <div class="card card-5">
+    <div class="grid-overlay"></div>
+    <span class="card-number">5 / 5</span>
+    <div class="card-inner">
+      <div class="cta-pre">Free Strategy Call</div>
+      <div class="cta-main">
+        Let's Build Your AI Advantage
+      </div>
+      <button class="cta-button">Book Your Free Call →</button>
+      <div class="cta-sub">No commitment &middot; Custom proposal after the call</div>
+    </div>
+    <div class="brand-footer">developedbydean.ai</div>
+  </div>
+
+</div>
+
+<!-- ===== AD COPY ===== -->
+<div class="ad-copy-section">
+  <h2>Recommended Ad Copy</h2>
+
+  <div class="copy-label">Primary Text</div>
+  <p>
+    Still answering every call yourself? Still chasing leads manually?<br><br>
+    I build AI systems that handle it for you — voice agents that book appointments 24/7, chatbots that capture leads while you sleep, and automations that kill busywork for good.<br><br>
+    15+ projects delivered. 100% client satisfaction. Most launch in under 2 weeks.<br><br>
+    Book a free strategy call ↓
+  </p>
+
+  <hr class="divider">
+
+  <div class="copy-label">Headline (below carousel)</div>
+  <p>Stop Losing Leads. Start Using AI.</p>
+
+  <div class="copy-label">Description</div>
+  <p>Free strategy call — no commitment, just a clear plan for your business.</p>
+
+  <div class="copy-label">CTA Button</div>
+  <p>Book Now</p>
+
+  <hr class="divider">
+
+  <div class="copy-label">Targeting Suggestions</div>
+  <p>
+    <strong>Audiences:</strong> Small business owners, agency owners, real estate agents, home services, medical/dental offices, coaches &amp; consultants<br>
+    <strong>Interests:</strong> Business automation, CRM software, lead generation, Zapier, HubSpot, AI tools<br>
+    <strong>Age:</strong> 28–55<br>
+    <strong>Placement:</strong> Facebook Feed, Instagram Feed, Instagram Stories
+  </p>
+</div>
+
+<div class="instructions">
+  <h3>How to use this</h3>
+  <ol>
+    <li>Open this file in your browser at full size (zoom to 100%)</li>
+    <li>Screenshot each card individually at 1080×1080 — or right-click → Inspect → toggle device toolbar → set to 1080×1080</li>
+    <li>Upload the 5 images to Facebook Ads Manager as a Carousel Ad</li>
+    <li>Paste the ad copy from above into the Primary Text, Headline, and Description fields</li>
+    <li>Set CTA button to "Book Now" and link to <strong>developedbydean.ai</strong></li>
+  </ol>
+</div>
+
+</body>
+</html>

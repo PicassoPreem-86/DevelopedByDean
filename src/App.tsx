@@ -6,7 +6,6 @@ import { StructuredData } from "./components/StructuredData";
 import { HomePage } from "./pages/HomePage";
 import { UseCasesPage } from "./pages/UseCasesPage";
 import { ResultsPage } from "./pages/ResultsPage";
-import { ProcessPage } from "./pages/ProcessPage";
 import { FAQPage } from "./pages/FAQPage";
 import { ServicesHubPage } from "./pages/ServicesHubPage";
 import { IndustriesHubPage } from "./pages/IndustriesHubPage";
@@ -53,7 +52,6 @@ function Layout() {
           <Route path="/industries" element={<IndustriesHubPage />} />
           <Route path="/use-cases" element={<UseCasesPage />} />
           <Route path="/results" element={<ResultsPage />} />
-          <Route path="/process" element={<ProcessPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/assessment" element={<AssessmentPage />} />
           <Route path="/assessment/capture" element={<EmailCapturePage />} />

@@ -18,7 +18,6 @@ const footerLinks = [
   { label: "Use Cases", href: "/use-cases" },
   // { label: "Founding Wall", href: "/founding-wall" }, // Hidden until Supabase is ready
   { label: "Results", href: "/results" },
-  { label: "Process", href: "/process" },
   { label: "FAQs", href: "/faq" },
   { label: "Contact", href: "/#contact" },
 ];

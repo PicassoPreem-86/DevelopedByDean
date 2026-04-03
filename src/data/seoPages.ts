@@ -145,7 +145,7 @@ export const servicePages: SeoPageDefinition[] = [
     links: [
       { label: "Workflow automation service", href: "/services/workflow-automation" },
       { label: "Lead generation systems", href: "/services/lead-generation-systems" },
-      { label: "How the process works", href: "/process" },
+      { label: "How it works", href: "/services" },
     ],
   },
   {
@@ -458,7 +458,7 @@ export const industryPages: SeoPageDefinition[] = [
     links: [
       { label: "Workflow automation", href: "/services/workflow-automation" },
       { label: "AI voice agents", href: "/services/ai-voice-agents" },
-      { label: "Process", href: "/process" },
+      { label: "How it works", href: "/services" },
     ],
   },
 ];
