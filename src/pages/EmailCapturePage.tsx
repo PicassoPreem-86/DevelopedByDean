@@ -95,7 +95,7 @@ export function EmailCapturePage() {
             <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="jane@company.com" className={inputClass} />
           </div>
           <div>
-            <label htmlFor="companyName" className="block text-xs font-semibold text-white/40 uppercase tracking-wide mb-1.5">Company name <span className="text-white/20">(optional)</span></label>
+            <label htmlFor="companyName" className="block text-xs font-semibold text-white/40 uppercase tracking-wide mb-1.5">Company name <span className="text-white/40">(optional)</span></label>
             <input id="companyName" type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} placeholder="Acme Corp" className={inputClass} />
           </div>
 
@@ -109,7 +109,7 @@ export function EmailCapturePage() {
             {isSubmitting ? "Preparing your report..." : "See My Results"}
           </button>
 
-          <p className="text-xs text-white/20 text-center">
+          <p className="text-xs text-white/40 text-center">
             We'll send your full report to this email. No spam, ever.
           </p>
         </form>

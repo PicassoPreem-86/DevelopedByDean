@@ -748,6 +748,8 @@ export const industryPages: SeoPageDefinition[] = [
     links: [
       { label: "AI voice agents", href: "/services/ai-voice-agents" },
       { label: "Lead generation systems", href: "/services/lead-generation-systems" },
+      { label: "AI for dental practices", href: "/industries/dental-practice-ai" },
+      { label: "AI for med spas", href: "/industries/medical-spa-ai" },
       { label: "Results", href: "/results" },
     ],
   },
@@ -825,6 +827,8 @@ export const industryPages: SeoPageDefinition[] = [
     links: [
       { label: "AI websites", href: "/services/ai-websites" },
       { label: "Lead generation systems", href: "/services/lead-generation-systems" },
+      { label: "AI for dental practices", href: "/industries/dental-practice-ai" },
+      { label: "AI for fitness studios", href: "/industries/fitness-studio-ai" },
       { label: "FAQ", href: "/faq" },
     ],
   },
@@ -902,6 +906,8 @@ export const industryPages: SeoPageDefinition[] = [
     links: [
       { label: "Workflow automation", href: "/services/workflow-automation" },
       { label: "AI voice agents", href: "/services/ai-voice-agents" },
+      { label: "AI for insurance agencies", href: "/industries/insurance-agency-ai" },
+      { label: "AI for real estate", href: "/industries/real-estate-ai" },
       { label: "How it works", href: "/services" },
     ],
   },
@@ -989,6 +995,8 @@ export const industryPages: SeoPageDefinition[] = [
         label: "Lead generation systems",
         href: "/services/lead-generation-systems",
       },
+      { label: "AI for insurance agencies", href: "/industries/insurance-agency-ai" },
+      { label: "AI for home services", href: "/industries/home-services-ai" },
     ],
   },
   {
@@ -1072,6 +1080,7 @@ export const industryPages: SeoPageDefinition[] = [
         href: "/services/ai-appointment-booking",
       },
       { label: "AI voice agents", href: "/services/ai-voice-agents" },
+      { label: "AI for home services", href: "/industries/home-services-ai" },
       { label: "AI for med spas", href: "/industries/medical-spa-ai" },
     ],
   },
@@ -1158,6 +1167,8 @@ export const industryPages: SeoPageDefinition[] = [
         href: "/services/ai-follow-up-systems",
       },
       { label: "AI voice agents", href: "/services/ai-voice-agents" },
+      { label: "AI for auto dealerships", href: "/industries/auto-dealership-ai" },
+      { label: "AI for law firms", href: "/industries/law-firm-ai" },
     ],
   },
   {
@@ -1245,6 +1256,8 @@ export const industryPages: SeoPageDefinition[] = [
         href: "/services/ai-appointment-booking",
       },
       { label: "CRM automation", href: "/services/crm-automation" },
+      { label: "AI for insurance agencies", href: "/industries/insurance-agency-ai" },
+      { label: "AI for fitness studios", href: "/industries/fitness-studio-ai" },
     ],
   },
   {
@@ -1335,6 +1348,8 @@ export const industryPages: SeoPageDefinition[] = [
         label: "Lead generation systems",
         href: "/services/lead-generation-systems",
       },
+      { label: "AI for med spas", href: "/industries/medical-spa-ai" },
+      { label: "AI for dental practices", href: "/industries/dental-practice-ai" },
     ],
   },
 ];

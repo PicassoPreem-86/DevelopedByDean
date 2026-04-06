@@ -140,7 +140,7 @@ export function AssessmentResultsPage() {
           <p className="text-sm text-white/30 mt-4">30 minutes. No pitch. Just a conversation about your results.</p>
         </motion.div>
 
-        <div className="text-center py-8 text-xs text-white/20 border-t border-white/[0.06]">
+        <div className="text-center py-8 text-xs text-white/40 border-t border-white/[0.06]">
           <p>Your data is private and never shared.</p>
         </div>
       </div>

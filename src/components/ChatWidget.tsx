@@ -141,6 +141,10 @@ export function ChatWidget() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Escape" && isOpen) {
+      setIsOpen(false);
+      return;
+    }
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage();
@@ -153,6 +157,8 @@ export function ChatWidget() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            role="dialog"
+            aria-label="Chat with DeanAI"
             className="fixed inset-x-0 bottom-0 z-[80] flex flex-col rounded-t-2xl border border-white/[0.08] bg-[#0B0F19] shadow-2xl max-sm:!max-h-[70dvh] sm:bottom-24 sm:left-auto sm:right-6 sm:inset-x-auto sm:w-[380px] sm:rounded-2xl sm:z-[70]"
             style={{ maxHeight: "min(480px, calc(100dvh - 60px))" }}
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -189,7 +195,7 @@ export function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-3 sm:px-5 py-3 sm:py-4 space-y-3 sm:space-y-4 min-h-0">
+            <div className="flex-1 overflow-y-auto px-3 sm:px-5 py-3 sm:py-4 space-y-3 sm:space-y-4 min-h-0" aria-live="polite">
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
@@ -290,6 +296,7 @@ export function ChatWidget() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Type your message..."
+                  aria-label="Type your message"
                   className="flex-1 rounded-xl bg-white/[0.05] border border-white/[0.08] px-3 sm:px-4 py-2 sm:py-2.5 text-[16px] sm:text-[13px] text-white placeholder-white/25 outline-none focus:border-accent/40 focus:bg-white/[0.07] transition-all"
                   disabled={isLoading}
                 />
@@ -303,7 +310,7 @@ export function ChatWidget() {
                   <Send size={15} className="hidden sm:block" />
                 </button>
               </div>
-              <p className="mt-1.5 sm:mt-2 text-center text-[9px] sm:text-[10px] text-white/20">
+              <p className="mt-1.5 sm:mt-2 text-center text-[9px] sm:text-[10px] text-white/40">
                 Powered by Claude AI &bull; Built by DevelopedByDean
               </p>
             </div>

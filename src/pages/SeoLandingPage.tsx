@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, MessageSquare, ClipboardCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { SEO } from "../components/SEO";
 import { Breadcrumbs } from "../components/Breadcrumbs";
@@ -42,29 +42,49 @@ export function SeoLandingPage({ page }: SeoLandingPageProps) {
           <Breadcrumbs items={breadcrumbItems} />
           <div className="grid gap-10 lg:grid-cols-[1.4fr,0.9fr] lg:items-start">
             <div>
-              <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-accent-light">
+              <motion.p
+                className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-accent-light"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
                 {page.eyebrow}
-              </p>
-              <h1 className="max-w-4xl text-[clamp(2.2rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-tight">
+              </motion.p>
+              <motion.h1
+                className="max-w-4xl text-[clamp(2.2rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-tight"
+                initial={{ opacity: 0, filter: "blur(6px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                transition={{ duration: 0.5, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
                 {page.heroTitle}
-              </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
+              </motion.h1>
+              <motion.p
+                className="mt-6 max-w-2xl text-lg leading-relaxed text-white/70"
+                initial={{ opacity: 0, filter: "blur(4px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                transition={{ duration: 0.5, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
                 {page.heroDescription}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  to="/#contact"
+              </motion.p>
+              <motion.div
+                className="mt-8 flex flex-wrap gap-3"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.35, ease: [0.25, 0.46, 0.45, 0.94] }}
+              >
+                <a
+                  href="#contact"
                   className="inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-accent-hover"
                 >
                   Schedule a Strategy Call <ArrowRight size={16} />
-                </Link>
-                <Link
-                  to="/results"
+                </a>
+                <a
+                  href="#see-the-work"
                   className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
                 >
                   See Results
-                </Link>
-              </div>
+                </a>
+              </motion.div>
             </div>
 
             <motion.aside
@@ -73,7 +93,7 @@ export function SeoLandingPage({ page }: SeoLandingPageProps) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45 }}
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/35">
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-white/50">
                 Best Fit
               </p>
               <ul className="mt-4 space-y-3">
@@ -91,30 +111,9 @@ export function SeoLandingPage({ page }: SeoLandingPageProps) {
 
       <section className="bg-white px-6 py-16 lg:py-24">
         <div className="mx-auto max-w-container">
-          <div className="grid gap-8 lg:grid-cols-3">
-            <div className="lg:col-span-2">
-              <p className="max-w-3xl text-lg leading-relaxed text-content-body">
-                {page.description}
-              </p>
-              <p className="mt-6 max-w-3xl text-base leading-relaxed text-content-muted">
-                {page.intro === "Industry"
-                  ? `This page is built around ${page.primaryKeyword} and related buyer-intent searches so potential clients can find a clear explanation of how the system works, who it is for, and what outcomes to expect.`
-                  : `This service page is designed to rank for ${page.primaryKeyword} and connected searches while also making the offer, process, and expected outcomes easy to evaluate.`}
-              </p>
-            </div>
-            <div className="rounded-2xl border border-border-light bg-surface-light p-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-content-muted">
-                Related Searches
-              </p>
-              <ul className="mt-4 space-y-3 text-sm text-content-body">
-                {page.secondaryKeywords.map((keyword) => (
-                  <li key={keyword} className="rounded-xl bg-white px-4 py-3 shadow-sm">
-                    {keyword}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+          <p className="max-w-3xl text-lg leading-relaxed text-content-body">
+            {page.description}
+          </p>
         </div>
       </section>
 
@@ -158,46 +157,70 @@ export function SeoLandingPage({ page }: SeoLandingPageProps) {
         </div>
       </section>
 
-      <section className="bg-white px-6 py-16 lg:py-24">
+      {/* Assessment CTA Banner */}
+      <section className="bg-white px-6 py-10 lg:py-14">
+        <div className="mx-auto max-w-container">
+          <div className="flex flex-col items-center gap-5 rounded-2xl border border-accent/10 bg-accent/[0.03] p-6 text-center sm:flex-row sm:text-left lg:p-8">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent/10">
+              <ClipboardCheck size={22} className="text-accent" />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-lg font-bold text-content-primary">Not sure where to start?</h2>
+              <p className="mt-1 text-sm leading-relaxed text-content-body">
+                Take the free AI Readiness Assessment to find out which systems would have the biggest impact on your business.
+              </p>
+            </div>
+            <Link
+              to="/assessment"
+              className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-accent-hover"
+            >
+              Take the Assessment <ArrowRight size={15} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Live Demo Proof */}
+      <section id="see-the-work" className="bg-surface-light px-6 py-16 lg:py-24">
         <div className="mx-auto grid max-w-container gap-6 lg:grid-cols-[1.15fr,0.85fr]">
-          <div className="rounded-3xl border border-border-light bg-surface-light p-6">
+          <div className="rounded-3xl border border-border-light bg-white p-6">
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-              Proof Approach
+              See the Work
             </p>
             <h2 className="mt-4 text-2xl font-bold text-content-primary">
-              Credibility built from execution, not fabricated logos
+              This site is the proof.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-content-body">
-              If public reviews or case studies are not available yet, the honest path is to show
-              how the system works, how delivery is structured, and what success will be measured
-              against before launch.
+              The AI chat assistant in the corner, the SEO architecture powering this page, the lead capture
+              system, the conversion flow &mdash; I designed and built every piece of it. Try the chat widget
+              yourself and see what an AI-powered system actually feels like.
             </p>
             <ul className="mt-5 space-y-3">
               <li className="flex gap-3 text-sm leading-relaxed text-content-body">
                 <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-accent" />
-                <span>Workflow mapping before production buildout starts</span>
+                <span>Live AI chat trained on real business context</span>
               </li>
               <li className="flex gap-3 text-sm leading-relaxed text-content-body">
                 <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-accent" />
-                <span>Operational metrics defined before launch so value is measurable</span>
+                <span>Automated lead capture and routing built into the conversation</span>
               </li>
               <li className="flex gap-3 text-sm leading-relaxed text-content-body">
                 <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-accent" />
-                <span>Implementation detail and technical depth instead of vague promises</span>
+                <span>SEO-optimized page architecture generating organic traffic right now</span>
               </li>
             </ul>
           </div>
           <div className="rounded-3xl border border-border-light bg-hero p-6 text-white">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/10">
-              <ShieldCheck size={20} className="text-accent-light" />
+              <MessageSquare size={20} className="text-accent-light" />
             </div>
             <h2 className="mt-5 text-2xl font-bold">
-              This framework is ready for real proof as it arrives
+              Try the AI assistant right now.
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-white/70">
-              Once live projects are shipping, anonymized workflow notes, screen recordings,
-              before-and-after process diagrams, and measurable outcomes can slot straight into
-              these pages without rewriting the structure.
+              Open the chat widget in the bottom corner and ask anything about my services.
+              That&rsquo;s the same type of system I build for clients &mdash; qualified lead capture,
+              smart routing, and real answers, running 24/7.
             </p>
           </div>
         </div>
@@ -207,7 +230,7 @@ export function SeoLandingPage({ page }: SeoLandingPageProps) {
         <div className="mx-auto grid max-w-container gap-8 lg:grid-cols-[1.2fr,0.8fr]">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent">
-              Search-Focused FAQ
+              Common Questions
             </p>
             <div className="mt-6 space-y-4">
               {page.faqs.map((faq) => (

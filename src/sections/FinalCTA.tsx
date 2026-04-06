@@ -51,11 +51,11 @@ export function FinalCTA() {
     <section id="contact" className="py-20 lg:py-28 px-6 bg-surface-light">
       <div className="mx-auto max-w-container">
         <motion.div
-          className="bg-gradient-to-r from-blue-50 via-indigo-50 to-blue-50 border border-blue-200/80 rounded-2xl p-5 sm:p-8 lg:p-14 shadow-card"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="bg-gradient-to-r from-accent/[0.04] via-accent/[0.06] to-accent/[0.04] border border-accent/20 rounded-2xl p-5 sm:p-8 lg:p-14 shadow-card"
+          initial={{ opacity: 0, filter: "blur(6px)" }}
+          whileInView={{ opacity: 1, filter: "blur(0px)" }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Left — Copy + Calendly link */}
@@ -78,7 +78,9 @@ export function FinalCTA() {
                   </div>
                 ))}
               </div>
-
+              <p className="mt-6 text-sm text-content-muted">
+                Most projects start at $2,500. Typical engagements range from $2,500 &ndash; $15,000 depending on scope.
+              </p>
             </div>
 
             {/* Right — Contact form */}

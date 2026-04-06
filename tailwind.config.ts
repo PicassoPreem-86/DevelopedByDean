@@ -37,7 +37,7 @@ export default {
       boxShadow: {
         card: "0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.06)",
         "card-hover": "0 4px 12px rgba(0,0,0,0.08), 0 12px 40px rgba(0,0,0,0.1)",
-        glow: "0 0 60px rgba(59, 130, 246, 0.15)",
+        glow: "0 0 60px rgba(67, 97, 238, 0.15)",
       },
     },
   },

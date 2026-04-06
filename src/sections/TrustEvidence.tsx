@@ -4,21 +4,21 @@ import { ArrowRight, CheckCircle2, ShieldCheck, Wrench, Workflow } from "lucide-
 
 const proofPillars = [
   {
-    title: "Live Product Demo",
+    title: "This Site Is the Demo",
     description:
-      "The site itself demonstrates live AI interaction, lead capture, routing, and search-focused architecture instead of relying on vague claims.",
+      "The AI assistant in the corner, the SEO architecture, the lead capture flow, the conversion copy — I designed and built every piece of this site myself.",
     icon: ShieldCheck,
   },
   {
     title: "Direct Builder Access",
     description:
-      "You work directly with the person designing the workflows, shipping the frontend, and wiring the automation layer rather than going through a sales stack.",
+      "You work directly with the person designing the workflows, shipping the frontend, and wiring the automation layer — no agency layers, no handoffs.",
     icon: Wrench,
   },
   {
     title: "Operations-First Thinking",
     description:
-      "The work is framed around response time, qualification, booking, handoff, and visibility so the build changes how the business runs, not just how it looks.",
+      "Every build is framed around response time, qualification, booking, and visibility so the system changes how the business runs, not just how it looks.",
     icon: Workflow,
   },
 ];
@@ -39,14 +39,14 @@ export function TrustEvidence() {
         <div className="grid gap-12 lg:grid-cols-[1fr,1.1fr] lg:items-start">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
-              Honest Proof
+              Built Proof
             </p>
             <h2 className="mt-4 text-[clamp(1.8rem,3.8vw,2.8rem)] font-extrabold leading-tight text-content-primary">
-              No fake reviews. No invented case studies. Just real build credibility.
+              You&rsquo;re looking at the work right now.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-content-body">
-              Until you have a larger public portfolio, the strongest trust signals are system quality,
-              technical depth, clear process, and visible implementation detail.
+              This site is a live product demo. The AI chat assistant, the lead capture system, the
+              SEO architecture, the conversion flow — I designed and built every system you see here.
             </p>
 
             <div className="mt-8 rounded-3xl border border-border-light bg-white p-6 shadow-card">
@@ -69,8 +69,9 @@ export function TrustEvidence() {
               <motion.article
                 key={item.title}
                 className="rounded-3xl border border-border-light bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover"
-                initial={{ opacity: 0, scale: 0.97 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, filter: "blur(4px)" }}
+                whileInView={{ opacity: 1, filter: "blur(0px)" }}
+                whileHover={{ y: -2 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
               >
@@ -88,12 +89,12 @@ export function TrustEvidence() {
 
             <div className="rounded-3xl border border-border-light bg-hero p-6 text-white shadow-card">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-light">
-                Best next step
+                See it in action
               </p>
-              <h3 className="mt-3 text-2xl font-bold">Turn future projects into proof assets.</h3>
+              <h3 className="mt-3 text-2xl font-bold">Try the AI assistant yourself.</h3>
               <p className="mt-3 max-w-lg text-sm leading-relaxed text-white/70">
-                The fastest way to build authority is to publish anonymized workflows, screen
-                recordings, and implementation breakdowns as real projects ship.
+                Open the chat widget in the bottom corner. Ask it anything about my services.
+                That&rsquo;s a system I built — and I build the same for clients.
               </p>
               <Link to="/services" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-white">
                 Explore service pages <ArrowRight size={15} />

@@ -10,19 +10,19 @@ const results = [
 
 const evidenceCards = [
   {
-    title: "Representative Build Patterns",
+    title: "Real Systems, Live Right Now",
     description:
-      "AI reception, lead qualification, booking support, internal dashboards, and automated follow-up are representative of the systems these projects are designed around.",
-  },
-  {
-    title: "Scenario-Based Planning",
-    description:
-      "When public case studies are limited, the smartest move is to map the exact bottleneck, workflow, and expected improvement path before the build starts.",
+      "This site runs AI chat, automated lead capture, SEO architecture, and serverless API routes — all designed and built by me. The work speaks for itself.",
   },
   {
     title: "Measurement From Day One",
     description:
-      "Every serious system should launch with measurable checkpoints like response time, booked calls, lead routing quality, or workflow completion visibility.",
+      "Every system launches with measurable checkpoints: response time, booked calls, lead routing quality, and workflow completion visibility.",
+  },
+  {
+    title: "Built for Your Workflow",
+    description:
+      "Each engagement starts by mapping the exact bottleneck, then designing the system around the specific improvement path that matters to your business.",
   },
 ];
 
@@ -42,8 +42,8 @@ export function Results() {
             What These Systems Are Built to Improve
           </h1>
           <p className="mt-3 text-lg text-content-muted max-w-xl mx-auto">
-            This section focuses on the operational outcomes these builds are designed to move,
-            without pretending there are public results that do not exist yet.
+            Every system I build targets specific operational metrics. Here are the outcomes
+            these builds are engineered to move.
           </p>
         </motion.div>
 

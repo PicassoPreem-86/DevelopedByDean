@@ -13,40 +13,41 @@ interface UseCase {
   title: string;
   description: string;
   category: string;
+  serviceLink: string;
 }
 
 const categories = ["All", "Voice & Phone", "Lead Generation", "Automation", "Websites & Apps", "Customer Experience"];
 
 const useCases: UseCase[] = [
   // Voice & Phone
-  { icon: Phone, title: "Inbound Call Answering Agent", description: "AI answers your business calls 24/7, qualifies callers, answers FAQs, and books appointments — even after hours.", category: "Voice & Phone" },
-  { icon: Mic, title: "Outbound Sales Call Agent", description: "AI calls your leads, delivers a personalized pitch, handles objections, and books qualified prospects on your calendar.", category: "Voice & Phone" },
-  { icon: CalendarCheck, title: "Appointment Booking Agent", description: "Handles scheduling over the phone — checks availability, confirms slots, sends reminders, and reschedules no-shows.", category: "Voice & Phone" },
-  { icon: Bell, title: "Reminder & Follow-Up Call Agent", description: "Automated calls to remind clients about appointments, payments, renewals, or upcoming deadlines.", category: "Voice & Phone" },
+  { icon: Phone, title: "Inbound Call Answering Agent", description: "AI answers your business calls 24/7, qualifies callers, answers FAQs, and books appointments — even after hours.", category: "Voice & Phone", serviceLink: "/services/ai-voice-agents" },
+  { icon: Mic, title: "Outbound Sales Call Agent", description: "AI calls your leads, delivers a personalized pitch, handles objections, and books qualified prospects on your calendar.", category: "Voice & Phone", serviceLink: "/services/ai-voice-agents" },
+  { icon: CalendarCheck, title: "Appointment Booking Agent", description: "Handles scheduling over the phone — checks availability, confirms slots, sends reminders, and reschedules no-shows.", category: "Voice & Phone", serviceLink: "/services/ai-appointment-booking" },
+  { icon: Bell, title: "Reminder & Follow-Up Call Agent", description: "Automated calls to remind clients about appointments, payments, renewals, or upcoming deadlines.", category: "Voice & Phone", serviceLink: "/services/ai-follow-up-systems" },
 
   // Lead Generation
-  { icon: MessageSquare, title: "Website Chatbot for Lead Capture", description: "AI chatbot engages visitors, asks qualifying questions, collects contact info, and pushes leads to your CRM in real time.", category: "Lead Generation" },
-  { icon: Globe, title: "AI-Powered Landing Pages", description: "High-converting landing pages with smart forms, dynamic content, and instant lead routing based on visitor behavior.", category: "Lead Generation" },
-  { icon: Search, title: "Lead Scoring & Qualification System", description: "Automatically scores incoming leads based on fit, urgency, and behavior — so your team only talks to the best ones.", category: "Lead Generation" },
-  { icon: Mail, title: "Automated Email Nurture Sequences", description: "AI-written, personalized email flows that warm leads, handle objections, and drive them toward booking or buying.", category: "Lead Generation" },
+  { icon: MessageSquare, title: "Website Chatbot for Lead Capture", description: "AI chatbot engages visitors, asks qualifying questions, collects contact info, and pushes leads to your CRM in real time.", category: "Lead Generation", serviceLink: "/services/ai-chatbot-development" },
+  { icon: Globe, title: "AI-Powered Landing Pages", description: "High-converting landing pages with smart forms, dynamic content, and instant lead routing based on visitor behavior.", category: "Lead Generation", serviceLink: "/services/ai-websites" },
+  { icon: Search, title: "Lead Scoring & Qualification System", description: "Automatically scores incoming leads based on fit, urgency, and behavior — so your team only talks to the best ones.", category: "Lead Generation", serviceLink: "/services/lead-generation-systems" },
+  { icon: Mail, title: "Automated Email Nurture Sequences", description: "AI-written, personalized email flows that warm leads, handle objections, and drive them toward booking or buying.", category: "Lead Generation", serviceLink: "/services/ai-follow-up-systems" },
 
   // Automation
-  { icon: Workflow, title: "CRM Automation & Data Sync", description: "Connect your tools so leads, deals, and client data flow automatically between your CRM, email, calendar, and invoicing.", category: "Automation" },
-  { icon: FileText, title: "Invoice & Payment Automation", description: "Auto-generate invoices, send payment reminders, and sync transactions — no more chasing payments manually.", category: "Automation" },
-  { icon: Database, title: "Data Entry & Document Processing", description: "AI extracts data from forms, PDFs, emails, and uploads — then organizes it in your systems without manual input.", category: "Automation" },
-  { icon: Users, title: "Client Onboarding Automation", description: "Automated welcome emails, intake forms, contract signing, and account setup — new clients onboarded in minutes, not days.", category: "Automation" },
+  { icon: Workflow, title: "CRM Automation & Data Sync", description: "Connect your tools so leads, deals, and client data flow automatically between your CRM, email, calendar, and invoicing.", category: "Automation", serviceLink: "/services/crm-automation" },
+  { icon: FileText, title: "Invoice & Payment Automation", description: "Auto-generate invoices, send payment reminders, and sync transactions — no more chasing payments manually.", category: "Automation", serviceLink: "/services/workflow-automation" },
+  { icon: Database, title: "Data Entry & Document Processing", description: "AI extracts data from forms, PDFs, emails, and uploads — then organizes it in your systems without manual input.", category: "Automation", serviceLink: "/services/workflow-automation" },
+  { icon: Users, title: "Client Onboarding Automation", description: "Automated welcome emails, intake forms, contract signing, and account setup — new clients onboarded in minutes, not days.", category: "Automation", serviceLink: "/services/workflow-automation" },
 
   // Websites & Apps
-  { icon: Globe, title: "Custom Business Websites", description: "Fast, modern, mobile-first websites designed to convert visitors into customers — not just look pretty.", category: "Websites & Apps" },
-  { icon: BarChart3, title: "Internal Dashboards & Portals", description: "Custom dashboards that give you real-time visibility into leads, revenue, team performance, and client status.", category: "Websites & Apps" },
-  { icon: CreditCard, title: "Client Portals & Booking Systems", description: "Branded portals where clients can book, pay, upload documents, track progress, and communicate — all in one place.", category: "Websites & Apps" },
-  { icon: ShoppingCart, title: "Ecommerce & Product Pages", description: "Online stores and product pages with AI-powered recommendations, abandoned cart recovery, and conversion optimization.", category: "Websites & Apps" },
+  { icon: Globe, title: "Custom Business Websites", description: "Fast, modern, mobile-first websites designed to convert visitors into customers — not just look pretty.", category: "Websites & Apps", serviceLink: "/services/ai-websites" },
+  { icon: BarChart3, title: "Internal Dashboards & Portals", description: "Custom dashboards that give you real-time visibility into leads, revenue, team performance, and client status.", category: "Websites & Apps", serviceLink: "/services/ai-websites" },
+  { icon: CreditCard, title: "Client Portals & Booking Systems", description: "Branded portals where clients can book, pay, upload documents, track progress, and communicate — all in one place.", category: "Websites & Apps", serviceLink: "/services/ai-appointment-booking" },
+  { icon: ShoppingCart, title: "Ecommerce & Product Pages", description: "Online stores and product pages with AI-powered recommendations, abandoned cart recovery, and conversion optimization.", category: "Websites & Apps", serviceLink: "/services/ai-websites" },
 
   // Customer Experience
-  { icon: Bot, title: "AI Customer Support Agent", description: "Handles tier-1 support questions instantly — product info, order status, troubleshooting — and escalates complex issues to humans.", category: "Customer Experience" },
-  { icon: MessageSquare, title: "Review & Reputation Management", description: "Automatically request reviews after purchases, respond to feedback, and monitor your online reputation across platforms.", category: "Customer Experience" },
-  { icon: Bell, title: "Smart Notification System", description: "Trigger personalized SMS, email, or push notifications based on customer behavior — purchases, inactivity, milestones.", category: "Customer Experience" },
-  { icon: Mail, title: "Abandoned Cart & Re-Engagement Flows", description: "Win back lost customers with automated sequences triggered by cart abandonment, lapsed visits, or expired subscriptions.", category: "Customer Experience" },
+  { icon: Bot, title: "AI Customer Support Agent", description: "Handles tier-1 support questions instantly — product info, order status, troubleshooting — and escalates complex issues to humans.", category: "Customer Experience", serviceLink: "/services/ai-chatbot-development" },
+  { icon: MessageSquare, title: "Review & Reputation Management", description: "Automatically request reviews after purchases, respond to feedback, and monitor your online reputation across platforms.", category: "Customer Experience", serviceLink: "/services/workflow-automation" },
+  { icon: Bell, title: "Smart Notification System", description: "Trigger personalized SMS, email, or push notifications based on customer behavior — purchases, inactivity, milestones.", category: "Customer Experience", serviceLink: "/services/ai-follow-up-systems" },
+  { icon: Mail, title: "Abandoned Cart & Re-Engagement Flows", description: "Win back lost customers with automated sequences triggered by cart abandonment, lapsed visits, or expired subscriptions.", category: "Customer Experience", serviceLink: "/services/lead-generation-systems" },
 ];
 
 export function UseCases() {
@@ -120,9 +121,17 @@ export function UseCases() {
                   <div className="min-w-0">
                     <h3 className="text-[13px] sm:text-[15px] font-bold text-content-primary mb-1.5">{uc.title}</h3>
                     <p className="text-sm leading-relaxed text-content-muted">{uc.description}</p>
-                    <span className="mt-3 inline-block rounded-full bg-accent/[0.06] px-3 py-0.5 text-[11px] font-semibold text-accent">
-                      {uc.category}
-                    </span>
+                    <div className="mt-3 flex items-center justify-between">
+                      <span className="inline-block rounded-full bg-accent/[0.06] px-3 py-0.5 text-[11px] font-semibold text-accent">
+                        {uc.category}
+                      </span>
+                      <Link
+                        to={uc.serviceLink}
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-hover transition-colors"
+                      >
+                        Learn more <ArrowRight size={12} />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </motion.div>

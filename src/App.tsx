@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense, useEffect } from "react";
+import { MotionConfig } from "framer-motion";
 import { Navbar } from "./sections/Navbar";
 import { Footer } from "./sections/Footer";
 import { StructuredData } from "./components/StructuredData";
@@ -98,11 +99,14 @@ function ScrollToTop() {
 
 function Layout() {
   return (
-    <>
+    <MotionConfig reducedMotion="user">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white">
+        Skip to main content
+      </a>
       <ScrollToTop />
       <StructuredData />
       <Navbar />
-      <main>
+      <main id="main-content">
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<HomePage />} />
@@ -137,7 +141,7 @@ function Layout() {
       <Suspense fallback={null}>
         <ChatWidget />
       </Suspense>
-    </>
+    </MotionConfig>
   );
 }
 

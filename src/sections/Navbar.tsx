@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Calendar } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
@@ -6,7 +6,6 @@ import { Link, useLocation } from "react-router-dom";
 const navLinks = [
   { label: "Services", href: "/services" },
   { label: "Industries", href: "/industries" },
-  { label: "What I Build", href: "/#services" },
   { label: "Use Cases", href: "/use-cases" },
   // { label: "Founding Wall", href: "/founding-wall" }, // Hidden until Supabase is ready
   { label: "Results", href: "/results" },
@@ -53,6 +52,9 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
+  const hamburgerRef = useRef<HTMLButtonElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const previousFocusRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -70,6 +72,38 @@ export function Navbar() {
     document.body.style.overflow = isMobileOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [isMobileOpen]);
+
+  useEffect(() => {
+    if (isMobileOpen) {
+      previousFocusRef.current = document.activeElement as HTMLElement;
+      setTimeout(() => closeRef.current?.focus(), 100);
+    } else if (previousFocusRef.current) {
+      previousFocusRef.current.focus();
+      previousFocusRef.current = null;
+    }
+  }, [isMobileOpen]);
+
+  const handleOverlayKeyDown = useCallback((e: React.KeyboardEvent) => {
+    if (e.key === "Escape") {
+      setIsMobileOpen(false);
+      return;
+    }
+    if (e.key !== "Tab") return;
+    const overlay = e.currentTarget as HTMLElement;
+    const focusable = overlay.querySelectorAll<HTMLElement>(
+      'button, a[href], [tabindex]:not([tabindex="-1"])'
+    );
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }, []);
 
   // Handle hash scroll after navigation
   useEffect(() => {
@@ -116,6 +150,7 @@ export function Navbar() {
               <Calendar size={14} /> Book a Free Call →
             </NavLink>
             <button
+              ref={hamburgerRef}
               className="rounded-lg p-3 text-white/60 hover:text-white transition-colors lg:hidden"
               onClick={() => setIsMobileOpen(true)}
               aria-label="Open menu"
@@ -130,15 +165,20 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileOpen && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
             className="fixed inset-0 z-[75] bg-hero/95 backdrop-blur-xl flex flex-col"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
+            onKeyDown={handleOverlayKeyDown}
           >
             <div className="flex items-center justify-between px-4 sm:px-6 py-5">
               <span className="text-lg sm:text-xl font-extrabold tracking-tight text-white">Dean Holland</span>
               <button
+                ref={closeRef}
                 onClick={() => setIsMobileOpen(false)}
                 className="p-3 text-white/60 hover:text-white"
                 aria-label="Close"

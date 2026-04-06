@@ -67,9 +67,11 @@ export function FAQ() {
               transition={{ delay: i * 0.06, duration: 0.35 }}
             >
               <button
+                id={`faq-question-${i}`}
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="flex w-full items-center justify-between p-4 sm:p-6 text-left"
                 aria-expanded={openIndex === i}
+                aria-controls={`faq-answer-${i}`}
               >
                 <span className="flex items-center gap-4">
                   <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-bold transition-colors duration-300 ${
@@ -97,7 +99,7 @@ export function FAQ() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     style={{ overflow: "hidden" }}
                   >
-                    <div className="px-4 pb-4 pl-4 sm:px-6 sm:pb-6 sm:pl-[4.5rem]">
+                    <div id={`faq-answer-${i}`} role="region" aria-labelledby={`faq-question-${i}`} className="px-4 pb-4 pl-4 sm:px-6 sm:pb-6 sm:pl-[4.5rem]">
                       <p className="text-sm leading-relaxed text-white/50">{faq.a}</p>
                     </div>
                   </motion.div>
@@ -114,7 +116,7 @@ export function FAQ() {
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
         >
-          <p className="text-sm text-white/30">
+          <p className="text-sm text-white/50">
             Still have questions?{" "}
             <a href="/#contact" className="text-accent hover:text-accent-light transition-colors font-medium">
               Let's talk →

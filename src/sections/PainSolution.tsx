@@ -50,7 +50,7 @@ export function PainSolution() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08, duration: 0.4, ease: "easeOut" }}
                 >
-                  <CheckCircle2 size={20} className="mt-0.5 shrink-0 text-green-500" />
+                  <CheckCircle2 size={20} className="mt-0.5 shrink-0 text-accent" />
                   <p className="text-[15px] leading-relaxed text-content-primary">
                     <span className="font-semibold">{item.text}</span>
                     <span className="mx-2 inline-block text-accent">&rarr;</span>

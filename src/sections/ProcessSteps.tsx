@@ -45,10 +45,10 @@ export function ProcessSteps() {
       <div className="mx-auto max-w-container">
         <motion.div
           className="mb-16 max-w-2xl"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -16, filter: "blur(2px)" }}
+          whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
         >
           <span className="mb-4 inline-block text-xs font-bold uppercase tracking-widest text-accent">
             How It Works

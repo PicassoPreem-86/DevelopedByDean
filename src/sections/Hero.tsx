@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Sparkles, ArrowRight, CheckCircle2, Calendar, ClipboardCheck } from "lucide-react";
 
 export function Hero() {
@@ -68,12 +69,12 @@ export function Hero() {
               >
                 <Calendar size={16} /> Book a Free Strategy Call <ArrowRight size={16} />
               </a>
-              <a
-                href="/assessment"
+              <Link
+                to="/assessment"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-3.5 text-[15px] font-semibold text-content-primary hover:bg-white/90 transition-colors"
               >
                 <ClipboardCheck size={16} /> Get Your Free AI Readiness Score
-              </a>
+              </Link>
             </motion.div>
 
             <motion.div

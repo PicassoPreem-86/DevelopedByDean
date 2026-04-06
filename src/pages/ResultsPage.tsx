@@ -9,7 +9,7 @@ export function ResultsPage() {
       <SEO
         title="Results"
         path="/results"
-        description="See the real results my AI systems deliver — 40-60% more booked calls, 2-5x increase in sales, 20-40 hours saved weekly, and 3-10x ROI in month one."
+        description="See how AI systems improve lead response, conversion rates, operational efficiency, and revenue visibility for service businesses."
       />
       <Results />
       <ScarcityBanner />

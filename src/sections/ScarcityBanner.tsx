@@ -6,10 +6,10 @@ export function ScarcityBanner() {
   return (
     <motion.section
       className="py-6 px-6 bg-hero"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      initial={{ opacity: 0, scale: 0.97 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <div className="mx-auto max-w-container flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
         <div className="flex items-center gap-2">

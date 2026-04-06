@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 const stats = [
   { end: 15, prefix: "", suffix: "+", label: "Projects Delivered", decimal: false },
   { end: 500, prefix: "", suffix: "+", label: "Hours Saved for Clients", decimal: false },
-  { end: 100, prefix: "", suffix: "%", label: "Client Satisfaction", decimal: false },
-  { end: 2, prefix: "<", suffix: " Weeks", label: "Avg Delivery Time", decimal: false },
+  { end: 0, prefix: "", suffix: "", label: "Refund Requests", decimal: false },
+  { end: 1, prefix: "<", suffix: " Week", label: "to First Prototype", decimal: false },
 ];
 
 function CountUp({

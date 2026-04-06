@@ -96,7 +96,7 @@ export function AssessmentPage() {
         </div>
 
         {!hasAnswer && (
-          <p className="text-center text-sm text-white/25 mt-4">Pick one to continue</p>
+          <p className="text-center text-sm text-white/40 mt-4">Pick one to continue</p>
         )}
       </div>
     </div>
