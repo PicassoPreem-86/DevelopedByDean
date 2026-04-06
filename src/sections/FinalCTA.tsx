@@ -2,11 +2,9 @@ import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2, Send } from "lucide-react";
 import { CONTACT_EMAIL } from "../../shared/siteConfig";
+import { apiEndpoints, postJson } from "../lib/api";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
-
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY?.trim() || "";
-const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 export function FinalCTA() {
   const [status, setStatus] = useState<FormStatus>("idle");
@@ -23,15 +21,15 @@ export function FinalCTA() {
     setStatus("submitting");
 
     try {
-      const res = await fetch(WEB3FORMS_URL, {
-        method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `New strategy call request from ${formData.name}`,
-          from_name: "DevelopedByDean Website",
-          ...formData,
-        }),
+      const message = formData.website
+        ? `Website: ${formData.website}\n\n${formData.message}`
+        : formData.message;
+
+      const res = await postJson(apiEndpoints.contact, {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message,
       });
 
       if (!res.ok) {

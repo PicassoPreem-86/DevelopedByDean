@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot, User, Sparkles } from "lucide-react";
+import { apiEndpoints, postJson } from "../lib/api";
 
 interface Message {
   role: "user" | "assistant";
@@ -49,25 +50,16 @@ export function ChatWidget() {
   const submitLead = useCallback(async (leadData: Record<string, string>) => {
     if (leadCapturedRef.current) return;
     leadCapturedRef.current = true;
-    const key = import.meta.env.VITE_WEB3FORMS_KEY?.trim();
-    if (!key) return;
     try {
-      await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: key,
-          subject: `[AI Chat Lead] ${leadData.name || "Unknown"}`,
-          from_name: "DevelopedByDean AI Chat",
-          name: leadData.name || "",
-          email: leadData.email || "",
-          business: leadData.business || "",
-          phone: leadData.phone || "",
-          location: leadData.location || "",
-          preferred_date: leadData.preferred_date || "",
-          preferred_time: leadData.preferred_time || "",
-          message: `[Via AI Chat] ${leadData.message || "No details provided"}`,
-        }),
+      await postJson(apiEndpoints.contact, {
+        name: leadData.name || "",
+        email: leadData.email || "",
+        business: leadData.business || "",
+        phone: leadData.phone || "",
+        location: leadData.location || "",
+        preferred_date: leadData.preferred_date || "",
+        preferred_time: leadData.preferred_time || "",
+        message: `[Via AI Chat] ${leadData.message || "No details provided"}`,
       });
     } catch {
       // Silent fail — don't interrupt the conversation
@@ -114,15 +106,11 @@ export function ChatWidget() {
     setIsLoading(true);
 
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: newMessages.map((m) => ({
-            role: m.role,
-            content: m.content,
-          })),
-        }),
+      const res = await postJson(apiEndpoints.chat, {
+        messages: newMessages.map((m) => ({
+          role: m.role,
+          content: m.content,
+        })),
       });
 
       if (!res.ok) throw new Error("Failed");
@@ -333,7 +321,7 @@ export function ChatWidget() {
               setNudgeStage(0);
               setHasOpened(true);
             }}
-            className="fixed bottom-[88px] right-4 left-4 sm:left-auto sm:right-6 z-[70] flex items-start gap-3 rounded-2xl bg-hero border border-white/[0.1] px-4 py-3 shadow-2xl cursor-pointer hover:border-accent/30 transition-colors sm:max-w-[280px]"
+            className="fixed bottom-[calc(env(safe-area-inset-bottom)+88px)] right-4 left-auto sm:right-6 z-[70] flex items-start gap-3 rounded-2xl bg-hero border border-white/[0.1] px-4 py-3 shadow-2xl cursor-pointer hover:border-accent/30 transition-colors max-w-[280px]"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
@@ -362,7 +350,7 @@ export function ChatWidget() {
             setNudgeStage(0);
             setHasOpened(true);
           }}
-          className="fixed bottom-6 right-6 z-[90] flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg hover:bg-accent-hover hover:shadow-glow transition-all"
+          className="fixed bottom-[calc(env(safe-area-inset-bottom)+24px)] right-6 z-[90] flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg hover:bg-accent-hover hover:shadow-glow transition-all"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 1, type: "spring", stiffness: 200, damping: 15 }}

@@ -48,7 +48,15 @@ describe("ChatWidget smoke", () => {
     expect(screen.queryByText(/<!--LEAD:/i)).not.toBeInTheDocument();
 
     await waitFor(() => {
-      expect(fetchMock).toHaveBeenCalledTimes(1);
+      expect(fetchMock).toHaveBeenCalledTimes(2);
     });
+
+    expect(fetchMock).toHaveBeenNthCalledWith(
+      2,
+      "/api/contact",
+      expect.objectContaining({
+        method: "POST",
+      })
+    );
   });
 });

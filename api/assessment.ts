@@ -5,11 +5,11 @@ import {
   hasAllowedOrigin,
   setCorsHeaders,
 } from "../shared/server/http";
-import { processChatRequest } from "../shared/server/routeHandlers";
+import { processAssessmentRequest } from "../shared/server/routeHandlers";
 
 const isRateLimited = createRateLimiter({
   windowMs: 60_000,
-  maxRequests: 15,
+  maxRequests: 8,
 });
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -33,6 +33,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(429).json({ error: "Too many requests" });
   }
 
-  const result = await processChatRequest(req.body, process.env.ANTHROPIC_API_KEY);
+  const result = await processAssessmentRequest(
+    req.body,
+    process.env.WEB3FORMS_KEY
+  );
   return res.status(result.status).json(result.body);
 }

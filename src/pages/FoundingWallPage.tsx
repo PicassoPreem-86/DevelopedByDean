@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MapPin, Pin, Send, Sparkles } from "lucide-react";
 import { SEO } from "../components/SEO";
+import { apiEndpoints, postJson } from "../lib/api";
 import { FinalCTA } from "../sections/FinalCTA";
 import { FOUNDING_WALL_OG_IMAGE_URL } from "../../shared/siteConfig";
 import {
@@ -38,9 +39,6 @@ const NOTE_TINTS = [
   "bg-[#ffeeba]",
 ];
 
-const WEB3FORMS_URL = "https://api.web3forms.com/submit";
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY?.trim() || "";
-
 export function FoundingWallPage() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [formData, setFormData] = useState({
@@ -58,19 +56,7 @@ export function FoundingWallPage() {
     setStatus("submitting");
 
     try {
-      const response = await fetch(WEB3FORMS_URL, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `New Founding Wall note from ${formData.name}`,
-          from_name: "DevelopedByDean Founding Wall",
-          ...formData,
-        }),
-      });
+      const response = await postJson(apiEndpoints.foundingWall, formData);
 
       if (!response.ok) {
         setStatus("error");

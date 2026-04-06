@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ClipboardCheck } from "lucide-react";
 import { useAssessment } from "../hooks/useAssessment";
-
-const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY?.trim() || "";
+import { apiEndpoints, postJson } from "../lib/api";
 
 export function EmailCapturePage() {
   const navigate = useNavigate();
@@ -42,24 +41,17 @@ export function EmailCapturePage() {
       companyName: companyName.trim() || undefined,
     });
 
-    // Submit lead to Web3Forms
-    if (WEB3FORMS_KEY && result) {
+    // Submit lead through the server-side capture endpoint
+    if (result) {
       try {
-        await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { Accept: "application/json", "Content-Type": "application/json" },
-          body: JSON.stringify({
-            access_key: WEB3FORMS_KEY,
-            subject: `[AI Assessment] ${firstName.trim()} — Score: ${result.overallScore}/100`,
-            from_name: "DevelopedByDean AI Assessment",
-            name: firstName.trim(),
-            email: email.trim(),
-            company: companyName.trim() || "Not provided",
-            industry: industry || "Not provided",
-            overall_score: result.overallScore,
-            band: result.bandLabel,
-            message: `Assessment completed. Score: ${result.overallScore}/100 (${result.bandLabel}). Categories: ${result.categoryScores.map((c) => `${c.label}: ${c.score}`).join(", ")}`,
-          }),
+        await postJson(apiEndpoints.assessment, {
+          name: firstName.trim(),
+          email: email.trim(),
+          company: companyName.trim() || "Not provided",
+          industry: industry || "Not provided",
+          overall_score: result.overallScore,
+          band: result.bandLabel,
+          message: `Assessment completed. Score: ${result.overallScore}/100 (${result.bandLabel}). Categories: ${result.categoryScores.map((c) => `${c.label}: ${c.score}`).join(", ")}`,
         });
       } catch {
         // Silent fail — don't block the user from seeing results
