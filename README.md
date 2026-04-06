@@ -18,6 +18,8 @@ Personal brand website for Dean Holland — solo AI developer & systems builder.
 pnpm install
 pnpm dev        # Start dev server at localhost:5173
 pnpm build      # Production build
+pnpm test       # Unit and smoke tests
+pnpm test:e2e   # Playwright end-to-end smoke tests
 pnpm preview    # Preview production build
 ```
 
@@ -30,7 +32,6 @@ ANTHROPIC_API_KEY=...
 ALLOWED_ORIGINS=https://developedbydean.ai,https://www.developedbydean.ai,https://developedbydean.vercel.app
 WEB3FORMS_KEY=...
 VITE_CONTACT_FORM_ENDPOINT=/api/contact
-VITE_WEB3FORMS_KEY=...
 VITE_LINKEDIN_URL=https://linkedin.com/in/your-profile
 VITE_X_URL=https://x.com/your-handle
 VITE_GITHUB_URL=https://github.com/your-handle
@@ -39,8 +40,8 @@ VITE_BING_SITE_VERIFICATION=...
 ```
 
 `VITE_CONTACT_FORM_ENDPOINT` should stay pointed at `/api/contact` unless you intentionally replace the built-in form handler.
-`VITE_WEB3FORMS_KEY` is used by the client-side contact and chat lead capture flows.
 Set the verification values once you have Google Search Console and Bing Webmaster Tools connected.
+All lead capture flows submit through the server-side `/api/*` handlers and use `WEB3FORMS_KEY` there.
 The Founding Wall submission flow also uses `WEB3FORMS_KEY` and sends notes to your moderation inbox.
 
 ## Founding Wall
@@ -70,4 +71,4 @@ Deployed automatically via Vercel. Push to `main` to deploy, make sure the envir
 
 ## CI
 
-GitHub Actions now runs `pnpm lint`, `pnpm test`, and `pnpm build` on every pull request plus pushes to `main` and `master`.
+GitHub Actions now runs `pnpm lint`, `pnpm test`, `pnpm build`, and `pnpm test:e2e` on every pull request plus pushes to `main` and `master`.

@@ -30,6 +30,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+
       - name: Lint
         run: pnpm lint
 
@@ -38,3 +41,6 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      - name: E2E
+        run: pnpm test:e2e
