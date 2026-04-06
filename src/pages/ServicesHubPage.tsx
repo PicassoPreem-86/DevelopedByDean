@@ -9,6 +9,10 @@ import {
   Layout,
   Zap,
   AppWindow,
+  MessageSquare,
+  CalendarCheck,
+  RefreshCw,
+  Send,
   PhoneMissed,
   Clock,
   ClipboardList,
@@ -76,6 +80,10 @@ const serviceIconMap: Record<string, typeof Mic> = {
   "ai-websites": Layout,
   "workflow-automation": Zap,
   "lead-generation-systems": AppWindow,
+  "ai-chatbot-development": MessageSquare,
+  "ai-appointment-booking": CalendarCheck,
+  "crm-automation": RefreshCw,
+  "ai-follow-up-systems": Send,
 };
 
 /* ─── Pain points data ─── */
@@ -315,7 +323,7 @@ export function ServicesHubPage() {
               What I Build
             </span>
             <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight text-content-primary">
-              Four Core Systems That Drive Revenue, Save Time, and Scale Operations
+              AI Systems That Drive Revenue, Save Time, and Scale Operations
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-content-body">
               Every business I work with gets a system built around their specific workflow — not a
@@ -324,12 +332,28 @@ export function ServicesHubPage() {
                 AI voice agents
               </Link>
               ,{" "}
+              <Link to="/services/ai-chatbot-development" className="font-medium text-accent hover:underline">
+                chatbots
+              </Link>
+              ,{" "}
               <Link to="/services/ai-websites" className="font-medium text-accent hover:underline">
                 conversion-focused websites
               </Link>
               ,{" "}
               <Link to="/services/workflow-automation" className="font-medium text-accent hover:underline">
                 workflow automations
+              </Link>
+              ,{" "}
+              <Link to="/services/crm-automation" className="font-medium text-accent hover:underline">
+                CRM automation
+              </Link>
+              ,{" "}
+              <Link to="/services/ai-appointment-booking" className="font-medium text-accent hover:underline">
+                booking systems
+              </Link>
+              ,{" "}
+              <Link to="/services/ai-follow-up-systems" className="font-medium text-accent hover:underline">
+                follow-up automation
               </Link>
               , and{" "}
               <Link to="/services/lead-generation-systems" className="font-medium text-accent hover:underline">
@@ -475,8 +499,9 @@ export function ServicesHubPage() {
               AI Systems Designed Around How Your Business Actually Runs
             </h2>
             <p className="mt-4 text-lg leading-relaxed text-white/60">
-              Whether you run a service business, medical practice, or professional firm, the systems
-              are built around your specific workflow — not a one-size-fits-all template.
+              Whether you run a service business, medical practice, dealership, fitness studio, or
+              professional firm, the systems are built around your specific workflow — not a
+              one-size-fits-all template.
             </p>
           </motion.div>
 

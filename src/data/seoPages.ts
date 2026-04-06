@@ -1,3 +1,5 @@
+import { validateSeoPageCollection } from "./seoPages.validation";
+
 export type LinkItem = {
   label: string;
   href: string;
@@ -41,6 +43,21 @@ export const servicePages: SeoPageDefinition[] = [
       "AI receptionist for businesses",
       "AI appointment booking agent",
       "AI phone answering service",
+      "AI call answering service for small business",
+      "virtual receptionist AI",
+      "AI outbound calling agent",
+      "automated phone qualification",
+      "AI voice bot for lead capture",
+      "best AI phone agent for small business",
+      "AI voice agent cost",
+      "AI voice agent vs call center",
+      "24/7 AI phone answering",
+      "AI cold calling agent",
+      "hire AI voice agent developer",
+      "AI phone agent for after-hours calls",
+      "voice AI for appointment setting",
+      "conversational AI phone system",
+      "AI voice agent for customer service",
     ],
     idealFor: [
       "Home service businesses missing inbound calls after hours",
@@ -103,6 +120,21 @@ export const servicePages: SeoPageDefinition[] = [
       "AI lead generation website",
       "AI landing page developer",
       "conversion-focused business website",
+      "AI website builder for small business",
+      "high-converting website development",
+      "website with AI chat integration",
+      "SEO-optimized business website",
+      "AI-powered lead capture website",
+      "best AI website for lead generation",
+      "AI website development cost",
+      "website redesign for more leads",
+      "AI-integrated business website",
+      "custom website with chatbot",
+      "hire AI website developer",
+      "website that generates leads automatically",
+      "AI website for service businesses",
+      "landing page with AI lead capture",
+      "business website with built-in automation",
     ],
     idealFor: [
       "Businesses with traffic but weak conversion rates",
@@ -165,6 +197,21 @@ export const servicePages: SeoPageDefinition[] = [
       "CRM automation",
       "AI operations automation",
       "business process automation consultant",
+      "automate repetitive business tasks",
+      "small business automation services",
+      "Zapier and Make automation expert",
+      "onboarding workflow automation",
+      "business systems integration consultant",
+      "best workflow automation for small business",
+      "how to automate business processes",
+      "n8n automation consultant",
+      "reduce manual work with automation",
+      "workflow automation cost",
+      "hire automation consultant",
+      "automate client onboarding process",
+      "email and invoice automation",
+      "operations automation for small teams",
+      "automated task management system",
     ],
     idealFor: [
       "Teams stuck in spreadsheets, manual data entry, and inbox triage",
@@ -227,6 +274,21 @@ export const servicePages: SeoPageDefinition[] = [
       "lead qualification automation",
       "AI lead capture system",
       "automated follow-up workflows",
+      "lead scoring automation for small business",
+      "AI lead routing system",
+      "inbound lead capture and nurture",
+      "speed to lead automation",
+      "automated lead pipeline management",
+      "best AI lead generation for small business",
+      "how to generate more leads with AI",
+      "AI lead generation cost",
+      "automated lead magnet system",
+      "lead generation funnel automation",
+      "hire AI lead generation expert",
+      "stop losing leads to slow response",
+      "lead capture form with AI qualification",
+      "multi-channel lead generation system",
+      "AI lead gen for service businesses",
     ],
     idealFor: [
       "Businesses paying for traffic but failing to respond fast enough",
@@ -272,6 +334,343 @@ export const servicePages: SeoPageDefinition[] = [
       { label: "Results", href: "/results" },
     ],
   },
+  {
+    slug: "ai-chatbot-development",
+    path: "/services/ai-chatbot-development",
+    title: "AI Chatbots",
+    metaTitle:
+      "AI Chatbot Development for Lead Capture and Customer Support",
+    description:
+      "Custom AI chatbots that qualify leads, answer customer questions, and route conversations to your team — available 24/7 on your website.",
+    intro: "Service",
+    eyebrow: "AI Chatbots",
+    heroTitle:
+      "AI Chatbots That Qualify Leads and Handle Support Around the Clock",
+    heroDescription:
+      "I build custom AI chatbots for businesses that want to convert more website visitors into qualified leads without adding staff. Every bot is trained on your business, not a generic template.",
+    primaryKeyword: "AI chatbot development",
+    secondaryKeywords: [
+      "custom AI chatbot for business",
+      "AI chatbot for lead generation",
+      "AI customer support chatbot",
+      "website chatbot development",
+      "conversational AI for small business",
+      "AI chat widget for websites",
+      "lead capture chatbot",
+      "AI chatbot for sales",
+      "best AI chatbot for small business",
+      "AI chatbot vs live chat",
+      "how much does an AI chatbot cost",
+      "AI chatbot for appointment booking",
+      "custom chatbot development services",
+      "hire AI chatbot developer",
+      "chatbot for service business websites",
+      "AI chatbot that books appointments",
+      "conversational AI for lead qualification",
+      "website chatbot with CRM integration",
+    ],
+    idealFor: [
+      "Businesses with website traffic but low conversion rates",
+      "Teams that want to qualify leads before a human conversation",
+      "Operators who need 24/7 customer support without hiring for night shifts",
+    ],
+    outcomes: [
+      "More qualified leads from existing website traffic",
+      "Faster response to visitor questions without manual monitoring",
+      "Better lead data flowing into your CRM automatically",
+    ],
+    deliverables: [
+      "Custom AI chatbot trained on your business, services, and FAQs",
+      "Lead qualification logic, CRM integration, and notification routing",
+      "Conversation analytics and ongoing performance tuning",
+    ],
+    process: [
+      "Map the questions visitors ask and the leads you want to capture",
+      "Design the conversation flows, qualification rules, and handoff triggers",
+      "Build and train the chatbot on your actual business information",
+      "Launch, monitor conversations, and improve accuracy over time",
+    ],
+    faqs: [
+      {
+        question: "How is this different from a basic chat widget?",
+        answer:
+          "Off-the-shelf chat widgets follow rigid scripts. I build chatbots that understand context, qualify intent, and make real routing decisions based on your business logic.",
+      },
+      {
+        question: "Can the chatbot hand off to a real person?",
+        answer:
+          "Yes. I build escalation triggers so the bot hands off to your team when the conversation requires a human touch.",
+      },
+      {
+        question: "Will the chatbot sound robotic?",
+        answer:
+          "No. The bot is trained to match your brand voice and handle real customer questions naturally, not read from a script.",
+      },
+    ],
+    links: [
+      { label: "AI voice agents", href: "/services/ai-voice-agents" },
+      {
+        label: "Lead generation systems",
+        href: "/services/lead-generation-systems",
+      },
+      { label: "Results", href: "/results" },
+    ],
+  },
+  {
+    slug: "ai-appointment-booking",
+    path: "/services/ai-appointment-booking",
+    title: "AI Appointment Booking",
+    metaTitle:
+      "AI Appointment Booking Systems That Schedule, Remind, and Reduce No-Shows",
+    description:
+      "Automated appointment booking systems that let prospects self-schedule, send smart reminders, and reduce no-shows without front-desk bottlenecks.",
+    intro: "Service",
+    eyebrow: "AI Appointment Booking",
+    heroTitle:
+      "AI Booking Systems That Fill Your Calendar Without the Back-and-Forth",
+    heroDescription:
+      "I build automated booking systems that let leads schedule directly, send confirmation and reminder sequences, and reduce no-shows so your team spends less time chasing and more time delivering.",
+    primaryKeyword: "AI appointment booking system",
+    secondaryKeywords: [
+      "automated appointment scheduling",
+      "AI booking system for businesses",
+      "appointment reminder automation",
+      "reduce no-shows with AI",
+      "self-service booking system",
+      "online appointment booking automation",
+      "AI scheduling assistant",
+      "automated booking and reminders",
+      "best AI booking system for businesses",
+      "how to reduce appointment no-shows",
+      "AI scheduling software for service businesses",
+      "automated appointment confirmation system",
+      "booking system with SMS reminders",
+      "hire appointment booking system developer",
+      "calendar automation for service businesses",
+      "AI scheduling for multiple locations",
+      "appointment booking with lead qualification",
+      "reduce cancellations with automated reminders",
+    ],
+    idealFor: [
+      "Service businesses losing revenue to no-shows and last-minute cancellations",
+      "Teams spending hours each week on manual scheduling and rescheduling",
+      "Businesses that want leads to book immediately instead of waiting for a callback",
+    ],
+    outcomes: [
+      "More booked appointments from inbound leads with zero manual scheduling",
+      "Fewer no-shows through smart reminder and confirmation sequences",
+      "Cleaner calendar management with automatic conflict detection and routing",
+    ],
+    deliverables: [
+      "Self-service booking pages integrated with your calendar and availability rules",
+      "Automated confirmation, reminder, and follow-up sequences via SMS and email",
+      "No-show recovery workflows and rebooking automation",
+    ],
+    process: [
+      "Map your current scheduling flow, appointment types, and availability rules",
+      "Design the booking experience, reminder cadence, and no-show recovery logic",
+      "Build the system with calendar sync, notifications, and CRM integration",
+      "Launch and optimize based on booking rates and show-up data",
+    ],
+    faqs: [
+      {
+        question: "Can this work with my existing calendar?",
+        answer:
+          "Yes. I connect booking systems to Google Calendar, Outlook, Calendly, and other tools your team already uses.",
+      },
+      {
+        question: "How much can AI really reduce no-shows?",
+        answer:
+          "Smart reminder sequences with the right timing and channel mix typically reduce no-shows by 30 to 50 percent. The exact impact depends on your industry and appointment type.",
+      },
+      {
+        question: "Can prospects book without talking to anyone?",
+        answer:
+          "Yes. The system can handle full self-service booking with qualification built in, so only the right leads land on your calendar.",
+      },
+    ],
+    links: [
+      { label: "AI voice agents", href: "/services/ai-voice-agents" },
+      {
+        label: "Workflow automation",
+        href: "/services/workflow-automation",
+      },
+      { label: "AI for med spas", href: "/industries/medical-spa-ai" },
+    ],
+  },
+  {
+    slug: "crm-automation",
+    path: "/services/crm-automation",
+    title: "CRM Automation",
+    metaTitle:
+      "CRM Automation Services for Lead Routing, Follow-Up, and Pipeline Management",
+    description:
+      "CRM automation that routes leads, triggers follow-up, updates deal stages, and keeps your pipeline organized without manual data entry.",
+    intro: "Service",
+    eyebrow: "CRM Automation",
+    heroTitle:
+      "CRM Automation That Keeps Your Pipeline Moving Without the Manual Work",
+    heroDescription:
+      "I build CRM automation systems that route leads to the right person, trigger follow-up at the right time, and keep deal stages accurate so nothing falls through the cracks.",
+    primaryKeyword: "CRM automation services",
+    secondaryKeywords: [
+      "CRM workflow automation",
+      "automated lead routing",
+      "CRM follow-up automation",
+      "HubSpot automation consultant",
+      "GoHighLevel automation",
+      "sales pipeline automation",
+      "CRM integration services",
+      "automated CRM data entry",
+      "best CRM automation for small business",
+      "how to automate CRM follow-up",
+      "Salesforce automation consultant",
+      "CRM lead nurturing automation",
+      "automated deal stage management",
+      "hire CRM automation expert",
+      "stop leads from falling through the cracks",
+      "automated sales follow-up in CRM",
+      "CRM cleanup and automation services",
+      "lead assignment automation",
+    ],
+    idealFor: [
+      "Sales teams where leads sit untouched because follow-up is manual",
+      "Businesses running a CRM but not using it to automate anything",
+      "Operators who need accurate pipeline data without chasing reps to update records",
+    ],
+    outcomes: [
+      "Faster lead response through automatic routing and follow-up triggers",
+      "Cleaner pipeline data with automatic stage updates and activity logging",
+      "Less time spent on manual CRM entry and more time spent closing",
+    ],
+    deliverables: [
+      "Lead routing rules, assignment logic, and priority-based distribution",
+      "Automated follow-up sequences triggered by lead behavior and deal stage",
+      "Pipeline reporting, activity tracking, and integration with your existing tools",
+    ],
+    process: [
+      "Audit your current CRM setup, pipeline stages, and manual bottlenecks",
+      "Design the automation logic for routing, follow-up, and stage transitions",
+      "Build and test the workflows with your real lead and deal data",
+      "Monitor pipeline accuracy and tighten rules based on conversion patterns",
+    ],
+    faqs: [
+      {
+        question: "Which CRMs do you work with?",
+        answer:
+          "I work with HubSpot, GoHighLevel, Salesforce, Pipedrive, and custom setups. The automation logic matters more than the platform.",
+      },
+      {
+        question:
+          "Can you fix a CRM that is already set up but not working well?",
+        answer:
+          "Yes. Most CRM problems come from poor automation and messy data, not the platform itself. I audit what you have and rebuild the workflows that matter.",
+      },
+      {
+        question: "Will this replace my sales team?",
+        answer:
+          "No. The goal is to remove the admin work so your team can focus on conversations and closing instead of data entry and follow-up tracking.",
+      },
+    ],
+    links: [
+      {
+        label: "Workflow automation",
+        href: "/services/workflow-automation",
+      },
+      {
+        label: "Lead generation systems",
+        href: "/services/lead-generation-systems",
+      },
+      {
+        label: "AI follow-up systems",
+        href: "/services/ai-follow-up-systems",
+      },
+    ],
+  },
+  {
+    slug: "ai-follow-up-systems",
+    path: "/services/ai-follow-up-systems",
+    title: "AI Follow-Up Systems",
+    metaTitle:
+      "AI Follow-Up Automation for Speed-to-Lead and Lead Nurturing",
+    description:
+      "AI follow-up systems that respond to leads instantly, nurture cold prospects, and re-engage past inquiries so nothing slips through the cracks.",
+    intro: "Service",
+    eyebrow: "AI Follow-Up Systems",
+    heroTitle:
+      "AI Follow-Up Systems That Respond Instantly and Nurture Until They Convert",
+    heroDescription:
+      "I build follow-up automation that contacts new leads within seconds, runs personalized nurture sequences, and reactivates cold prospects so your pipeline stays warm without manual chasing.",
+    primaryKeyword: "AI follow-up automation",
+    secondaryKeywords: [
+      "speed to lead automation",
+      "automated lead follow-up",
+      "AI lead nurturing system",
+      "lead reactivation automation",
+      "instant lead response system",
+      "follow-up sequence automation",
+      "AI drip campaign builder",
+      "automated prospect follow-up",
+      "best AI follow-up system for leads",
+      "how to follow up with leads faster",
+      "automated text message follow-up",
+      "AI email follow-up sequences",
+      "lead reactivation campaign automation",
+      "hire AI follow-up automation expert",
+      "stop losing leads to slow follow-up",
+      "SMS and email follow-up automation",
+      "AI that follows up with old leads",
+      "instant lead response system for businesses",
+    ],
+    idealFor: [
+      "Businesses where leads go cold because follow-up takes too long",
+      "Teams that know they should follow up more but don't have the bandwidth",
+      "Operators sitting on a database of past leads they never re-engaged",
+    ],
+    outcomes: [
+      "Sub-minute response time on new leads without manual intervention",
+      "Higher conversion from existing pipeline through consistent nurture",
+      "Reactivated revenue from past leads that were never properly followed up",
+    ],
+    deliverables: [
+      "Instant-response triggers via SMS, email, and voice within seconds of inquiry",
+      "Multi-step nurture sequences personalized by lead source, interest, and behavior",
+      "Reactivation campaigns for dormant leads with re-engagement tracking",
+    ],
+    process: [
+      "Audit your current response times, follow-up gaps, and dormant lead volume",
+      "Design the sequence logic for instant response, nurture, and reactivation",
+      "Build the automation across your CRM, email, SMS, and voice channels",
+      "Launch and measure conversion lift against your previous follow-up baseline",
+    ],
+    faqs: [
+      {
+        question: "How fast can the system respond to a new lead?",
+        answer:
+          "Typically under 60 seconds. I build triggers that fire on form submissions, calls, or chat messages so the lead gets a response before they move on.",
+      },
+      {
+        question:
+          "Does this work for leads that came in weeks or months ago?",
+        answer:
+          "Yes. Reactivation campaigns are one of the highest-ROI plays. Most businesses have hundreds of leads that were never properly followed up.",
+      },
+      {
+        question:
+          "Can the follow-up feel personalized instead of spammy?",
+        answer:
+          "Yes. I build sequences that reference the lead's source, interest, and prior activity so messages feel relevant instead of generic.",
+      },
+    ],
+    links: [
+      {
+        label: "Lead generation systems",
+        href: "/services/lead-generation-systems",
+      },
+      { label: "CRM automation", href: "/services/crm-automation" },
+      { label: "AI voice agents", href: "/services/ai-voice-agents" },
+    ],
+  },
 ];
 
 export const industryPages: SeoPageDefinition[] = [
@@ -292,6 +691,21 @@ export const industryPages: SeoPageDefinition[] = [
       "AI for contractors",
       "AI receptionist for home services",
       "lead generation for local service businesses",
+      "AI for HVAC companies",
+      "AI for plumbing businesses",
+      "after-hours call answering for contractors",
+      "home services lead follow-up automation",
+      "AI dispatch and scheduling for service businesses",
+      "AI answering service for contractors",
+      "how to get more leads for home services",
+      "roofing company AI automation",
+      "cleaning business lead generation",
+      "best AI for home service companies",
+      "HVAC lead generation automation",
+      "plumber AI phone answering",
+      "electrician lead capture system",
+      "landscaping business AI automation",
+      "pest control lead follow-up",
     ],
     idealFor: [
       "HVAC, plumbing, roofing, electrical, and cleaning businesses",
@@ -354,6 +768,21 @@ export const industryPages: SeoPageDefinition[] = [
       "med spa lead generation",
       "AI booking system for aesthetic clinics",
       "med spa consultation automation",
+      "AI for aesthetic clinics",
+      "med spa patient reactivation",
+      "med spa front desk automation",
+      "consultation booking automation for med spas",
+      "AI marketing for medical spas",
+      "best AI for med spas",
+      "how to get more med spa clients",
+      "med spa no-show reduction",
+      "AI receptionist for aesthetic clinics",
+      "med spa SMS marketing automation",
+      "Botox lead generation automation",
+      "aesthetic clinic intake automation",
+      "med spa appointment reminder system",
+      "cosmetic procedure lead capture",
+      "med spa Google Ads follow-up automation",
     ],
     idealFor: [
       "Clinics that want more consults from paid traffic or organic search",
@@ -416,6 +845,21 @@ export const industryPages: SeoPageDefinition[] = [
       "law firm intake automation",
       "legal lead qualification system",
       "AI receptionist for law firms",
+      "law firm lead follow-up automation",
+      "AI for personal injury law firms",
+      "legal client intake software",
+      "law firm CRM automation",
+      "after-hours intake for attorneys",
+      "best AI for law firms",
+      "how to automate law firm intake",
+      "legal intake chatbot",
+      "law firm speed to lead",
+      "attorney lead qualification automation",
+      "personal injury lead intake automation",
+      "family law firm AI receptionist",
+      "immigration lawyer lead qualification",
+      "criminal defense lead capture",
+      "law firm Google Ads follow-up",
     ],
     idealFor: [
       "Practice areas with time-sensitive inbound leads",
@@ -461,9 +905,445 @@ export const industryPages: SeoPageDefinition[] = [
       { label: "How it works", href: "/services" },
     ],
   },
+  {
+    slug: "real-estate-ai",
+    path: "/industries/real-estate-ai",
+    title: "AI for Real Estate",
+    metaTitle:
+      "AI Lead Capture and Follow-Up Systems for Real Estate Agents",
+    description:
+      "AI systems for real estate agents and teams that need faster lead response, automated follow-up, and more showings booked from online inquiries.",
+    intro: "Industry",
+    eyebrow: "Real Estate",
+    heroTitle:
+      "AI Systems for Real Estate Agents Who Need Faster Follow-Up and More Showings",
+    heroDescription:
+      "I build AI systems for real estate professionals that respond to leads instantly, qualify buyer and seller intent, book showings, and keep follow-up running so no opportunity goes cold.",
+    primaryKeyword: "AI for real estate agents",
+    secondaryKeywords: [
+      "real estate lead follow-up automation",
+      "AI for real estate teams",
+      "real estate lead qualification",
+      "automated showing booking",
+      "real estate CRM automation",
+      "AI assistant for realtors",
+      "real estate lead nurturing",
+      "AI for real estate brokerages",
+      "best AI for real estate agents",
+      "how to follow up with real estate leads",
+      "AI ISA replacement for realtors",
+      "automated real estate drip campaigns",
+      "Zillow lead follow-up automation",
+      "real estate ISA automation replacement",
+      "AI for real estate investor leads",
+      "buyer lead nurture automation",
+      "open house follow-up automation",
+      "real estate speed to lead system",
+    ],
+    idealFor: [
+      "Solo agents and teams drowning in portal leads with no time to follow up",
+      "Brokerages that need consistent lead distribution and response times",
+      "Agents spending hours on manual follow-up instead of showing homes",
+    ],
+    outcomes: [
+      "Faster response to Zillow, Realtor.com, and website leads",
+      "More showings booked from the same lead volume",
+      "Better lead nurturing that keeps prospects engaged until they're ready to move",
+    ],
+    deliverables: [
+      "Instant lead response via text, email, and voice within seconds of inquiry",
+      "Buyer and seller qualification logic with CRM routing and tagging",
+      "Long-term nurture sequences for leads that aren't ready to transact yet",
+    ],
+    process: [
+      "Map your lead sources, response workflow, and conversion bottlenecks",
+      "Design qualification and follow-up sequences for buyers and sellers",
+      "Connect the system to your CRM, calendar, and lead portals",
+      "Track response times, showing rates, and conversion to optimize",
+    ],
+    faqs: [
+      {
+        question:
+          "Can AI handle real estate leads from Zillow and Realtor.com?",
+        answer:
+          "Yes. I build integrations that capture portal leads instantly and start qualification and follow-up before a competitor responds.",
+      },
+      {
+        question: "Will this work for a team or just solo agents?",
+        answer:
+          "Both. For teams, I add lead distribution rules so leads route to the right agent based on area, availability, or lead source.",
+      },
+      {
+        question: "Can the AI book showings automatically?",
+        answer:
+          "Yes. The system can qualify interest, check availability, and schedule showings directly on the agent's calendar.",
+      },
+    ],
+    links: [
+      { label: "AI voice agents", href: "/services/ai-voice-agents" },
+      {
+        label: "AI follow-up systems",
+        href: "/services/ai-follow-up-systems",
+      },
+      {
+        label: "Lead generation systems",
+        href: "/services/lead-generation-systems",
+      },
+    ],
+  },
+  {
+    slug: "dental-practice-ai",
+    path: "/industries/dental-practice-ai",
+    title: "AI for Dental Practices",
+    metaTitle:
+      "AI Appointment Booking and Patient Reactivation for Dental Practices",
+    description:
+      "AI systems for dental practices that automate appointment booking, reduce no-shows, reactivate lapsed patients, and handle after-hours inquiries.",
+    intro: "Industry",
+    eyebrow: "Dental Practices",
+    heroTitle:
+      "AI Systems for Dental Practices That Need Fuller Schedules and Fewer No-Shows",
+    heroDescription:
+      "I build AI systems for dental offices that book appointments online, send smart reminders, reactivate patients who haven't been in, and answer calls when the front desk can't.",
+    primaryKeyword: "AI for dental practices",
+    secondaryKeywords: [
+      "dental appointment automation",
+      "AI receptionist for dentists",
+      "dental patient reactivation",
+      "reduce dental no-shows",
+      "dental office automation",
+      "AI for dental offices",
+      "dental booking system",
+      "dental practice lead generation",
+      "best AI for dental offices",
+      "how to reduce dental appointment no-shows",
+      "dental patient recall automation",
+      "AI answering service for dentists",
+      "dental office text message reminders",
+      "dental hygiene recall system",
+      "new patient acquisition for dentists",
+      "dental office AI phone answering",
+      "same-day dental appointment booking",
+      "dental practice growth automation",
+    ],
+    idealFor: [
+      "Practices with open chair time that could be filled by reactivating lapsed patients",
+      "Offices losing new-patient inquiries because the front desk is busy or closed",
+      "Dentists who want fewer no-shows without adding reminder staff",
+    ],
+    outcomes: [
+      "More appointments booked from website visitors and phone inquiries",
+      "Fewer no-shows through automated confirmation and reminder sequences",
+      "Reactivated revenue from patients who haven't scheduled in 6 to 18 months",
+    ],
+    deliverables: [
+      "Online self-scheduling with insurance and service type pre-qualification",
+      "SMS and email reminder sequences tuned to reduce no-shows",
+      "Patient reactivation campaigns for lapsed hygiene and treatment follow-ups",
+    ],
+    process: [
+      "Audit your current booking flow, no-show rates, and reactivation gaps",
+      "Design the booking, reminder, and reactivation systems around your schedule",
+      "Build the automation with PMS integration, SMS, and email",
+      "Track booking rates, no-show reduction, and reactivation revenue",
+    ],
+    faqs: [
+      {
+        question:
+          "Can AI integrate with my practice management software?",
+        answer:
+          "In most cases, yes. I work with the APIs and integration layers available on platforms like Dentrix, Eaglesoft, Open Dental, and others.",
+      },
+      {
+        question: "How does patient reactivation work?",
+        answer:
+          "The system identifies patients who haven't booked in a set timeframe and sends personalized outreach encouraging them to schedule their next visit.",
+      },
+      {
+        question:
+          "Will patients feel comfortable booking with AI?",
+        answer:
+          "Yes. The experience feels like a modern booking page, not a robot. Patients pick their time, confirm details, and get reminders — all in a familiar format.",
+      },
+    ],
+    links: [
+      {
+        label: "AI appointment booking",
+        href: "/services/ai-appointment-booking",
+      },
+      { label: "AI voice agents", href: "/services/ai-voice-agents" },
+      { label: "AI for med spas", href: "/industries/medical-spa-ai" },
+    ],
+  },
+  {
+    slug: "insurance-agency-ai",
+    path: "/industries/insurance-agency-ai",
+    title: "AI for Insurance Agencies",
+    metaTitle:
+      "AI Lead Qualification and Follow-Up Systems for Insurance Agencies",
+    description:
+      "AI systems for insurance agencies that qualify leads faster, automate quote follow-up, and keep renewal and cross-sell pipelines organized.",
+    intro: "Industry",
+    eyebrow: "Insurance Agencies",
+    heroTitle:
+      "AI Systems for Insurance Agencies That Need Faster Quotes and Better Follow-Up",
+    heroDescription:
+      "I build AI systems for insurance agencies that qualify inbound leads, automate quote follow-up, trigger renewal reminders, and surface cross-sell opportunities so nothing gets missed.",
+    primaryKeyword: "AI for insurance agencies",
+    secondaryKeywords: [
+      "insurance lead qualification",
+      "AI for insurance agents",
+      "insurance quote follow-up automation",
+      "insurance renewal automation",
+      "AI receptionist for insurance agencies",
+      "insurance agency CRM automation",
+      "insurance cross-sell automation",
+      "automated insurance lead nurturing",
+      "best AI for insurance agents",
+      "how to automate insurance renewals",
+      "AI for independent insurance agents",
+      "insurance quote automation",
+      "insurance agency lead response automation",
+      "P&C insurance lead automation",
+      "life insurance lead follow-up",
+      "insurance agency growth automation",
+      "automated insurance quote request handling",
+      "insurance client retention automation",
+    ],
+    idealFor: [
+      "Agencies where quote follow-up is slow or inconsistent",
+      "Teams that lose renewals because reminders fall through the cracks",
+      "Agents who want to surface cross-sell opportunities without manual review",
+    ],
+    outcomes: [
+      "Faster quote follow-up that closes more policies from existing leads",
+      "Higher retention through automated renewal and check-in sequences",
+      "More cross-sell revenue identified and acted on automatically",
+    ],
+    deliverables: [
+      "Lead intake and qualification workflows for auto, home, life, and commercial lines",
+      "Quote follow-up sequences with timing and channel optimization",
+      "Renewal reminders, cross-sell triggers, and retention automation",
+    ],
+    process: [
+      "Map your lead sources, quote workflow, and renewal pipeline",
+      "Design qualification, follow-up, and retention sequences by line of business",
+      "Build the automation across your AMS, CRM, and communication channels",
+      "Track bind rates, renewal retention, and cross-sell conversion",
+    ],
+    faqs: [
+      {
+        question:
+          "Can AI qualify insurance leads by line of business?",
+        answer:
+          "Yes. I build intake logic that routes leads based on coverage type, risk profile, and urgency so the right agent gets the right lead.",
+      },
+      {
+        question:
+          "Does this integrate with agency management systems?",
+        answer:
+          "I work with the integration options available on platforms like Applied Epic, HawkSoft, EZLynx, and others to keep data in sync.",
+      },
+      {
+        question:
+          "Can AI handle renewal reminders automatically?",
+        answer:
+          "Yes. The system can trigger multi-touch renewal sequences based on policy expiration dates so no renewal falls through the cracks.",
+      },
+    ],
+    links: [
+      { label: "CRM automation", href: "/services/crm-automation" },
+      {
+        label: "AI follow-up systems",
+        href: "/services/ai-follow-up-systems",
+      },
+      { label: "AI voice agents", href: "/services/ai-voice-agents" },
+    ],
+  },
+  {
+    slug: "auto-dealership-ai",
+    path: "/industries/auto-dealership-ai",
+    title: "AI for Auto Dealerships",
+    metaTitle:
+      "AI Lead Response and Booking Systems for Auto Dealerships",
+    description:
+      "AI systems for auto dealerships that respond to leads instantly, book test drives, automate follow-up, and keep the service department pipeline full.",
+    intro: "Industry",
+    eyebrow: "Auto Dealerships",
+    heroTitle:
+      "AI Systems for Dealerships That Need Faster Lead Response and More Test Drives",
+    heroDescription:
+      "I build AI systems for auto dealerships that respond to website and third-party leads within seconds, book test drives, automate sales follow-up, and drive service department retention.",
+    primaryKeyword: "AI for auto dealerships",
+    secondaryKeywords: [
+      "dealership lead response automation",
+      "AI for car dealerships",
+      "auto dealer follow-up automation",
+      "AI test drive booking system",
+      "dealership BDC automation",
+      "automotive lead qualification",
+      "AI for dealership service departments",
+      "car dealership CRM automation",
+      "best AI for car dealerships",
+      "how to improve dealership lead response time",
+      "AI BDC for auto dealers",
+      "dealership service reminder automation",
+      "automotive lead management automation",
+      "internet lead management for dealers",
+      "auto dealer speed to lead",
+      "used car dealership lead automation",
+      "dealership appointment scheduling AI",
+      "automotive BDC replacement",
+    ],
+    idealFor: [
+      "Dealerships where internet leads sit in the CRM too long before first contact",
+      "BDC teams that cannot keep up with lead volume across multiple sources",
+      "Service departments that need automated maintenance reminders and rebooking",
+    ],
+    outcomes: [
+      "Faster first response to internet leads from AutoTrader, Cars.com, and your website",
+      "More test drives booked through automated qualification and scheduling",
+      "Higher service retention through maintenance reminder and recall automation",
+    ],
+    deliverables: [
+      "Instant lead response workflows across sales and service inquiries",
+      "Test drive booking automation with calendar sync and confirmation sequences",
+      "Service reminder, recall notification, and retention campaigns",
+    ],
+    process: [
+      "Audit your lead sources, response times, and BDC workflow",
+      "Design instant-response, qualification, and booking automation",
+      "Build the system across your DMS, CRM, and communication channels",
+      "Track response times, appointment rates, and service retention metrics",
+    ],
+    faqs: [
+      {
+        question:
+          "Can AI respond to third-party leads like AutoTrader and Cars.com?",
+        answer:
+          "Yes. I build automations that capture leads from major portals and trigger instant follow-up before the lead contacts another dealership.",
+      },
+      {
+        question:
+          "Can this handle both sales and service department leads?",
+        answer:
+          "Yes. I build separate workflows for sales inquiries, service appointments, and recall notifications so each department gets what it needs.",
+      },
+      {
+        question: "Will this replace our BDC team?",
+        answer:
+          "No. The goal is to handle the repetitive outreach and follow-up so your BDC team can focus on the conversations that actually close deals.",
+      },
+    ],
+    links: [
+      {
+        label: "AI follow-up systems",
+        href: "/services/ai-follow-up-systems",
+      },
+      {
+        label: "AI appointment booking",
+        href: "/services/ai-appointment-booking",
+      },
+      { label: "CRM automation", href: "/services/crm-automation" },
+    ],
+  },
+  {
+    slug: "fitness-studio-ai",
+    path: "/industries/fitness-studio-ai",
+    title: "AI for Fitness Studios",
+    metaTitle:
+      "AI Lead Capture and Member Retention Systems for Gyms and Fitness Studios",
+    description:
+      "AI systems for gyms and fitness studios that capture leads, book trial classes, reduce member churn, and automate follow-up across the membership lifecycle.",
+    intro: "Industry",
+    eyebrow: "Fitness Studios",
+    heroTitle:
+      "AI Systems for Gyms and Studios That Need More Members and Less Churn",
+    heroDescription:
+      "I build AI systems for fitness businesses that respond to inquiries fast, book trial classes, follow up with no-shows, and keep existing members engaged so they stay longer.",
+    primaryKeyword: "AI for gyms and fitness studios",
+    secondaryKeywords: [
+      "gym lead generation automation",
+      "AI for fitness businesses",
+      "fitness studio member retention",
+      "gym membership follow-up automation",
+      "AI for boutique fitness studios",
+      "trial class booking automation",
+      "gym no-show follow-up",
+      "fitness studio CRM automation",
+      "best AI for gyms",
+      "how to reduce gym member churn",
+      "fitness studio lead follow-up automation",
+      "gym membership reactivation",
+      "AI for personal training studios",
+      "CrossFit gym lead generation",
+      "yoga studio member retention",
+      "personal trainer lead follow-up",
+      "gym free trial follow-up automation",
+      "fitness membership sales automation",
+    ],
+    idealFor: [
+      "Studios losing trial leads because follow-up is slow or inconsistent",
+      "Gyms with high member churn and no automated retention touchpoints",
+      "Fitness businesses that want more class bookings without more front-desk labor",
+    ],
+    outcomes: [
+      "More trial bookings and intro offers converted from website and ad leads",
+      "Lower member churn through automated engagement and re-engagement sequences",
+      "Better class fill rates through waitlist management and reminder automation",
+    ],
+    deliverables: [
+      "Lead capture and trial booking automation with instant follow-up",
+      "Member retention workflows including check-in triggers and win-back sequences",
+      "Class booking, waitlist, and reminder automation",
+    ],
+    process: [
+      "Map your lead funnel, trial-to-member conversion, and churn triggers",
+      "Design the capture, booking, retention, and win-back automation",
+      "Build the system with your scheduling platform, CRM, and messaging tools",
+      "Track trial conversion, retention rates, and class utilization to improve",
+    ],
+    faqs: [
+      {
+        question: "Can AI help reduce member cancellations?",
+        answer:
+          "Yes. I build engagement triggers that detect at-risk members based on attendance patterns and automatically re-engage them before they cancel.",
+      },
+      {
+        question:
+          "Does this work for boutique studios and large gyms?",
+        answer:
+          "Both. The systems scale from single-location studios to multi-location fitness brands with shared or separate workflows.",
+      },
+      {
+        question:
+          "Can AI book trial classes and intro offers automatically?",
+        answer:
+          "Yes. The system captures interest, qualifies the prospect, and books them into a trial or intro session with confirmation and reminders.",
+      },
+    ],
+    links: [
+      {
+        label: "AI appointment booking",
+        href: "/services/ai-appointment-booking",
+      },
+      {
+        label: "AI follow-up systems",
+        href: "/services/ai-follow-up-systems",
+      },
+      {
+        label: "Lead generation systems",
+        href: "/services/lead-generation-systems",
+      },
+    ],
+  },
 ];
 
 export const allSeoPages = [...servicePages, ...industryPages];
+
+validateSeoPageCollection("servicePages", servicePages);
+validateSeoPageCollection("industryPages", industryPages);
+validateSeoPageCollection("allSeoPages", allSeoPages);
 
 export function findSeoPageByPath(path: string) {
   return allSeoPages.find((page) => page.path === path);

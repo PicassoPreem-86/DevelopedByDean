@@ -9,7 +9,7 @@ export function IndustriesHubPage() {
     <>
       <SEO
         title="AI by Industry"
-        description="AI solutions by industry for home services, med spas, law firms, and other businesses that need better lead handling and automation."
+        description="AI solutions by industry for home services, med spas, law firms, real estate, dental practices, insurance agencies, auto dealerships, and fitness studios."
         path="/industries"
       />
       <section className="bg-hero px-6 pb-16 pt-28 text-white lg:pb-24 lg:pt-36">

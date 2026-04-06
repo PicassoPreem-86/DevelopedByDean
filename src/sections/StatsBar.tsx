@@ -19,8 +19,7 @@ function CountUp({
   suffix: string;
   decimal?: boolean;
 }) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
+  const [count, setCount] = useState<number | null>(null);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -28,7 +27,10 @@ function CountUp({
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setStarted(true);
+        if (entry.isIntersecting) {
+          setCount(0);
+          observer.disconnect();
+        }
       },
       { threshold: 0.5 }
     );
@@ -37,8 +39,9 @@ function CountUp({
   }, []);
 
   useEffect(() => {
-    if (!started) return;
-    let current = 0;
+    if (count === null) return;
+    if (count >= end) return;
+    let current = count;
     const steps = 40;
     const increment = end / steps;
     const timer = setInterval(() => {
@@ -51,9 +54,11 @@ function CountUp({
       }
     }, 40);
     return () => clearInterval(timer);
-  }, [started, end]);
+  }, [count, end]);
 
-  const display = decimal ? (count / 10).toFixed(1) : count;
+  const display = count === null
+    ? (decimal ? (end / 10).toFixed(1) : end)
+    : (decimal ? (count / 10).toFixed(1) : count);
 
   return (
     <span ref={ref}>
