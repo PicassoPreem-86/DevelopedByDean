@@ -51,7 +51,7 @@ export function Results() {
           {results.map((item, i) => (
             <motion.div
               key={item.label}
-              className="group rounded-2xl border border-blue-100/50 bg-blue-50/50 p-6 text-center transition-all hover:shadow-card-hover hover:-translate-y-1"
+              className="group rounded-2xl border border-accent/15 bg-accent/[0.04] p-6 text-center transition-all hover:shadow-card-hover hover:-translate-y-1 hover:border-accent/30"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

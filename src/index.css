@@ -33,9 +33,20 @@
 }
 
 :focus-visible {
-  outline: 2px solid #3B82F6;
+  outline: 2px solid #4361EE;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Default focus rings on interactive controls so keyboard nav is always visible */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid #4361EE;
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -56,9 +56,10 @@ function CountUp({
     return () => clearInterval(timer);
   }, [count, end]);
 
-  const display = count === null
-    ? (decimal ? (end / 10).toFixed(1) : end)
-    : (decimal ? (count / 10).toFixed(1) : count);
+  // Show 0 (or 0.0) before the counter triggers so the animation runs forward,
+  // not from final value down to zero and back up.
+  const value = count ?? 0;
+  const display = decimal ? (value / 10).toFixed(1) : value;
 
   return (
     <span ref={ref}>

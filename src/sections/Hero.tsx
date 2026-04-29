@@ -112,10 +112,15 @@ export function Hero() {
 
               {/* Main portrait */}
               <div className="relative w-72 sm:w-80 lg:w-[22rem] overflow-hidden rounded-2xl border border-white/10 bg-surface-dark shadow-2xl">
-                <div className="overflow-hidden">
+                <div className="overflow-hidden aspect-[344/784]">
                   <img
                     src="/images/dean-headshot.jpg"
-                    alt="Dean — AI Developer & Systems Engineer"
+                    alt="Dean Holland, AI developer and systems engineer, founder of DevelopedByDean"
+                    width={344}
+                    height={784}
+                    loading="eager"
+                    decoding="async"
+                    fetchPriority="high"
                     className="w-full h-auto"
                   />
                 </div>

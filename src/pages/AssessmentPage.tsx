@@ -4,6 +4,7 @@ import { AnimatePresence } from "framer-motion";
 import { useAssessment } from "../hooks/useAssessment";
 import { ProgressBar } from "../components/assessment/ProgressBar";
 import { QuestionCard } from "../components/assessment/QuestionCard";
+import { SEO } from "../components/SEO";
 
 export function AssessmentPage() {
   const navigate = useNavigate();
@@ -62,6 +63,11 @@ export function AssessmentPage() {
 
   return (
     <div className="min-h-screen bg-hero" onKeyDown={handleKeyDown} tabIndex={0}>
+      <SEO
+        title="AI Readiness Assessment"
+        description="A 17-question assessment that scores your business's AI readiness across 5 dimensions and recommends where to start."
+        path="/assessment"
+      />
       <ProgressBar current={currentStep + 1} total={totalQuestions} percentage={progress} />
 
       <div className="max-w-3xl mx-auto px-6 py-12 md:py-20">

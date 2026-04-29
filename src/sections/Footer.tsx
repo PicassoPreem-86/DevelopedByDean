@@ -27,7 +27,7 @@ const resourceLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-hero px-6 py-16">
+    <footer className="bg-hero px-6 py-20 lg:py-24">
       <div className="mx-auto max-w-container">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-6">
           {/* Brand */}
@@ -43,7 +43,7 @@ export function Footer() {
             <Link to="/services" className="mb-4 block text-xs font-semibold uppercase tracking-widest text-white/50 hover:text-white transition-colors">Services</Link>
             <div className="flex flex-col gap-1">
               {servicePages.map((page) => (
-                <Link key={page.path} to={page.path} className="text-sm text-white/50 hover:text-white transition-colors py-1">
+                <Link key={page.path} to={page.path} className="text-sm text-white/60 hover:text-white transition-colors py-2 focus-visible:outline-none focus-visible:text-white">
                   {page.title}
                 </Link>
               ))}
@@ -55,7 +55,7 @@ export function Footer() {
             <Link to="/industries" className="mb-4 block text-xs font-semibold uppercase tracking-widest text-white/50 hover:text-white transition-colors">Industries</Link>
             <div className="flex flex-col gap-1">
               {industryPages.map((page) => (
-                <Link key={page.path} to={page.path} className="text-sm text-white/50 hover:text-white transition-colors py-1">
+                <Link key={page.path} to={page.path} className="text-sm text-white/60 hover:text-white transition-colors py-2 focus-visible:outline-none focus-visible:text-white">
                   {page.title}
                 </Link>
               ))}
@@ -67,7 +67,7 @@ export function Footer() {
             <h4 className="mb-4 text-xs font-semibold uppercase tracking-widest text-white/50">Resources</h4>
             <div className="flex flex-col gap-1">
               {resourceLinks.map((link) => (
-                <Link key={link.href} to={link.href} className="text-sm text-white/50 hover:text-white transition-colors py-1">
+                <Link key={link.href} to={link.href} className="text-sm text-white/60 hover:text-white transition-colors py-2 focus-visible:outline-none focus-visible:text-white">
                   {link.label}
                 </Link>
               ))}
@@ -110,7 +110,8 @@ export function Footer() {
           <p className="text-xs text-white/40">&copy; {new Date().getFullYear()} DevelopedByDean. All rights reserved.</p>
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xs text-white/40 hover:text-white/50 transition-colors"
+            className="text-xs text-white/50 hover:text-white transition-colors px-2 py-1 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
+            aria-label="Scroll back to top of page"
           >
             Back to top &uarr;
           </button>

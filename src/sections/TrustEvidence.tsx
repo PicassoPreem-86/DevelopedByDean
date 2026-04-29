@@ -41,7 +41,7 @@ export function TrustEvidence() {
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-accent">
               Built Proof
             </p>
-            <h2 className="mt-4 text-[clamp(1.8rem,3.8vw,2.8rem)] font-extrabold leading-tight text-content-primary">
+            <h2 className="mt-4 text-[clamp(1.75rem,3.5vw,2.5rem)] font-extrabold leading-tight text-content-primary">
               You&rsquo;re looking at the work right now.
             </h2>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-content-body">
@@ -49,7 +49,7 @@ export function TrustEvidence() {
               SEO architecture, the conversion flow — I designed and built every system you see here.
             </p>
 
-            <div className="mt-8 rounded-3xl border border-border-light bg-white p-6 shadow-card">
+            <div className="mt-8 rounded-2xl border border-border-light bg-white p-6 shadow-card">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-content-muted">
                 Delivery standards
               </p>
@@ -68,7 +68,7 @@ export function TrustEvidence() {
             {proofPillars.map((item, index) => (
               <motion.article
                 key={item.title}
-                className="rounded-3xl border border-border-light bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover"
+                className="rounded-2xl border border-border-light bg-white p-6 shadow-card transition-shadow hover:shadow-card-hover"
                 initial={{ opacity: 0, filter: "blur(4px)" }}
                 whileInView={{ opacity: 1, filter: "blur(0px)" }}
                 whileHover={{ y: -2 }}
@@ -87,7 +87,7 @@ export function TrustEvidence() {
               </motion.article>
             ))}
 
-            <div className="rounded-3xl border border-border-light bg-hero p-6 text-white shadow-card">
+            <div className="rounded-2xl border border-border-light bg-hero p-6 text-white shadow-card">
               <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent-light">
                 See it in action
               </p>

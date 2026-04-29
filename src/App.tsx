@@ -80,6 +80,19 @@ const ChatWidget = lazy(() =>
   }))
 );
 
+function RouteFallback() {
+  return (
+    <div
+      className="min-h-[60vh] flex items-center justify-center"
+      role="status"
+      aria-live="polite"
+      aria-label="Loading page"
+    >
+      <div className="h-8 w-8 rounded-full border-2 border-accent/20 border-t-accent animate-spin" />
+    </div>
+  );
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -107,7 +120,7 @@ function Layout() {
       <StructuredData />
       <Navbar />
       <main id="main-content">
-        <Suspense fallback={null}>
+        <Suspense fallback={<RouteFallback />}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/services" element={<ServicesHubPage />} />

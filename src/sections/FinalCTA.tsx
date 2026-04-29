@@ -93,8 +93,8 @@ export function FinalCTA() {
                     animate={{ opacity: 1, scale: 1 }}
                     className="flex flex-col items-center justify-center h-full text-center py-12"
                   >
-                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-green-100">
-                      <CheckCircle2 size={28} className="text-green-600" />
+                    <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100">
+                      <CheckCircle2 size={28} className="text-emerald-600" />
                     </div>
                     <h3 className="text-xl font-bold text-content-primary">Request received!</h3>
                     <p className="mt-2 text-sm text-content-muted max-w-xs">
@@ -189,7 +189,7 @@ export function FinalCTA() {
                     </div>
 
                     {status === "error" && (
-                      <p className="text-sm text-red-500">
+                      <p role="alert" className="text-sm text-rose-600 bg-rose-50 border border-rose-100 rounded-lg px-3 py-2">
                         Something went wrong. Please try again or email{" "}
                         <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold underline">
                           {CONTACT_EMAIL}
