@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ClipboardCheck } from "lucide-react";
 import { useAssessment } from "../hooks/useAssessment";
 import { apiEndpoints, postJson } from "../lib/api";
+import { SEO } from "../components/SEO";
 
 export function EmailCapturePage() {
   const navigate = useNavigate();
@@ -17,10 +18,13 @@ export function EmailCapturePage() {
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  if (!result) {
-    navigate("/assessment");
-    return null;
-  }
+  useEffect(() => {
+    if (!result) {
+      navigate("/assessment", { replace: true });
+    }
+  }, [result, navigate]);
+
+  if (!result) return null;
 
   function validateEmail(value: string): boolean {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -41,10 +45,9 @@ export function EmailCapturePage() {
       companyName: companyName.trim() || undefined,
     });
 
-    // Submit lead through the server-side capture endpoint
     if (result) {
       try {
-        await postJson(apiEndpoints.assessment, {
+        const res = await postJson(apiEndpoints.assessment, {
           name: firstName.trim(),
           email: email.trim(),
           company: companyName.trim() || "Not provided",
@@ -53,12 +56,15 @@ export function EmailCapturePage() {
           band: result.bandLabel,
           message: `Assessment completed. Score: ${result.overallScore}/100 (${result.bandLabel}). Categories: ${result.categoryScores.map((c) => `${c.label}: ${c.score}`).join(", ")}`,
         });
-      } catch {
-        // Silent fail — don't block the user from seeing results
+        if (!res.ok) {
+          console.error("Assessment lead capture failed", res.status);
+        }
+      } catch (err) {
+        // Don't block the user from seeing results, but surface in devtools
+        console.error("Assessment lead capture error", err);
       }
     }
 
-    await new Promise((r) => setTimeout(r, 400));
     setIsSubmitting(false);
     navigate("/assessment/results");
   }
@@ -67,6 +73,11 @@ export function EmailCapturePage() {
 
   return (
     <div className="min-h-screen bg-hero flex items-center justify-center px-6">
+      <SEO
+        title="Your Results Are Ready"
+        description="Enter your details to see your personalized AI Readiness Report."
+        path="/assessment/capture"
+      />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

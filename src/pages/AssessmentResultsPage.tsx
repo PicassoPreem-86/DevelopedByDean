@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
@@ -6,6 +7,7 @@ import { SCORE_BANDS } from "../types/assessment";
 import { ScoreGauge } from "../components/assessment/ScoreGauge";
 import { CategoryBreakdown } from "../components/assessment/CategoryBreakdown";
 import { IndustryBenchmark } from "../components/assessment/IndustryBenchmark";
+import { SEO } from "../components/SEO";
 
 const INDUSTRY_LABELS: Record<string, string> = {
   legal: "Legal",
@@ -25,10 +27,13 @@ export function AssessmentResultsPage() {
   const leadData = useAssessment((s) => s.leadData);
   const reset = useAssessment((s) => s.reset);
 
-  if (!result || !industry) {
-    navigate("/");
-    return null;
-  }
+  useEffect(() => {
+    if (!result || !industry) {
+      navigate("/", { replace: true });
+    }
+  }, [result, industry, navigate]);
+
+  if (!result || !industry) return null;
 
   const bandInfo = SCORE_BANDS[result.band];
   const industryLabel = INDUSTRY_LABELS[industry] ?? "your industry";
@@ -36,6 +41,11 @@ export function AssessmentResultsPage() {
 
   return (
     <div className="min-h-screen bg-hero">
+      <SEO
+        title="Your AI Readiness Results"
+        description="Personalized AI Readiness Report based on your assessment. See your score, benchmark, and top recommendations."
+        path="/assessment/results"
+      />
       {/* Header */}
       <div className="border-b border-white/[0.06]">
         <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">

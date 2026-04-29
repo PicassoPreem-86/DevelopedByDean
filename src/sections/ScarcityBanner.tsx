@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-
-const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
+import { Link } from "react-router-dom";
 
 export function ScarcityBanner() {
+  // Compute on each render so a long-open tab or cached bundle never shows the wrong month.
+  const currentMonth = new Date().toLocaleString("en-US", { month: "long" });
   return (
     <motion.section
       className="py-6 px-6 bg-hero"
@@ -21,12 +22,12 @@ export function ScarcityBanner() {
             Currently accepting 2 new clients for {currentMonth}
           </span>
         </div>
-        <a
-          href="/#contact"
-          className="text-sm font-semibold text-accent hover:text-accent-light transition-colors py-2 px-1"
+        <Link
+          to="/#contact"
+          className="text-sm font-semibold text-accent hover:text-accent-light transition-colors py-2 px-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-hero rounded"
         >
           Claim your spot &rarr;
-        </a>
+        </Link>
       </div>
     </motion.section>
   );

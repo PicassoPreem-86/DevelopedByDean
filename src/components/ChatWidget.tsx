@@ -49,20 +49,36 @@ export function ChatWidget() {
 
   const submitLead = useCallback(async (leadData: Record<string, string>) => {
     if (leadCapturedRef.current) return;
+
+    // Reject obviously bad emails before we eat our one-shot capture flag.
+    const email = (leadData.email || "").trim();
+    const name = (leadData.name || "").trim();
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!name || !isValidEmail) {
+      console.warn("Chat lead skipped — name or email failed validation", { name, email });
+      return;
+    }
+
     leadCapturedRef.current = true;
+    const payload = {
+      name,
+      email,
+      business: leadData.business || "",
+      phone: leadData.phone || "",
+      location: leadData.location || "",
+      preferred_date: leadData.preferred_date || "",
+      preferred_time: leadData.preferred_time || "",
+      message: `[Via AI Chat] ${leadData.message || "No details provided"}`,
+    };
     try {
-      await postJson(apiEndpoints.contact, {
-        name: leadData.name || "",
-        email: leadData.email || "",
-        business: leadData.business || "",
-        phone: leadData.phone || "",
-        location: leadData.location || "",
-        preferred_date: leadData.preferred_date || "",
-        preferred_time: leadData.preferred_time || "",
-        message: `[Via AI Chat] ${leadData.message || "No details provided"}`,
-      });
-    } catch {
-      // Silent fail — don't interrupt the conversation
+      const res = await postJson(apiEndpoints.contact, payload);
+      if (!res.ok) {
+        console.error("Chat lead submission rejected", res.status);
+        leadCapturedRef.current = false;
+      }
+    } catch (err) {
+      console.error("Chat lead submission failed", err);
+      leadCapturedRef.current = false;
     }
   }, []);
 
@@ -195,7 +211,13 @@ export function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-3 sm:px-5 py-3 sm:py-4 space-y-3 sm:space-y-4 min-h-0" aria-live="polite">
+            <div
+              role="log"
+              aria-label="Chat messages"
+              aria-live="polite"
+              aria-atomic="false"
+              className="flex-1 overflow-y-auto px-3 sm:px-5 py-3 sm:py-4 space-y-3 sm:space-y-4 min-h-0"
+            >
               {messages.map((msg, i) => (
                 <motion.div
                   key={i}
