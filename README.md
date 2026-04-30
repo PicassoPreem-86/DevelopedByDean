@@ -37,6 +37,7 @@ VITE_X_URL=https://x.com/your-handle
 VITE_GITHUB_URL=https://github.com/your-handle
 VITE_GOOGLE_SITE_VERIFICATION=...
 VITE_BING_SITE_VERIFICATION=...
+VITE_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 
 `VITE_CONTACT_FORM_ENDPOINT` should stay pointed at `/api/contact` unless you intentionally replace the built-in form handler.

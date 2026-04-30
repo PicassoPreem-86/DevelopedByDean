@@ -4,6 +4,7 @@ import { MotionConfig } from "framer-motion";
 import { Navbar } from "./sections/Navbar";
 import { Footer } from "./sections/Footer";
 import { StructuredData } from "./components/StructuredData";
+import { Analytics } from "./components/Analytics";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 import { HomePage } from "./pages/HomePage";
 import { industryPages, servicePages } from "./data/seoPages";
@@ -117,6 +118,7 @@ function Layout() {
         Skip to main content
       </a>
       <ScrollToTop />
+      <Analytics />
       <StructuredData />
       <Navbar />
       <main id="main-content">
