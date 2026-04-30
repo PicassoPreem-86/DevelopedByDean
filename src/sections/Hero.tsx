@@ -113,16 +113,20 @@ export function Hero() {
               {/* Main portrait */}
               <div className="relative w-72 sm:w-80 lg:w-[22rem] overflow-hidden rounded-2xl border border-white/10 bg-surface-dark shadow-2xl">
                 <div className="overflow-hidden aspect-[344/784]">
-                  <img
-                    src="/images/dean-headshot.jpg"
-                    alt="Dean Holland, AI developer and systems engineer, founder of DevelopedByDean"
-                    width={344}
-                    height={784}
-                    loading="eager"
-                    decoding="async"
-                    fetchPriority="high"
-                    className="w-full h-auto"
-                  />
+                  <picture>
+                    <source srcSet="/images/dean-headshot.avif" type="image/avif" />
+                    <source srcSet="/images/dean-headshot.webp" type="image/webp" />
+                    <img
+                      src="/images/dean-headshot.jpg"
+                      alt="Dean Holland, AI developer and systems engineer, founder of DevelopedByDean"
+                      width={344}
+                      height={784}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      className="w-full h-auto"
+                    />
+                  </picture>
                 </div>
                 {/* Gradient overlay at bottom */}
                 <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-surface-dark to-transparent" />
