@@ -18,6 +18,12 @@ export function SeoLandingPage({ page }: SeoLandingPageProps) {
     { label: page.title },
   ];
 
+  const tldrText =
+    page.tldr ??
+    `${page.title} is a service from DevelopedByDean for ${
+      page.idealFor[0]?.toLowerCase() ?? "businesses"
+    }. ${page.heroDescription}`;
+
   return (
     <>
       <SEO
@@ -106,6 +112,17 @@ export function SeoLandingPage({ page }: SeoLandingPageProps) {
               </ul>
             </motion.aside>
           </div>
+        </div>
+      </section>
+
+      <section className="bg-surface-light px-6 py-10 lg:py-12">
+        <div className="mx-auto max-w-container">
+          <p className="text-xs font-bold uppercase tracking-widest text-accent">
+            In short
+          </p>
+          <p className="mt-3 max-w-3xl text-lg leading-relaxed text-content-body">
+            {tldrText}
+          </p>
         </div>
       </section>
 

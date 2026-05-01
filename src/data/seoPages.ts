@@ -23,6 +23,7 @@ export type SeoPageDefinition = {
   process: string[];
   faqs: Array<{ question: string; answer: string }>;
   links: LinkItem[];
+  tldr?: string;
 };
 
 export const servicePages: SeoPageDefinition[] = [
@@ -94,7 +95,12 @@ export const servicePages: SeoPageDefinition[] = [
       {
         question: "Is this only for big companies?",
         answer:
-          "No. Voice agents are often most valuable for owner-led businesses that lose leads because they cannot answer every call in real time.",
+          "No. Voice agents are often most valuable for owner-led businesses that lose leads because they cannot answer every call in real time. (Industry reporting from Forbes and small-business operators consistently puts missed-call rates around 60% during peak hours for unstaffed lines.)",
+      },
+      {
+        question: "How much does response speed actually matter?",
+        answer:
+          "It is the single biggest conversion lever on inbound leads. Harvard Business Review's research on lead response (Oldroyd et al.) found that contacting a lead within 5 minutes makes them roughly 21x more likely to qualify than waiting 30 minutes. AI voice agents collapse that response window to seconds.",
       },
     ],
     links: [
@@ -102,6 +108,7 @@ export const servicePages: SeoPageDefinition[] = [
       { label: "Results and ROI examples", href: "/results" },
       { label: "AI for home services", href: "/industries/home-services-ai" },
     ],
+    tldr: "An AI voice agent is a phone-based assistant that answers calls, asks qualifying questions, and books appointments directly into your calendar 24/7. It is built for owner-led businesses and small teams that lose revenue every time a call goes to voicemail. The primary outcome is more booked appointments from the same call volume, with cleaner lead data flowing into your CRM automatically.",
   },
   {
     slug: "ai-websites",
@@ -161,7 +168,7 @@ export const servicePages: SeoPageDefinition[] = [
       {
         question: "Do you just design the site or also write the strategy?",
         answer:
-          "I handle both. The value is in combining positioning, UX, automation, and SEO so the site performs as a system.",
+          "I handle both. The value is in combining positioning, UX, automation, and SEO so the site performs as a system. BrightLocal's Local Consumer Review Survey consistently shows the majority of consumers research a service business online before contacting them, so the site is doing more selling than most owners realize.",
       },
       {
         question: "Can the site connect to my CRM and forms?",
@@ -173,12 +180,18 @@ export const servicePages: SeoPageDefinition[] = [
         answer:
           "Yes. I build technical SEO foundations into the structure, metadata, internal links, and schema from the start.",
       },
+      {
+        question: "How fast does the site need to respond to a lead?",
+        answer:
+          "Effectively instantly. Harvard Business Review's lead-response research (Oldroyd et al.) found a roughly 21x lift in qualification when you contact a lead within 5 minutes versus 30. That's why the sites I build pair conversion design with automated instant follow-up rather than relying on a human to monitor the inbox.",
+      },
     ],
     links: [
       { label: "Workflow automation service", href: "/services/workflow-automation" },
       { label: "Lead generation systems", href: "/services/lead-generation-systems" },
       { label: "How it works", href: "/services" },
     ],
+    tldr: "An AI website is a high-performance business site that combines persuasive positioning, conversion-focused design, and built-in automation (chat, qualification, CRM handoff) so it actively generates leads instead of acting as a brochure. It is built for service businesses with traffic but weak conversion and operators replacing outdated sites that don't produce qualified inquiries. The primary outcome is more booked calls from the same traffic, with leads qualified and routed before a human ever steps in.",
   },
   {
     slug: "workflow-automation",
@@ -241,6 +254,11 @@ export const servicePages: SeoPageDefinition[] = [
           "Yes. Most of the value comes from designing the automation around how your business actually runs instead of forcing a generic setup onto it.",
       },
       {
+        question: "How much time can automation realistically give back?",
+        answer:
+          "More than most teams expect. McKinsey Global Institute's analysis on workforce automation estimates that workers spend roughly 40% of their time on activities that could be automated with current technology. In practice, the highest-leverage automations target repetitive admin (data entry, follow-up triggers, internal handoffs) rather than judgment work.",
+      },
+      {
         question: "Will automation replace my whole team?",
         answer:
           "No. The goal is usually to remove repetitive work so your team can focus on higher-value conversations and delivery.",
@@ -256,6 +274,7 @@ export const servicePages: SeoPageDefinition[] = [
       { label: "Lead generation systems", href: "/services/lead-generation-systems" },
       { label: "FAQ", href: "/faq" },
     ],
+    tldr: "Workflow automation is the practice of connecting your CRM, forms, inboxes, calendars, and payment tools so data and decisions move between them automatically instead of through manual copy-paste. It is built for teams stuck in spreadsheets and inbox triage, and service businesses that lose tasks between sales and delivery. The primary outcome is fewer dropped handoffs, less admin overhead, and clear visibility into where leads, revenue, and operations actually stand.",
   },
   {
     slug: "lead-generation-systems",
@@ -735,6 +754,11 @@ export const industryPages: SeoPageDefinition[] = [
           "Yes. I can design call and form logic to route urgent jobs differently, collect the right details, and push high-priority requests faster.",
       },
       {
+        question: "How many calls are home service businesses actually missing?",
+        answer:
+          "More than most owners realize. Industry reporting (Forbes, small-business call analytics) consistently puts missed-call rates for unstaffed home service lines around 60% during peak demand. On top of that, Harvard Business Review's lead-response research found a roughly 21x lift in qualifying contact when you respond within 5 minutes versus 30 — the gap an AI agent closes automatically.",
+      },
+      {
         question: "Does this help after the lead comes in too?",
         answer:
           "Yes. Follow-up, reminders, review requests, and status notifications are often where these systems create a lot of extra value.",
@@ -752,6 +776,7 @@ export const industryPages: SeoPageDefinition[] = [
       { label: "AI for med spas", href: "/industries/medical-spa-ai" },
       { label: "Results", href: "/results" },
     ],
+    tldr: "AI for home services is a stack of phone-answering, lead-qualification, and dispatch automation built specifically for HVAC, plumbing, roofing, electrical, and cleaning businesses where techs are on the road and the front desk is small or part-time. It is built for owner-operators losing jobs to faster-responding competitors and teams that drop leads when calls stack up during peak demand. The primary outcome is more booked jobs from the same call and traffic volume, with urgent requests routed faster than a human dispatcher can manage.",
   },
   {
     slug: "medical-spa-ai",

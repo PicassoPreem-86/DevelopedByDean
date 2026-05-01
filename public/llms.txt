@@ -1,0 +1,39 @@
+# DevelopedByDean
+
+> Dean Holland is an Anthropic Certified AI Developer who builds custom AI voice agents, AI websites, and workflow automation systems for small and mid-size businesses. Solo operator — clients work directly with Dean, no agency middlemen, no account managers.
+
+## About
+Dean Holland is an independent AI developer and systems engineer. He holds the Anthropic Certified AI Developer credential and specializes in production-grade AI integrations: voice agents that answer calls 24/7, websites that capture and qualify leads automatically, and workflow automations that connect CRMs, calendars, inboxes, and payment systems. Contact: dean@bknddevelopment.com
+
+## Services
+- [AI Voice Agents](/services/ai-voice-agents) — Custom AI phone agents that answer, qualify, and book calls 24/7 with calendar and CRM sync.
+- [AI Websites](/services/ai-websites) — Fast, persuasive websites built to convert traffic into qualified leads and booked calls.
+- [Workflow Automation](/services/workflow-automation) — Automation systems that connect CRMs, forms, inboxes, and payments to remove repetitive admin work.
+- [Lead Generation Systems](/services/lead-generation-systems) — Capture, qualification, scoring, and routing systems with automated follow-up.
+- [AI Chatbots](/services/ai-chatbot-development) — Custom website chatbots trained on your business that qualify leads and handle support around the clock.
+- [AI Appointment Booking](/services/ai-appointment-booking) — Self-service scheduling systems with smart reminders that fill calendars and reduce no-shows.
+- [CRM Automation](/services/crm-automation) — Lead routing, follow-up triggers, and pipeline management automation across HubSpot, GoHighLevel, Salesforce, and more.
+- [AI Follow-Up Systems](/services/ai-follow-up-systems) — Sub-minute lead response, multi-step nurture sequences, and reactivation campaigns for dormant leads.
+
+## Industries
+- [AI for Home Services](/industries/home-services-ai) — AI call answering, lead qualification, and dispatch follow-up for HVAC, plumbing, roofing, electrical, and cleaning businesses.
+- [AI for Med Spas](/industries/medical-spa-ai) — Consultation funnels, treatment qualification, and reactivation flows for aesthetic clinics.
+- [AI for Law Firms](/industries/law-firm-ai) — Intake automation, case screening, and practice-area routing for law firms.
+- [AI for Real Estate](/industries/real-estate-ai) — Instant lead response, buyer/seller qualification, showing booking, and long-term nurture for agents and teams.
+- [AI for Dental Practices](/industries/dental-practice-ai) — Online booking, no-show reduction, and lapsed-patient reactivation for dental offices.
+- [AI for Insurance Agencies](/industries/insurance-agency-ai) — Quote follow-up, renewal automation, and cross-sell triggers for independent agencies.
+- [AI for Auto Dealerships](/industries/auto-dealership-ai) — Instant internet-lead response, test drive booking, and service department retention.
+- [AI for Fitness Studios](/industries/fitness-studio-ai) — Trial class booking, member retention, and win-back automation for gyms and boutique studios.
+
+## Key Pages
+- [Homepage](/) — overview and direct strategy call booking
+- [FAQ](/faq) — pricing, timeline, process, ongoing support
+- [AI Readiness Assessment](/assessment) — free interactive tool to identify highest-leverage AI systems for a business
+- [Contact](/#contact) — book a free strategy call
+
+## Positioning
+- Anthropic Certified AI Developer
+- Solo operator: every project designed and built personally by Dean
+- Clients work directly with the builder — no agency middlemen
+- Pricing typically starts at $2,500 per project; scoped per engagement
+- Most projects launch within 2-6 weeks

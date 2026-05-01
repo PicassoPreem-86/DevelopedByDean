@@ -7,6 +7,8 @@ interface SeoLandingStructuredDataProps {
 }
 
 export function SeoLandingStructuredData({ page }: SeoLandingStructuredDataProps) {
+  const pageUrl = `${SITE_URL}${page.path}`;
+
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -29,7 +31,7 @@ export function SeoLandingStructuredData({ page }: SeoLandingStructuredDataProps
             "@type": "ListItem",
             position: 3,
             name: page.title,
-            item: `${SITE_URL}${page.path}`,
+            item: pageUrl,
           },
         ],
       },
@@ -39,12 +41,8 @@ export function SeoLandingStructuredData({ page }: SeoLandingStructuredDataProps
         description: page.description,
         serviceType: page.primaryKeyword,
         areaServed: "Worldwide",
-        provider: {
-          "@type": "ProfessionalService",
-          name: "DevelopedByDean",
-          url: SITE_URL,
-        },
-        url: `${SITE_URL}${page.path}`,
+        provider: { "@id": `${SITE_URL}/#organization` },
+        url: pageUrl,
       },
       {
         "@type": "FAQPage",
@@ -56,6 +54,27 @@ export function SeoLandingStructuredData({ page }: SeoLandingStructuredDataProps
             text: faq.answer,
           },
         })),
+      },
+      {
+        "@type": "HowTo",
+        name: `How ${page.title} engagements work`,
+        description: `Typical process for ${page.title.toLowerCase()} projects with DevelopedByDean.`,
+        step: page.process.map((stepText, idx) => ({
+          "@type": "HowToStep",
+          position: idx + 1,
+          name: `Step ${idx + 1}`,
+          text: stepText,
+        })),
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: page.metaTitle,
+        description: page.description,
+        about: { "@id": `${SITE_URL}/#organization` },
+        author: { "@id": `${SITE_URL}/#person` },
+        publisher: { "@id": `${SITE_URL}/#organization` },
       },
     ],
   };

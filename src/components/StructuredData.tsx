@@ -10,6 +10,7 @@ const sameAs = [
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${SITE_URL}/#person`,
   name: "Dean Holland",
   url: SITE_URL,
   image: OG_IMAGE_URL,
@@ -24,22 +25,31 @@ const personSchema = {
     "Lead Generation",
     "CRM Automation",
   ],
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "certification",
+    name: "Anthropic Certified AI Developer",
+    recognizedBy: {
+      "@type": "Organization",
+      name: "Anthropic",
+      url: "https://www.anthropic.com",
+    },
+  },
+  worksFor: { "@id": `${SITE_URL}/#organization` },
   sameAs,
 };
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
+  "@id": `${SITE_URL}/#organization`,
   name: "DevelopedByDean",
   url: SITE_URL,
   logo: LOGO_URL,
   image: OG_IMAGE_URL,
   description:
     "AI development services including voice agents, smart websites, workflow automation, and custom AI tools for businesses.",
-  founder: {
-    "@type": "Person",
-    name: "Dean Holland",
-  },
+  founder: { "@id": `${SITE_URL}/#person` },
   serviceType: [
     "AI Voice Agent Development",
     "AI Website Development",
@@ -59,11 +69,7 @@ const websiteSchema = {
   url: SITE_URL,
   description:
     "AI developer and systems engineer building voice agents, websites, and automations for businesses.",
-  publisher: {
-    "@type": "ProfessionalService",
-    name: "DevelopedByDean",
-    url: SITE_URL,
-  },
+  publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
 export function StructuredData() {
